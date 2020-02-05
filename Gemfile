@@ -28,6 +28,9 @@ gem 'pundit'
 # Use JSON Web Tokens
 # gem 'jwt'
 
+# Presentation
+gem 'haml-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
