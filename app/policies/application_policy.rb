@@ -1,21 +1,21 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :session, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(session, record)
+    @session = session
     @record = record
   end
 
   def index?
-    false
+    user
   end
 
   def show?
-    false
+    user
   end
 
   def create?
-    false
+    user
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user
   end
 
   def edit?
@@ -31,19 +31,29 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    user
+  end
+
+  # Helper Methods
+  def user
+    session.user
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :session, :scope
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(session, scope)
+      @session = session
       @scope = scope
     end
 
     def resolve
       scope.all
+    end
+
+    # Helper Methods
+    def user
+      session.user
     end
   end
 end
