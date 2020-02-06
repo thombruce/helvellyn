@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   has_many :sessions
 
+  validates :name, presence: true
+
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
   def self.find_by_login(login)
     find_by(email: login)
   end

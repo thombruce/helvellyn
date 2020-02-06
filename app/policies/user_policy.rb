@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def permitted_attributes
-    [:email, :password]
+    [:name, :email, :password]
   end
 
   def new?
