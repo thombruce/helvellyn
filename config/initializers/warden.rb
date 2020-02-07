@@ -3,24 +3,33 @@ Rails.application.config.middleware.use Warden::Manager do |config|
 
   config.default_scope = :session
 
-  config.scope_defaults :session, strategies: [:password]
+  config.scope_defaults :session, strategies: [:jwt]
 end
 
-Warden::Manager.serialize_into_session do |session|
-  session.session_token
-end
-
-Warden::Manager.serialize_from_session do |session_token|
-  Session.find_by(session_token: session_token)
-end
-
-Warden::Strategies.add(:password) do
+Warden::Strategies.add(:jwt) do
   def valid?
-    params['email'] || params['password']
+    env['HTTP_USER_TOKEN']
+  end
+
+  def env
+    request.env
   end
 
   def authenticate!
-    session = Session.authenticate(params['email'], params['password'])
-    session.nil? ? fail!("Could not log in") : success!(u)
+    begin
+      token =
+        JWT.decode env['HTTP_USER_TOKEN'], Rails.application.secrets.secret_key_base, true,
+                   iss: 'DashboardByThom', verify_iss: true, algorithm: 'HS256'
+    rescue JWT::InvalidIssuerError
+      fail!('Could not authenticate')
+    end
+
+    session = Session.find(token[0]['data']['session_id'])
+
+    session ? success!(session) : fail!('Could not authenticate')
+  end
+
+  def store?
+    false
   end
 end

@@ -8,27 +8,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-primary
-      %strong= link_to 'Dashboard by Thom', root_path, class: 'navbar-brand'
-      %nav.collapse.navbar-collapse
-        %ul.navbar-nav.ml-auto
-          - if current_user
-            %li.nav-item.dropdown
-              %a#navbarUserDropdown.nav-link.dropdown-toggle{href: '#', role: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false'}
-                = current_user.name
-              .dropdown-menu.dropdown-menu-right{'aria-leballedBy': 'navbarUserDropdown'}
-                = link_to 'Account', user_path(current_user), class: 'dropdown-item'
-                = link_to 'Sign out', session_path(current_session), method: :delete, class: 'dropdown-item'
-          - else
-            %li.nav-item
-              = link_to 'Sign in', new_session_path, class: 'nav-link'
-            %li.nav-item
-              = link_to 'Sign up', new_user_path, class: 'nav-link'
-    .container.mt-5
-      - flash.each do |key, value|
-        .alert{class: "#{flash_class(key)}"}
-          = value
-          = key
-      = yield
+    #app
+      %router-view
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'

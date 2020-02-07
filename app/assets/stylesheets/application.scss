@@ -1,6 +1,11 @@
 @import 'bootstrap/scss/bootstrap';
 
 body {
-  padding-top: 56px; // Flush
-  // padding-top: 70px; // Comfortable
+  // padding-top: 56px; // Flush
+  padding-top: 70px; // Comfortable
 }
+
+// TODO: Move to JavaScript pack.
+//       There appears to be an issue with SCSS in our JavaScript packs just yet.
+//       This needs to be investigated and resolved before migrating SCSS to the
+//       the pack.

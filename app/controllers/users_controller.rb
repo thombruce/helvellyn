@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  skip_before_action :authenticate, only: [:new, :create]
+  skip_before_action :authenticate!, only: [:new, :create]
 
   # GET /users/1
   # GET /users/1.json
@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        warden.set_user(Session.create(user: @user))
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

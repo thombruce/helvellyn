@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'warden'
 gem 'pundit'
 # Use JSON Web Tokens
-# gem 'jwt'
+gem 'jwt'
 
 # Presentation
 gem 'haml-rails'
