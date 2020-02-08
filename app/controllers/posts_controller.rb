@@ -66,9 +66,4 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def permitted_attributes(Post)
-      params.require(:post).permit(:user_id, :content)
-    end
 end
