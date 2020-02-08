@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../axios'
 
 const state = () => ({
   list: {}
@@ -11,7 +11,7 @@ const actions = {
     return axios
       .post('/sessions', payload)
       .then((res) => {
-        console.log(res.data)
+        localStorage.setItem('user-token', JSON.stringify(res.data.jwt))
       })
       .catch(function(error) {
         console.log(error)
