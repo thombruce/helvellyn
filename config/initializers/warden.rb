@@ -8,7 +8,7 @@ end
 
 Warden::Strategies.add(:jwt) do
   def valid?
-    env['HTTP_USER_TOKEN']
+    env['HTTP_AUTHORIZATION']
   end
 
   def env
@@ -17,8 +17,11 @@ Warden::Strategies.add(:jwt) do
 
   def authenticate!
     begin
+      pattern = /^Bearer /
+      header = env['HTTP_AUTHORIZATION']
+      jwt = header.gsub(pattern, '') if header && header.match(pattern)
       token =
-        JWT.decode env['HTTP_USER_TOKEN'], Rails.application.secrets.secret_key_base, true,
+        JWT.decode jwt, Rails.application.secrets.secret_key_base, true,
                    iss: 'DashboardByThom', verify_iss: true, algorithm: 'HS256'
     rescue JWT::InvalidIssuerError
       fail!('Could not authenticate')

@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index
 
   before_action :authenticate!
-  before_action :authenticate
 
   helper_method :current_user
   helper_method :current_session
@@ -29,9 +28,5 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     warden.authenticate!
-  end
-
-  def authenticate
-    redirect_to new_session_path unless current_user
   end
 end

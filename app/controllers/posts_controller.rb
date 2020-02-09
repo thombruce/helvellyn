@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = policy_scope(Post)
   end
 
   # GET /posts/1
@@ -14,7 +14,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = current_user.posts.build
+    authorize @post
   end
 
   # GET /posts/1/edit
@@ -24,7 +25,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(permitted_attributes(Post))
+    @post = current_user.posts.build(permitted_attributes(Post))
+    authorize @post
 
     respond_to do |format|
       if @post.save
@@ -65,5 +67,6 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      authorize @post
     end
 end

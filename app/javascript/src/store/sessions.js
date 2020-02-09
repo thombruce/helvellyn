@@ -11,7 +11,7 @@ const actions = {
     return axios
       .post('/sessions', payload)
       .then((res) => {
-        localStorage.setItem('user-token', JSON.stringify(res.data.jwt))
+        localStorage.setItem('user-token', res.data.jwt)
       })
       .catch(function(error) {
         console.log(error)

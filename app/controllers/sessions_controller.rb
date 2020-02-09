@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create]
-  skip_before_action :authenticate, only: [:new, :create]
   
   # GET /sessions
   # GET /sessions.json
