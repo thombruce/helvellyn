@@ -1,7 +1,7 @@
 <template lang="pug">
 header.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-primary
   strong
-    router-link.navbar-brand(:to="{ name: 'new_session_path' }") Dashboard by Thom
+    router-link.navbar-brand(:to="{ name: 'root_path' }") Dashboard by Thom
   nav.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
       li.nav-item.dropdown

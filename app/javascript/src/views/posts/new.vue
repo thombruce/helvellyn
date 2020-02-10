@@ -1,7 +1,7 @@
 <template lang="pug">
 layout
   h1 New Post
-  post-form(:post="post")
+  post-form(:post="post" :submit="create")
   router-link(:to="{ name: 'posts_path' }") Back
 </template>
 
@@ -16,6 +16,13 @@ export default {
       post: {
         content: ''
       }
+    }
+  },
+  methods: {
+    create: function () {
+      this.$store.dispatch('posts/create', { post: this.post }).then(() => {
+        this.$router.push('/')
+      })
     }
   }
 }

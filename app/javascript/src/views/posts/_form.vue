@@ -8,13 +8,9 @@ form(@submit.prevent="submit")
 
 <script>
 export default {
-  props: ['post'],
-  methods: {
-    submit: function () {
-      this.$store.dispatch('posts/create', { post: this.post }).then(() => {
-        this.$router.push('/')
-      })
-    }
-  }
+  props: [
+    'post',
+    'submit'
+  ]
 }
 </script>

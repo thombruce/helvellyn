@@ -36,6 +36,8 @@ router.beforeEach((to, from, next) => {
 
   if (authRequired && !loggedIn) {
     return next('/sessions/new')
+  } else if (!authRequired && loggedIn) {
+    return next('/')
   }
 
   next()

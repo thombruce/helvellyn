@@ -36,6 +36,26 @@ const actions = {
       .catch(function(error) {
         console.log(error)
       })
+  },
+  update({ commit }, payload) {
+    return axios
+      .patch('/posts/' + payload.id, payload)
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  },
+  destroy({ commit }, id) {
+    return axios
+      .delete('/posts/' + id)
+      .then((res) => {
+        commit('remove', id)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 }
 
@@ -44,8 +64,11 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let posts = isArray ? payload : [payload]
     posts.map((post) => {
-      state.list[post.id] = { ...state.list[post.id], ...item }
+      state.list[post.id] = { ...state.list[post.id], ...post }
     })
+  },
+  remove(state, id) {
+    Vue.delete(state.list, id)
   }
 }
 
