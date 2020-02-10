@@ -7,7 +7,6 @@ form(@submit.prevent="login")
     label(for="passwordInput") Password
     input#passwordInput.form-control(type="password" v-model="user.password")
   button(type="submit") Login
-  p {{ user }}
 </template>
 
 <script>

@@ -2,9 +2,7 @@ class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create]
-  
-  # GET /sessions
-  # GET /sessions.json
+
   # GET /sessions/1
   # GET /sessions/1.json
   def show
@@ -33,14 +31,17 @@ class SessionsController < ApplicationController
     end
   end
 
-  # DELETE /sessions
-  # DELETE /sessions.json
   # DELETE /sessions/1
   # DELETE /sessions/1.json
+  # DELETE /sessions/current
+  # DELETE /sessions/current.json
   def destroy
     warden.logout
     @session.destroy
-    redirect_to new_session_path
+    respond_to do |format|
+      format.html { redirect_to new_session_path, notice: 'Session was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

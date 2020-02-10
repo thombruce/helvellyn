@@ -16,16 +16,20 @@ const actions = {
       .catch(function(error) {
         console.log(error)
       })
+  },
+  destroy({ commit }, id) {
+    return axios
+      .delete('/sessions/current')
+      .then((res) => {
+        localStorage.removeItem('user-token')
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 }
 
-const mutations = {
-  insert(state, payload) {
-    payload.map((session) => {
-      state.list[session.id] = { ...state.list[session.id], ...item }
-    })
-  }
-}
+const mutations = {}
 
 const sessions = {
   namespaced: true,

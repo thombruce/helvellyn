@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] do
+    delete 'current', action: :destroy, on: :collection
+  end
   resources :users, except: [:index]
 end
