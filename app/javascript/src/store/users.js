@@ -7,11 +7,11 @@ const state = () => ({
 const getters = {}
 
 const actions = {
-  create({ dispatch }, payload) {
+  create({ commit }, payload) {
     return axios
       .post('/users', payload)
       .then((res) => {
-        return dispatch('add', res.data)
+        commit('insert', res.data) // Needs to initiate session.
       })
       .catch(function(error) {
         console.log(error)
