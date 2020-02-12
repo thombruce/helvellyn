@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :sessions
-  has_many :posts
+  has_many :sessions, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true
 

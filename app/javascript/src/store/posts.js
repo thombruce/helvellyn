@@ -1,3 +1,4 @@
+import Vue from 'vue/dist/vue.esm'
 import axios from '../axios'
 
 const state = () => ({

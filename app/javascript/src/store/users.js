@@ -11,7 +11,10 @@ const actions = {
     return axios
       .post('/users', payload)
       .then((res) => {
-        commit('insert', res.data) // Needs to initiate session.
+        if (res.data.jwt) {
+          localStorage.setItem('user-token', res.data.jwt)
+        }
+        commit('insert', res.data)
       })
       .catch(function(error) {
         console.log(error)
