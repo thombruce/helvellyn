@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
 
+  before_action :render_application, if: proc { request.format.html? }
   before_action :authenticate!
 
   helper_method :current_user
@@ -28,5 +29,11 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     warden.authenticate!
+  end
+
+  private
+
+  def render_application
+    render 'application/index'
   end
 end

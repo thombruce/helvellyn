@@ -9,6 +9,4 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
-    #app
-      %router-view
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = yield
