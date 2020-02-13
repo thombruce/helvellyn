@@ -6,7 +6,7 @@ form(@submit.prevent="login")
   .form-group
     label(for="passwordInput") Password
     input#passwordInput.form-control(type="password" v-model="user.password")
-  button(type="submit") Login
+  button.btn.btn-primary(type="submit") Login
 </template>
 
 <script>

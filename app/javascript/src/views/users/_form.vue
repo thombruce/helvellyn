@@ -9,7 +9,7 @@ form(@submit.prevent="signUp")
   .form-group
     label(for="passwordInput") Password
     input#passwordInput.form-control(type="password" v-model="user.password")
-  button(type="submit") Submit
+  button.btn.btn-primary(type="submit") Submit
 </template>
 
 <script>
