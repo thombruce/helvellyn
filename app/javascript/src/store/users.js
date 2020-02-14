@@ -7,6 +7,16 @@ const state = () => ({
 const getters = {}
 
 const actions = {
+  show({ commit }, id) {
+    return axios
+      .get('/users/' + id)
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  },
   create({ commit }, payload) {
     return axios
       .post('/users', payload)
@@ -19,14 +29,40 @@ const actions = {
       .catch(function(error) {
         console.log(error)
       })
+  },
+  update({ commit }, payload) {
+    return axios
+      .patch('/users/' + payload.id, payload)
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  },
+  destroy({ commit }, id) {
+    return axios
+      .delete('/users/' + id)
+      .then((res) => {
+        localStorage.removeItem('user-token')
+        commit('remove', id)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   }
 }
 
 const mutations = {
   insert(state, payload) {
-    payload.map((user) => {
-      state.list[user.id] = { ...state.list[user.id], ...item }
+    const isArray = Array.isArray(payload)
+    let users = isArray ? payload : [payload]
+    users.map((user) => {
+      state.list[user.id] = { ...state.list[user.id], ...user }
     })
+  },
+  remove(state, id) {
+    Vue.delete(state.list, id)
   }
 }
 

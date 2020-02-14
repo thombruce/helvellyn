@@ -1,5 +1,5 @@
 <template lang="pug">
-form(@submit.prevent="signUp")
+form(@submit.prevent="submit")
   .form-group
     label(for="nameInput") Name
     input#nameInput.form-control(v-model="user.name")
@@ -14,13 +14,9 @@ form(@submit.prevent="signUp")
 
 <script>
 export default {
-  props: ['user'],
-  methods: {
-    signUp: function () {
-      this.$store.dispatch('users/create', { user: this.user }).then(() => {
-        this.$router.push('/')
-      })
-    }
-  }
+  props: [
+    'user',
+    'submit'
+  ]
 }
 </script>

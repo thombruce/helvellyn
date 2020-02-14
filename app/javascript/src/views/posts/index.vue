@@ -14,7 +14,11 @@ layout
 </template>
 
 <script>
+import Layout from '../layouts/application'
 export default {
+  components: {
+    Layout
+  },
   data () {
     return {
       posts: null

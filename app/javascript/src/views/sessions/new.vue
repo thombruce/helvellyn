@@ -6,9 +6,11 @@ layout
 </template>
 
 <script>
+import Layout from '../layouts/authentication'
 import SessionForm from './_form.vue'
 export default {
   components: {
+    Layout,
     SessionForm
   },
   data() {

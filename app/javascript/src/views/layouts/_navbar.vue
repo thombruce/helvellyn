@@ -18,7 +18,7 @@ header.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-primary
 </template>
 
 <script>
-import Session from '../mixins/session.js'
+import Session from '../../mixins/session.js'
 export default {
   mixins: [Session],
   methods: {

@@ -7,9 +7,11 @@ layout
 </template>
 
 <script>
+import Layout from '../layouts/application'
 import PostForm from './_form.vue'
 export default {
   components: {
+    Layout,
     PostForm
   },
   data() {

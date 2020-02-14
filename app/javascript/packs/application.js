@@ -21,11 +21,8 @@ import router from '../src/routes.js'
 
 import 'bootstrap'
 
-import NavBar from '../src/components/navbar'
-Vue.component('nav-bar', NavBar)
-
-import Layout from '../src/components/layout'
-Vue.component('layout', Layout)
+// import Flash from '../src/components/flash'
+// Vue.component('flash', Flash)
 
 const app = new Vue({
   router,
