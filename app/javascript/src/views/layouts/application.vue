@@ -1,15 +1,20 @@
 <template lang="pug">
 div
   navbar
-  .container
-    slot
+  .container-fluid
+    .row
+      sidebar
+      .col
+        slot
 </template>
 
 <script>
 import Navbar from './_navbar.vue'
+import Sidebar from './_sidebar.vue'
 export default {
   components: {
-    Navbar
+    Navbar,
+    Sidebar
   }
 }
 </script>
