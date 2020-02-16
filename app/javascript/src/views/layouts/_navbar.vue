@@ -1,5 +1,5 @@
 <template lang="pug">
-header.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-primary
+header.navbar.navbar-expand-lg.navbar-dark.bg-primary
   strong
     router-link.navbar-brand(:to="{ name: 'root_path' }") Dashboard by Thom
   nav.collapse.navbar-collapse

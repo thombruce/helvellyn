@@ -1,11 +1,10 @@
 <template lang="pug">
-div
+.d-flex.flex-column(style="height:100vh;")
   navbar
-  .container-fluid
-    .row
-      sidebar
-      .col
-        slot
+  .flex-grow-1.d-flex
+    sidebar.h-100(style="min-width:150px;")
+    div.container
+      slot
 </template>
 
 <script>

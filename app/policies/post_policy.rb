@@ -1,6 +1,6 @@
 class PostPolicy < ApplicationPolicy
   def permitted_attributes
-    [:content]
+    [:title, :content]
   end
 
   def new?
