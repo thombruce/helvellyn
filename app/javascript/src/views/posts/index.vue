@@ -2,16 +2,24 @@
 layout
   h1 Posts
 
-  div(v-if="posts")
-    div(v-for="post in posts")
-      h2(v-html="post.title")
-      p(v-html="post.content")
-      router-link(:to="{ name: 'post_path', params: { id: post.id } }") View
-      router-link(:to="{ name: 'edit_post_path', params: { id: post.id } }") Edit
+  router-link(:to="{ name: 'new_post_path' }") New post
+
+  table.table(v-if="posts")
+    thead.thead-dark
+      tr
+        th Title
+        th Content
+        th Actions
+    tbody
+      tr(v-for="post in posts")
+        td
+          router-link(:to="{ name: 'post_path', params: { id: post.id } }") {{ post.title }}
+        td(v-html="post.content")
+        td
+          router-link.mr-1(:to="{ name: 'post_path', params: { id: post.id } }") View
+          router-link.mr-1(:to="{ name: 'edit_post_path', params: { id: post.id } }") Edit
 
   p.lead.text-center(v-else) No items to show.
-
-  router-link(:to="{ name: 'new_post_path' }") New post
 </template>
 
 <script>
