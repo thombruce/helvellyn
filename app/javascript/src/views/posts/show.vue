@@ -1,5 +1,5 @@
 <template lang="pug">
-layout
+div
   h1 Post
   div(v-if="post")
     h2(v-html="post.title")
@@ -8,12 +8,7 @@ layout
 </template>
 
 <script>
-import Layout from '../layouts/application'
-
 export default {
-  components: {
-    Layout
-  },
   data () {
     return {
       post: null

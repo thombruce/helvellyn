@@ -3,6 +3,18 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-primary
   strong
     router-link.navbar-brand(:to="{ name: 'root_path' }") Dashboard by Thom
   nav.collapse.navbar-collapse
+    ul.navbar-nav(v-if="currentUser")
+      li.nav-item.dropdown
+        a#navbarBlogDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expanded='false')
+          template(v-if="currentBlog")
+            | {{ currentBlog.title }}
+          template(v-else)
+            | Blogs
+        .dropdown-menu.dropdown-menu-left(aria-leballedBy='navbarBlogDropdown')
+          template(v-if="blogs")
+            router-link.dropdown-item(v-for="blog in blogs" :to="{ name: 'blog_path', params: { id: blog.id } }") {{ blog.title }}
+            .dropdown-divider
+          router-link.dropdown-item(:to="{ name: 'new_blog_path' }") New Blog
     ul.navbar-nav.ml-auto
       li.nav-item.dropdown(v-if="currentUser")
         a#navbarUserDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expanded='false')
@@ -19,8 +31,12 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-primary
 
 <script>
 import Session from '../../mixins/session.js'
+import Blogs from '../../mixins/blogs.js'
 export default {
-  mixins: [Session],
+  mixins: [
+    Session,
+    Blogs
+  ],
   methods: {
     signOut: function () {
       this.$store.dispatch('sessions/destroy').then(() => {

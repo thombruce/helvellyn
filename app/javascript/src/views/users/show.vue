@@ -1,5 +1,5 @@
 <template lang="pug">
-layout
+div
   h1 User
   div(v-if="user")
     p(v-html="user.name")
@@ -7,12 +7,7 @@ layout
 </template>
 
 <script>
-import Layout from '../layouts/application'
-
 export default {
-  components: {
-    Layout
-  },
   data () {
     return {
       user: null

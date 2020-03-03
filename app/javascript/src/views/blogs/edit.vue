@@ -1,5 +1,5 @@
 <template lang="pug">
-layout
+div
   h1 Edit Blog
   blog-form(v-if="blog" :blog="blog", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
@@ -7,11 +7,9 @@ layout
 </template>
 
 <script>
-import Layout from '../layouts/application'
 import BlogForm from './_form.vue'
 export default {
   components: {
-    Layout,
     BlogForm
   },
   data() {

@@ -22,16 +22,18 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: BlogIndex, name: 'root_path' },
-    { path: '/posts', component: PostIndex, name: 'posts_path' },
-    { path: '/posts/new', component: PostNew, name: 'new_post_path' },
-    { path: '/posts/:id', component: PostShow, name: 'post_path' },
-    { path: '/posts/:id/edit', component: PostEdit, name: 'edit_post_path' },
     { path: '/blogs', component: BlogIndex, name: 'blogs_path' },
     { path: '/blogs/new', component: BlogNew, name: 'new_blog_path' },
-    { path: '/blogs/:id', component: BlogShow, name: 'blog_path' },
+    { path: '/blogs/:id', component: BlogShow, name: 'blog_path',
+      children: [
+        { path: 'posts', component: PostIndex, name: 'posts_path' },
+        { path: 'posts/new', component: PostNew, name: 'new_post_path' },
+        { path: 'posts/:id', component: PostShow, name: 'post_path' },
+        { path: 'posts/:id/edit', component: PostEdit, name: 'edit_post_path' }
+      ] },
     { path: '/blogs/:id/edit', component: BlogEdit, name: 'edit_blog_path' },
-    { path: '/sessions/new', component: SessionNew, name: 'new_session_path' },
-    { path: '/users/new', component: UserNew, name: 'new_user_path' },
+    { path: '/sessions/new', component: SessionNew, name: 'new_session_path', meta: { layout: "authentication" } },
+    { path: '/users/new', component: UserNew, name: 'new_user_path', meta: { layout: "authentication" } },
     { path: '/users/:id', component: UserShow, name: 'user_path' },
     { path: '/users/:id/edit', component: UserEdit, name: 'edit_user_path' }
   ]

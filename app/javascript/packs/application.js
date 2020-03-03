@@ -16,17 +16,25 @@
 // const imagePath = (name) => images(name, true)
 
 import Vue from 'vue/dist/vue.esm'
+import App from '../src/App.vue'
 import store from '../src/store'
 import router from '../src/routes.js'
 
 import 'bootstrap'
+
+import ApplicationLayout from '../src/views/layouts/Application.vue'
+import AuthenticationLayout from '../src/views/layouts/Authentication.vue'
+
+Vue.component('application-layout', ApplicationLayout)
+Vue.component('authentication-layout', AuthenticationLayout)
 
 // import Flash from '../src/components/flash'
 // Vue.component('flash', Flash)
 
 const app = new Vue({
   router,
-  store
+  store,
+  render: h => h(App)
 }).$mount('#app')
 
 // Based on: https://github.com/gbarillot/rails-vue-demo-app/blob/master/app/javascript/packs/application.js

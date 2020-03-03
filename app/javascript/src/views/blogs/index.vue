@@ -1,5 +1,5 @@
 <template lang="pug">
-layout
+div
   h1 Blogs
 
   router-link(:to="{ name: 'new_blog_path' }") New blog
@@ -23,11 +23,7 @@ layout
 </template>
 
 <script>
-import Layout from '../layouts/application'
 export default {
-  components: {
-    Layout
-  },
   data () {
     return {
       blogs: null

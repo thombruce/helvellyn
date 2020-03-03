@@ -1,16 +1,14 @@
 <template lang="pug">
-layout
+div
   h1 New Blog
   blog-form(:blog="blog" :submit="create")
   router-link(:to="{ name: 'blogs_path' }") Back
 </template>
 
 <script>
-import Layout from '../layouts/application'
 import BlogForm from './_form.vue'
 export default {
   components: {
-    Layout,
     BlogForm
   },
   data() {

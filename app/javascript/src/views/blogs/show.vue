@@ -1,19 +1,16 @@
 <template lang="pug">
-layout
+div
   h1 Blog
   div(v-if="blog")
     h2(v-html="blog.title")
     p(v-html="blog.content")
     router-link(:to="{ name: 'edit_blog_path', params: { id: blog.id } }") Edit
+    router-link(:to="{ name: 'posts_path' }") NotEdit
+    router-view
 </template>
 
 <script>
-import Layout from '../layouts/application'
-
 export default {
-  components: {
-    Layout
-  },
   data () {
     return {
       blog: null

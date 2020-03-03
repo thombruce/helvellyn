@@ -1,16 +1,14 @@
 <template lang="pug">
-layout
+div
   h1 New Post
   post-form(:post="post" :submit="create")
   router-link(:to="{ name: 'posts_path' }") Back
 </template>
 
 <script>
-import Layout from '../layouts/application'
 import PostForm from './_form.vue'
 export default {
   components: {
-    Layout,
     PostForm
   },
   data() {

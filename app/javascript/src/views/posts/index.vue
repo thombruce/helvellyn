@@ -1,5 +1,5 @@
 <template lang="pug">
-layout
+div
   h1 Posts
 
   router-link(:to="{ name: 'new_post_path' }") New post
@@ -23,11 +23,7 @@ layout
 </template>
 
 <script>
-import Layout from '../layouts/application'
 export default {
-  components: {
-    Layout
-  },
   data () {
     return {
       posts: null

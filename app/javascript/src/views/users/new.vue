@@ -1,16 +1,14 @@
 <template lang="pug">
-layout
+div
   h1 New User
   user-form(:user="user" :submit="signUp")
   router-link(:to="{ name: 'new_session_path' }") Sign in
 </template>
 
 <script>
-import Layout from '../layouts/authentication'
 import UserForm from './_form.vue'
 export default {
   components: {
-    Layout,
     UserForm
   },
   data() {
