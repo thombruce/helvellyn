@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root to: "posts#index"
+  root to: "blogs#index"
 
-  resources :posts
-  resources :blogs
+  resources :blogs do
+    resources :posts
+  end
 
   resources :sessions, only: [:new, :create, :destroy] do
     delete 'current', action: :destroy, on: :collection
