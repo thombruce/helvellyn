@@ -4,7 +4,7 @@ div
   div(v-if="blog")
     h2(v-html="blog.title")
     p(v-html="blog.content")
-    router-link(:to="{ name: 'edit_blog_path', params: { id: blog.id } }") Edit
+    router-link(:to="{ name: 'edit_blog_path', params: { blogId: blog.id } }") Edit
     router-link(:to="{ name: 'posts_path' }") NotEdit
     router-view
 </template>
@@ -25,8 +25,8 @@ export default {
   methods: {
     fetchData () {
       this.blog = null
-      this.$store.dispatch('blogs/show', this.$route.params.id).then(() => {
-        this.blog = this.$store.state.blogs.list[this.$route.params.id]
+      this.$store.dispatch('blogs/show', this.$route.params.blogId).then(() => {
+        this.blog = this.$store.state.blogs.list[this.$route.params.blogId]
       })
     }
   }

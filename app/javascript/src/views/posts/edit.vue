@@ -26,8 +26,8 @@ export default {
   methods: {
     fetchData () {
       this.post = null
-      this.$store.dispatch('posts/show', this.$route.params.id).then(() => {
-        this.post = this.$store.state.posts.list[this.$route.params.id]
+      this.$store.dispatch('posts/show', this.$route.params.postId).then(() => {
+        this.post = this.$store.state.posts.list[this.$route.params.postId]
       })
     },
     update: function () {

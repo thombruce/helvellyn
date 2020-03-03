@@ -26,8 +26,8 @@ export default {
   methods: {
     fetchData () {
       this.blog = null
-      this.$store.dispatch('blogs/show', this.$route.params.id).then(() => {
-        this.blog = this.$store.state.blogs.list[this.$route.params.id]
+      this.$store.dispatch('blogs/show', this.$route.params.blogId).then(() => {
+        this.blog = this.$store.state.blogs.list[this.$route.params.blogId]
       })
     },
     update: function () {

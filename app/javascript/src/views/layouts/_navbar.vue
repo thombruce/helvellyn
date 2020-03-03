@@ -12,7 +12,7 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-primary
             | Blogs
         .dropdown-menu.dropdown-menu-left(aria-leballedBy='navbarBlogDropdown')
           template(v-if="blogs")
-            router-link.dropdown-item(v-for="blog in blogs" :to="{ name: 'blog_path', params: { id: blog.id } }") {{ blog.title }}
+            router-link.dropdown-item(v-for="blog in blogs" :to="{ name: 'blog_path', params: { blogId: blog.id } }") {{ blog.title }}
             .dropdown-divider
           router-link.dropdown-item(:to="{ name: 'new_blog_path' }") New Blog
     ul.navbar-nav.ml-auto
@@ -20,7 +20,7 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-primary
         a#navbarUserDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expanded='false')
           | {{ currentUser.name }}
         .dropdown-menu.dropdown-menu-right(aria-leballedBy='navbarUserDropdown')
-          router-link.dropdown-item(:to="{ name: 'user_path', params: { id: currentUser.id } }") Account
+          router-link.dropdown-item(:to="{ name: 'user_path', params: { userId: currentUser.id } }") Account
           a.dropdown-item(v-on:click.stop="signOut" href="javascript:;") Sign out
       template(v-else)
         li.nav-item

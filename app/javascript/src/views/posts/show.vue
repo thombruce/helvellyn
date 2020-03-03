@@ -4,7 +4,7 @@ div
   div(v-if="post")
     h2(v-html="post.title")
     p(v-html="post.content")
-    router-link(:to="{ name: 'edit_post_path', params: { id: post.id } }") Edit
+    router-link(:to="{ name: 'edit_post_path', params: { postId: post.id } }") Edit
 </template>
 
 <script>
@@ -23,8 +23,8 @@ export default {
   methods: {
     fetchData () {
       this.post = null
-      this.$store.dispatch('posts/show', this.$route.params.id).then(() => {
-        this.post = this.$store.state.posts.list[this.$route.params.id]
+      this.$store.dispatch('posts/show', this.$route.params.postId).then(() => {
+        this.post = this.$store.state.posts.list[this.$route.params.postId]
       })
     }
   }

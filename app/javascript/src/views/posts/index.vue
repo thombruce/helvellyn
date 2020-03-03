@@ -13,11 +13,11 @@ div
     tbody
       tr(v-for="post in posts")
         td
-          router-link(:to="{ name: 'post_path', params: { id: post.id } }") {{ post.title }}
+          router-link(:to="{ name: 'post_path', params: { postId: post.id } }") {{ post.title }}
         td(v-html="post.content")
         td
-          router-link.mr-1(:to="{ name: 'post_path', params: { id: post.id } }") View
-          router-link.mr-1(:to="{ name: 'edit_post_path', params: { id: post.id } }") Edit
+          router-link.mr-1(:to="{ name: 'post_path', params: { postId: post.id } }") View
+          router-link.mr-1(:to="{ name: 'edit_post_path', params: { postId: post.id } }") Edit
 
   p.lead.text-center(v-else) No items to show.
 </template>
