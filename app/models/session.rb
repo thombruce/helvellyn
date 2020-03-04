@@ -17,7 +17,7 @@ class Session < ApplicationRecord
       data: jwt_data,
       iss: 'CmsByThom'
     }
-    JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256'
+    JWT.encode payload, Rails.application.credentials.secret_key_base, 'HS256'
   end
 
   private
