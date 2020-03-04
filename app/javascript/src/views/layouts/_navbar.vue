@@ -1,7 +1,7 @@
 <template lang="pug">
 header.navbar.navbar-expand-lg.navbar-dark.bg-primary
   strong
-    router-link.navbar-brand(:to="{ name: 'root_path' }") Dashboard by Thom
+    router-link.navbar-brand(:to="{ name: 'root_path' }") CMS by Thom
   nav.collapse.navbar-collapse
     ul.navbar-nav(v-if="currentUser")
       li.nav-item.dropdown

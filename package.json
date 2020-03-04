@@ -1,5 +1,5 @@
 {
-  "name": "dashboard_by_thom",
+  "name": "cms_by_thom",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
