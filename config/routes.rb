@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: "blogs#index"
 
-  resources :blogs do
-    resources :posts
+  shallow do
+    resources :blogs do
+      resources :posts
+    end
   end
 
   resources :sessions, only: [:new, :create, :destroy] do

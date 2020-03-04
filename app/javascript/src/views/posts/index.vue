@@ -38,7 +38,7 @@ export default {
   methods: {
     fetchData () {
       this.posts = null
-      this.$store.dispatch('posts/index').then(() => {
+      this.$store.dispatch('posts/index', this.$route.params.blogId).then(() => {
         this.posts = this.$store.state.posts.list
       })
     }

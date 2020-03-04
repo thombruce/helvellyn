@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     create: function () {
-      this.$store.dispatch('posts/create', { post: this.post }).then(() => {
+      this.$store.dispatch('posts/create', { blogId: this.$route.params.blogId, data: { post: this.post } }).then(() => {
         this.$router.push('/')
       })
     }

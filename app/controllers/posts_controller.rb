@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts
-  # GET /posts.json
+  # GET /blogs/:blog_id/posts
+  # GET /blogs/:blog_id/posts.json
   def index
-    @posts = policy_scope(Post)
+    @posts = policy_scope(current_blog.posts)
   end
 
   # GET /posts/1
@@ -12,9 +12,9 @@ class PostsController < ApplicationController
   def show
   end
 
-  # GET /posts/new
+  # GET /blogs/:blog_id/posts/new
   def new
-    @post = current_user.posts.build
+    @post = current_blog.posts.build(user: current_user)
     authorize @post
   end
 
@@ -22,10 +22,10 @@ class PostsController < ApplicationController
   def edit
   end
 
-  # POST /posts
-  # POST /posts.json
+  # POST /blogs/:blog_id/posts
+  # POST /blogs/:blog_id/posts.json
   def create
-    @post = current_user.posts.build(permitted_attributes(Post))
+    @post = current_blog.posts.build(permitted_attributes(Post).merge(user: current_user))
     authorize @post
 
     if @post.save

@@ -1,12 +1,8 @@
 const blogs = {
   data () {
     return {
-      blogs: null
-    }
-  },
-  computed: {
-    currentBlog () {
-      return this.$store.state.blogs.list[this.$route.params.blogId]
+      blogs: null,
+      currentBlog: null
     }
   },
   created () {
@@ -22,6 +18,7 @@ const blogs = {
       this.blogs = null
       this.$store.dispatch('blogs/index').then(() => {
         this.blogs = this.$store.state.blogs.list
+        this.currentBlog = this.blogs[this.$route.params.blogId]
       })
     }
   }

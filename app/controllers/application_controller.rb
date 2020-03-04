@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_session
 
+  def current_blog
+    @current_blog ||= params[:blog_id] ? Blog.find(params[:blog_id]) : nil
+  end
+
   def pundit_user
     current_session
   end
