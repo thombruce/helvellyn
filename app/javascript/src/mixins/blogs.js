@@ -4,11 +4,18 @@ const blogs = {
       blogs: null
     }
   },
+  computed: {
+    currentBlog () {
+      return this.$store.state.blogs.list[this.$route.params.blogId]
+    }
+  },
   created () {
     this.fetchData()
   },
   watch: {
-    '$route': 'fetchData'
+    $route(to, from) {
+      this.fetchData()
+    }
   },
   methods: {
     fetchData () {
