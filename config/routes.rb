@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     delete 'current', action: :destroy, on: :collection
   end
   resources :users, except: [:index]
+
+  # Catch non-existent routes and render Vue app.
+  get '*path', :to => 'application#render_application'
 end

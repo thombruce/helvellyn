@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  h1 Post
   div(v-if="post")
     h2(v-html="post.title")
     p(v-html="post.content")

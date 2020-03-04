@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h1 Edit Post
+  h2 Edit Post
   post-form(v-if="post" :post="post", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
   router-link(:to="{ name: 'post_path' }") Back

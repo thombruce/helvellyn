@@ -1,8 +1,7 @@
 <template lang="pug">
 div
-  h1 Blog
   div(v-if="blog")
-    h2(v-html="blog.title")
+    h1(v-html="blog.title")
     p(v-html="blog.content")
     router-link(:to="{ name: 'edit_blog_path', params: { blogId: blog.id } }") Edit
     router-view

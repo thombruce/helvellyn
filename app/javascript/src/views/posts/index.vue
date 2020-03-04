@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h1 Posts
+  h2 Posts
 
   router-link(:to="{ name: 'new_post_path' }") New post
 

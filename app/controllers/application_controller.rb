@@ -35,8 +35,6 @@ class ApplicationController < ActionController::Base
     warden.authenticate!
   end
 
-  private
-
   def render_application
     render 'application/index'
   end

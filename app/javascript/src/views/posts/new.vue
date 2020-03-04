@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h1 New Post
+  h2 New Post
   post-form(:post="post" :submit="create")
   router-link(:to="{ name: 'posts_path' }") Back
 </template>
