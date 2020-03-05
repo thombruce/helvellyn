@@ -8,9 +8,9 @@ const state = () => ({
 const getters = {}
 
 const actions = {
-  index({ commit }, blogId) {
+  index({ commit }, workspaceId) {
     return axios
-      .get('/blogs/' + blogId + '/posts')
+      .get('/workspaces/' + workspaceId + '/posts')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -30,7 +30,7 @@ const actions = {
   },
   create({ commit }, payload) {
     return axios
-      .post('/blogs/' + payload.blogId + '/posts', payload.data)
+      .post('/workspaces/' + payload.workspaceId + '/posts', payload.data)
       .then((res) => {
         commit('insert', res.data)
       })

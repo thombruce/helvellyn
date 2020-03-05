@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BlogPolicy, type: :policy do
+RSpec.describe WorkspacePolicy, type: :policy do
   let(:user) { User.new }
 
   subject { described_class }

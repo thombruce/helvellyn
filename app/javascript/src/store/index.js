@@ -5,14 +5,14 @@ Vue.use(Vuex)
 import users from './users'
 import sessions from './sessions'
 
-import blogs from './blogs'
+import workspaces from './workspaces'
 import posts from './posts'
 
 const store = new Vuex.Store({
   modules: {
     users,
     sessions,
-    blogs,
+    workspaces,
     posts
   }
 })

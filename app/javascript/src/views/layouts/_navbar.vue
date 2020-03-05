@@ -5,16 +5,16 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-primary
   nav.collapse.navbar-collapse
     ul.navbar-nav(v-if="currentUser")
       li.nav-item.dropdown
-        a#navbarBlogDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expanded='false')
-          template(v-if="currentBlog")
-            | {{ currentBlog.title }}
+        a#navbarWorkspaceDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expanded='false')
+          template(v-if="currentWorkspace")
+            | {{ currentWorkspace.title }}
           template(v-else)
-            | Blogs
-        .dropdown-menu.dropdown-menu-left(aria-leballedBy='navbarBlogDropdown')
-          template(v-if="blogs")
-            router-link.dropdown-item(v-for="blog in blogs" :to="{ name: 'blog_path', params: { blogId: blog.id } }") {{ blog.title }}
+            | Workspaces
+        .dropdown-menu.dropdown-menu-left(aria-leballedBy='navbarWorkspaceDropdown')
+          template(v-if="workspaces")
+            router-link.dropdown-item(v-for="workspace in workspaces" :to="{ name: 'workspace_path', params: { workspaceId: workspace.id } }") {{ workspace.title }}
             .dropdown-divider
-          router-link.dropdown-item(:to="{ name: 'new_blog_path' }") New Blog
+          router-link.dropdown-item(:to="{ name: 'new_workspace_path' }") New Workspace
     ul.navbar-nav.ml-auto
       li.nav-item.dropdown(v-if="currentUser")
         a#navbarUserDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expanded='false')
@@ -31,11 +31,11 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-primary
 
 <script>
 import Session from '../../mixins/session.js'
-import Blogs from '../../mixins/blogs.js'
+import Workspaces from '../../mixins/workspaces.js'
 export default {
   mixins: [
     Session,
-    Blogs
+    Workspaces
   ],
   methods: {
     signOut: function () {

@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
 
-  has_many :blogs, dependent: :destroy
+  has_many :workspaces, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   validates :name, presence: true

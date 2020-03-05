@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_session
 
-  def current_blog
-    @current_blog ||= params[:blog_id] ? Blog.find(params[:blog_id]) : nil
+  def current_workspace
+    @current_workspace ||= params[:workspace_id] ? Workspace.find(params[:workspace_id]) : nil
   end
 
   def pundit_user

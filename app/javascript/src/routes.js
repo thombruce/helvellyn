@@ -7,10 +7,10 @@ import PostShow from './views/posts/show.vue'
 import PostNew from './views/posts/new.vue'
 import PostEdit from './views/posts/edit.vue'
 
-import BlogIndex from './views/blogs/index.vue'
-import BlogShow from './views/blogs/show.vue'
-import BlogNew from './views/blogs/new.vue'
-import BlogEdit from './views/blogs/edit.vue'
+import WorkspaceIndex from './views/workspaces/index.vue'
+import WorkspaceShow from './views/workspaces/show.vue'
+import WorkspaceNew from './views/workspaces/new.vue'
+import WorkspaceEdit from './views/workspaces/edit.vue'
 
 import SessionNew from './views/sessions/new.vue'
 
@@ -21,17 +21,17 @@ import UserEdit from './views/users/edit.vue'
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: BlogIndex, name: 'root_path' },
-    { path: '/blogs', component: BlogIndex, name: 'blogs_path' },
-    { path: '/blogs/new', component: BlogNew, name: 'new_blog_path' },
-    { path: '/blogs/:blogId', component: BlogShow, name: 'blog_path',
+    { path: '/', component: WorkspaceIndex, name: 'root_path' },
+    { path: '/workspaces', component: WorkspaceIndex, name: 'workspaces_path' },
+    { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
+    { path: '/workspaces/:workspaceId', component: WorkspaceShow, name: 'workspace_path',
       children: [
         { path: 'posts', component: PostIndex, name: 'posts_path' },
         { path: 'posts/new', component: PostNew, name: 'new_post_path' },
         { path: 'posts/:postId', component: PostShow, name: 'post_path' },
         { path: 'posts/:postId/edit', component: PostEdit, name: 'edit_post_path' }
       ] },
-    { path: '/blogs/:blogId/edit', component: BlogEdit, name: 'edit_blog_path' },
+    { path: '/workspaces/:workspaceId/edit', component: WorkspaceEdit, name: 'edit_workspace_path' },
     { path: '/sessions/new', component: SessionNew, name: 'new_session_path', meta: { layout: "authentication" } },
     { path: '/users/new', component: UserNew, name: 'new_user_path', meta: { layout: "authentication" } },
     { path: '/users/:userId', component: UserShow, name: 'user_path' },

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   constraints lambda { |req| req.format == :json } do
     shallow do
-      resources :blogs do
+      resources :workspaces do
         resources :posts
       end
     end

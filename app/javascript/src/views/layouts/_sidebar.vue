@@ -10,6 +10,7 @@
       #collapseTwo.collapse(data-parent="#accordion")
         router-link.nav-link(:to="{ name: 'posts_path' }") All
         router-link.nav-link(:to="{ name: 'new_post_path' }") New Other
+      router-link.nav-link(:to="{ name: 'posts_path' }") New +
 </template>
 
 <script>

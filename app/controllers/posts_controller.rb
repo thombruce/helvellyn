@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /blogs/:blog_id/posts
-  # GET /blogs/:blog_id/posts.json
+  # GET /workspaces/:workspace_id/posts
+  # GET /workspaces/:workspace_id/posts.json
   def index
-    @posts = policy_scope(current_blog.posts)
+    @posts = policy_scope(current_workspace.posts)
   end
 
   # GET /posts/1
@@ -12,9 +12,9 @@ class PostsController < ApplicationController
   def show
   end
 
-  # GET /blogs/:blog_id/posts/new
+  # GET /workspaces/:workspace_id/posts/new
   def new
-    @post = current_blog.posts.build(user: current_user)
+    @post = current_workspace.posts.build(user: current_user)
     authorize @post
   end
 
@@ -22,10 +22,10 @@ class PostsController < ApplicationController
   def edit
   end
 
-  # POST /blogs/:blog_id/posts
-  # POST /blogs/:blog_id/posts.json
+  # POST /workspaces/:workspace_id/posts
+  # POST /workspaces/:workspace_id/posts.json
   def create
-    @post = current_blog.posts.build(permitted_attributes(Post).merge(user: current_user))
+    @post = current_workspace.posts.build(permitted_attributes(Post).merge(user: current_user))
     authorize @post
 
     if @post.save

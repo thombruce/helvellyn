@@ -1,4 +1,4 @@
-class BlogPolicy < ApplicationPolicy
+class WorkspacePolicy < ApplicationPolicy
   def permitted_attributes
     [:title]
   end

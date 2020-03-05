@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :blog do
+  factory :workspace do
     user { nil }
     title { "MyString" }
   end

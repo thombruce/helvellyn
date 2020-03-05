@@ -10,7 +10,7 @@ const getters = {}
 const actions = {
   index({ commit }) {
     return axios
-      .get('/blogs')
+      .get('/workspaces')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -20,7 +20,7 @@ const actions = {
   },
   show({ commit }, id) {
     return axios
-      .get('/blogs/' + id)
+      .get('/workspaces/' + id)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -30,7 +30,7 @@ const actions = {
   },
   create({ commit }, payload) {
     return axios
-      .post('/blogs', payload)
+      .post('/workspaces', payload)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -40,7 +40,7 @@ const actions = {
   },
   update({ commit }, payload) {
     return axios
-      .patch('/blogs/' + payload.id, payload)
+      .patch('/workspaces/' + payload.id, payload)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -50,7 +50,7 @@ const actions = {
   },
   destroy({ commit }, id) {
     return axios
-      .delete('/blogs/' + id)
+      .delete('/workspaces/' + id)
       .then((res) => {
         commit('remove', id)
       })
@@ -63,9 +63,9 @@ const actions = {
 const mutations = {
   insert(state, payload) {
     const isArray = Array.isArray(payload)
-    let blogs = isArray ? payload : [payload]
-    blogs.map((blog) => {
-      state.list[blog.id] = { ...state.list[blog.id], ...blog }
+    let workspaces = isArray ? payload : [payload]
+    workspaces.map((workspace) => {
+      state.list[workspace.id] = { ...state.list[workspace.id], ...workspace }
     })
   },
   remove(state, id) {
@@ -73,7 +73,7 @@ const mutations = {
   }
 }
 
-const blogs = {
+const workspaces = {
   namespaced: true,
   state,
   getters,
@@ -81,4 +81,4 @@ const blogs = {
   mutations
 }
 
-export default blogs
+export default workspaces
