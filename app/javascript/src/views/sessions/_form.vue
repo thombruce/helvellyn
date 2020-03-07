@@ -1,12 +1,8 @@
 <template lang="pug">
-form(@submit.prevent="login")
-  .form-group
-    label(for="loginInput") Login
-    input#loginInput.form-control(v-model="user.login")
-  .form-group
-    label(for="passwordInput") Password
-    input#passwordInput.form-control(type="password" v-model="user.password")
-  button.btn.btn-primary(type="submit") Login
+v-form(ref="form" :model="user")
+  v-text-field(label="Login" v-model="user.login")
+  v-text-field(label="Password" type="password" v-model="user.password")
+  v-btn(color="primary" @click="login") Login
 </template>
 
 <script>

@@ -1,15 +1,9 @@
 <template lang="pug">
-form(@submit.prevent="submit")
-  .form-group
-    label(for="nameInput") Name
-    input#nameInput.form-control(v-model="user.name")
-  .form-group
-    label(for="emailInput") Email
-    input#emailInput.form-control(type="email" v-model="user.email")
-  .form-group
-    label(for="passwordInput") Password
-    input#passwordInput.form-control(type="password" v-model="user.password")
-  button.btn.btn-primary(type="submit") Submit
+v-form(ref="form" :model="user")
+  v-text-field(label="Name" v-model="user.name")
+  v-text-field(label="Email" v-model="user.email")
+  v-text-field(label="Password" type="password" v-model="user.password")
+  v-btn(color="primary" @click="submit") Submit
 </template>
 
 <script>

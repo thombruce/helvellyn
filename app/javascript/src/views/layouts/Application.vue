@@ -1,19 +1,18 @@
 <template lang="pug">
-.d-flex.flex-column(style="height:100vh;")
+v-app
   navbar
-  .flex-grow-1.d-flex
-    sidebar.h-100(style="min-width:150px;")
-    div.container
-      slot
+  v-content
+    v-container
+      v-row(justify="center")
+        v-col(cols="12" sm="8")
+          slot
 </template>
 
 <script>
 import Navbar from './_navbar.vue'
-import Sidebar from './_sidebar.vue'
 export default {
   components: {
-    Navbar,
-    Sidebar
+    Navbar
   }
 }
 </script>

@@ -20,7 +20,7 @@ import App from '../src/App.vue'
 import store from '../src/store'
 import router from '../src/routes.js'
 
-import 'bootstrap'
+import vuetify from '../src/plugins/vuetify'
 
 import ApplicationLayout from '../src/views/layouts/Application.vue'
 import AuthenticationLayout from '../src/views/layouts/Authentication.vue'
@@ -34,6 +34,7 @@ Vue.component('authentication-layout', AuthenticationLayout)
 const app = new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')
 

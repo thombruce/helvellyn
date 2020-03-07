@@ -8,4 +8,14 @@ environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.loaders.prepend('vue', vue)
 environment.loaders.prepend('pug', pug)
 environment.loaders.prepend('scss', scss)
+
+const resolver = {
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  }
+}
+environment.config.merge(resolver)
+
 module.exports = environment
