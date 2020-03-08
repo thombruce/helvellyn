@@ -28,9 +28,6 @@ import AuthenticationLayout from '../src/views/layouts/Authentication.vue'
 Vue.component('application-layout', ApplicationLayout)
 Vue.component('authentication-layout', AuthenticationLayout)
 
-// import Flash from '../src/components/flash'
-// Vue.component('flash', Flash)
-
 const app = new Vue({
   router,
   store,
