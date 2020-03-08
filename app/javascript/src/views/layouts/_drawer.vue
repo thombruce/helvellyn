@@ -11,10 +11,9 @@ v-navigation-drawer(v-model="drawer" app temporary)
       v-list-item(link :to="{ name: 'posts_path' }") All
       v-list-item(link :to="{ name: 'new_post_path' }") New Post
       v-list-item(link :to="{ name: 'posts_path' }") New +
-    v-list-item(link :to="{ name: 'user_path', params: { userId: currentUser.id } }") Account
   template(v-slot:append)
-    div.pa-2
-      v-btn(block @click="signOut") Logout
+    .pa-2
+      v-btn(block :to="{ name: 'user_path', params: { userId: currentUser.id } }") Account
 </template>
 
 <script>
@@ -25,13 +24,6 @@ export default {
   mixins: [
     Session,
     Workspaces
-  ],
-  methods: {
-    signOut: function () {
-      this.$store.dispatch('sessions/destroy').then(() => {
-        this.$router.push('/sessions/new')
-      })
-    }
-  }
+  ]
 }
 </script>
