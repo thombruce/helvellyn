@@ -11,12 +11,10 @@ div
 </template>
 
 <script>
-import Session from '../../mixins/session.js'
 import Workspaces from '../../mixins/workspaces.js'
 import Drawer from './_drawer.vue'
 export default {
   mixins: [
-    Session,
     Workspaces
   ],
   components: {
@@ -24,13 +22,6 @@ export default {
   },
   data: () => ({
     drawer: null
-  }),
-  methods: {
-    signOut: function () {
-      this.$store.dispatch('sessions/destroy').then(() => {
-        this.$router.push('/sessions/new')
-      })
-    }
-  }
+  })
 }
 </script>

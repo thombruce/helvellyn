@@ -20,13 +20,18 @@ import App from '../src/App.vue'
 import store from '../src/store'
 import router from '../src/routes.js'
 
+// Plugins
 import vuetify from '../src/plugins/vuetify'
 
+// Global Components
 import ApplicationLayout from '../src/views/layouts/Application.vue'
 import AuthenticationLayout from '../src/views/layouts/Authentication.vue'
-
 Vue.component('application-layout', ApplicationLayout)
 Vue.component('authentication-layout', AuthenticationLayout)
+
+// Global Mixins
+import Session from '../src/mixins/session.js'
+Vue.mixin(Session)
 
 const app = new Vue({
   router,

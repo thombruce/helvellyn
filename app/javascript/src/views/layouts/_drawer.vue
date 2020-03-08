@@ -17,12 +17,10 @@ v-navigation-drawer(v-model="drawer" app temporary)
 </template>
 
 <script>
-import Session from '../../mixins/session.js'
 import Workspaces from '../../mixins/workspaces.js'
 export default {
   props: ['drawer'],
   mixins: [
-    Session,
     Workspaces
   ]
 }
