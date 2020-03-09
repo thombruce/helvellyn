@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   constraints lambda { |req| req.format == :json } do
     shallow do
       resources :workspaces do
+        resources :content_types
         resources :posts
       end
     end

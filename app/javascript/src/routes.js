@@ -12,6 +12,11 @@ import WorkspaceShow from './views/workspaces/show.vue'
 import WorkspaceNew from './views/workspaces/new.vue'
 import WorkspaceEdit from './views/workspaces/edit.vue'
 
+import ContentTypeIndex from './views/content_types/index.vue'
+import ContentTypeShow from './views/content_types/show.vue'
+import ContentTypeNew from './views/content_types/new.vue'
+import ContentTypeEdit from './views/content_types/edit.vue'
+
 import SessionNew from './views/sessions/new.vue'
 
 import UserShow from './views/users/show.vue'
@@ -26,6 +31,10 @@ const router = new VueRouter({
     { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
     { path: '/workspaces/:workspaceId', component: WorkspaceShow, name: 'workspace_path',
       children: [
+        { path: 'content_types', component: ContentTypeIndex, name: 'content_types_path' },
+        { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
+        { path: 'content_types/:contentTypeId', component: ContentTypeShow, name: 'content_type_path' },
+        { path: 'content_types/:contentTypeId/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
         { path: 'posts', component: PostIndex, name: 'posts_path' },
         { path: 'posts/new', component: PostNew, name: 'new_post_path' },
         { path: 'posts/:postId', component: PostShow, name: 'post_path' },

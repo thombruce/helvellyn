@@ -10,7 +10,7 @@ v-navigation-drawer(v-model="drawer" app temporary)
     template(v-if="currentWorkspace")
       v-list-item(link :to="{ name: 'posts_path' }") All
       v-list-item(link :to="{ name: 'new_post_path' }") New Post
-      v-list-item(link :to="{ name: 'posts_path' }") New +
+      v-list-item(link :to="{ name: 'new_content_type_path' }") New +
   template(v-slot:append)
     .pa-2
       v-btn(block :to="{ name: 'user_path', params: { userId: currentUser.id } }") Account
