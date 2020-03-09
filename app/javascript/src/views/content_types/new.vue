@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       content_type: {
-        content: ''
+        name: ''
       }
     }
   },

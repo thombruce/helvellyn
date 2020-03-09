@@ -6,6 +6,7 @@ import users from './users'
 import sessions from './sessions'
 
 import workspaces from './workspaces'
+import content_types from './content_types'
 import posts from './posts'
 
 const store = new Vuex.Store({
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
     users,
     sessions,
     workspaces,
+    content_types,
     posts
   }
 })

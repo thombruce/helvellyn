@@ -31,6 +31,9 @@ gem 'jwt'
 # Presentation
 gem 'haml-rails'
 
+# Data Structure
+gem 'active_record-acts_as'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

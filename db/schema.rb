@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_145844) do
+ActiveRecord::Schema.define(version: 2020_03_08_223519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "content_type_fields", force: :cascade do |t|
+    t.bigint "content_type_id", null: false
+    t.string "name"
+    t.integer "actable_id"
+    t.string "actable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_type_id"], name: "index_content_type_fields_on_content_type_id"
+  end
+
+  create_table "content_types", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["workspace_id"], name: "index_content_types_on_workspace_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -35,6 +53,23 @@ ActiveRecord::Schema.define(version: 2020_03_05_145844) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "string_fields", force: :cascade do |t|
+    t.integer "min_length"
+    t.integer "max_length"
+    t.string "default_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "text_fields", force: :cascade do |t|
+    t.boolean "wysiwyg"
+    t.integer "min_length"
+    t.integer "max_length"
+    t.text "default_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -52,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_145844) do
     t.index ["user_id"], name: "index_workspaces_on_user_id"
   end
 
+  add_foreign_key "content_type_fields", "content_types"
+  add_foreign_key "content_types", "workspaces"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "workspaces"
   add_foreign_key "sessions", "users"

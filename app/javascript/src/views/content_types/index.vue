@@ -7,12 +7,12 @@ div
   table.table(v-if="content_types")
     thead.thead-dark
       tr
-        th Title
+        th Name
         th Actions
     tbody
       tr(v-for="content_type in content_types")
         td
-          router-link(:to="{ name: 'content_type_path', params: { content_typeId: content_type.id } }") {{ content_type.title }}
+          router-link(:to="{ name: 'content_type_path', params: { content_typeId: content_type.id } }") {{ content_type.id }}
         td
           router-link.mr-1(:to="{ name: 'content_type_path', params: { content_typeId: content_type.id } }") View
           router-link.mr-1(:to="{ name: 'edit_content_type_path', params: { content_typeId: content_type.id } }") Edit
@@ -36,7 +36,7 @@ export default {
   methods: {
     fetchData () {
       this.content_types = null
-      this.$store.dispatch('content_types/index', this.$route.params.workspaceId).then(() => {
+      this.$store.dispatch('content_types/index', { workspaceId: this.$route.params.workspaceId }).then(() => {
         this.content_types = this.$store.state.content_types.list
       })
     }

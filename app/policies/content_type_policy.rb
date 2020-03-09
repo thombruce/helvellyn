@@ -1,6 +1,6 @@
 class ContentTypePolicy < ApplicationPolicy
   def permitted_attributes
-    [:name]
+    [:name, fields: []]
   end
 
   class Scope < Scope

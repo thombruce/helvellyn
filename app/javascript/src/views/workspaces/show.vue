@@ -1,14 +1,21 @@
 <template lang="pug">
 div
-  div(v-if="workspace")
-    h1(v-html="workspace.title")
-    p(v-html="workspace.content")
-    router-link(:to="{ name: 'edit_workspace_path', params: { workspaceId: workspace.id } }") Edit
-    router-view
+  v-row(v-if="workspace")
+    v-col
+      workspace-nav(:workspace="workspace")
+    v-col(:cols="9")
+      h1(v-html="workspace.title")
+      p(v-html="workspace.content")
+      router-link(:to="{ name: 'edit_workspace_path', params: { workspaceId: workspace.id } }") Edit
+      router-view
 </template>
 
 <script>
+import WorkspaceNav from './_nav.vue'
 export default {
+  components: {
+    WorkspaceNav
+  },
   data () {
     return {
       workspace: null

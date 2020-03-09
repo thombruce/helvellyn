@@ -14,7 +14,9 @@ export default {
   },
   data() {
     return {
-      content_type: null
+      content_type: {
+        name: ''
+      }
     }
   },
   created () {
@@ -26,17 +28,17 @@ export default {
   methods: {
     fetchData () {
       this.content_type = null
-      this.$store.dispatch('content_types/show', this.$route.params.content_typeId).then(() => {
+      this.$store.dispatch('content_types/show', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId }).then(() => {
         this.content_type = this.$store.state.content_types.list[this.$route.params.content_typeId]
       })
     },
     update: function () {
-      this.$store.dispatch('content_types/update', { id: this.content_type.id, content_type: this.content_type }).then(() => {
+      this.$store.dispatch('content_types/update', { workspaceId: this.$route.params.workspaceId, content_typeId: this.content_type.id, data: { content_type: this.content_type } }).then(() => {
         this.$router.push('/')
       })
     },
     destroy: function () {
-      this.$store.dispatch('content_types/destroy', this.content_type.id).then(() => {
+      this.$store.dispatch('content_types/destroy', { workspaceId: this.$route.params.workspaceId, content_typeId: this.content_type.id }).then(() => {
         this.$router.push('/')
       })
     }

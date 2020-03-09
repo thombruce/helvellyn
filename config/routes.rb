@@ -6,11 +6,9 @@ Rails.application.routes.draw do
   end
 
   constraints lambda { |req| req.format == :json } do
-    shallow do
-      resources :workspaces do
-        resources :content_types
-        resources :posts
-      end
+    resources :workspaces do
+      resources :content_types
+      resources :posts
     end
 
     resources :sessions, only: [:new, :create, :destroy] do

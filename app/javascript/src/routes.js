@@ -33,8 +33,8 @@ const router = new VueRouter({
       children: [
         { path: 'content_types', component: ContentTypeIndex, name: 'content_types_path' },
         { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
-        { path: 'content_types/:contentTypeId', component: ContentTypeShow, name: 'content_type_path' },
-        { path: 'content_types/:contentTypeId/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
+        { path: 'content_types/:content_typeId', component: ContentTypeShow, name: 'content_type_path' },
+        { path: 'content_types/:content_typeId/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
         { path: 'posts', component: PostIndex, name: 'posts_path' },
         { path: 'posts/new', component: PostNew, name: 'new_post_path' },
         { path: 'posts/:postId', component: PostShow, name: 'post_path' },

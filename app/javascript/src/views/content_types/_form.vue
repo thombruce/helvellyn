@@ -1,6 +1,6 @@
 <template lang="pug">
 v-form(ref="form" :model="content_type")
-  v-text-field(label="Title" v-model="content_type.title")
+  v-text-field(label="Name" v-model="content_type.name")
   v-btn(color="primary" @click="submit") Submit
 </template>
 

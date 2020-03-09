@@ -8,9 +8,9 @@ const state = () => ({
 const getters = {}
 
 const actions = {
-  index({ commit }, workspaceId) {
+  index({ commit }, params) {
     return axios
-      .get('/workspaces/' + workspaceId + '/content_types')
+      .get('/workspaces/' + params.workspaceId + '/content_types')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -18,9 +18,9 @@ const actions = {
         console.log(error)
       })
   },
-  show({ commit }, id) {
+  show({ commit }, params) {
     return axios
-      .get('/content_types/' + id)
+      .get('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId) // TODO: Consistent naming
       .then((res) => {
         commit('insert', res.data)
       })
@@ -28,9 +28,9 @@ const actions = {
         console.log(error)
       })
   },
-  create({ commit }, payload) {
+  create({ commit }, params) {
     return axios
-      .post('/workspaces/' + payload.workspaceId + '/content_types', payload.data)
+      .post('/workspaces/' + params.workspaceId + '/content_types', params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -38,9 +38,9 @@ const actions = {
         console.log(error)
       })
   },
-  update({ commit }, payload) {
+  update({ commit }, params) {
     return axios
-      .patch('/content_types/' + payload.id, payload)
+      .patch('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId, params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -48,11 +48,11 @@ const actions = {
         console.log(error)
       })
   },
-  destroy({ commit }, id) {
+  destroy({ commit }, params) {
     return axios
-      .delete('/content_types/' + id)
+      .delete('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId)
       .then((res) => {
-        commit('remove', id)
+        commit('remove', params.content_typeId)
       })
       .catch(function(error) {
         console.log(error)
