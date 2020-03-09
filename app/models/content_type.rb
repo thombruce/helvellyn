@@ -8,12 +8,9 @@ class ContentType < ApplicationRecord
   end
 
   def fields=(fields)
-    fields.map! do |field|
-      ContentTypeField.new(field)
-      "#{field.type.titleize}Field".constantize.new(field)
-      # One of the above... or... you could try to constantize at
-      # the initialization on the ContentTypeField class.. which
-      # would be a better place for the code.
+    fields.map! do |field_params|
+      type = field_params.delete(:type)
+      "#{type.titleize}Field".constantize.find_or_initialize_by(field_params) # TODO: Too many queries. Just pull 'em all in and compare.
     end
     content_type_fields << fields
     @fields = content_type_fields

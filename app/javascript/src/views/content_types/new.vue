@@ -14,7 +14,8 @@ export default {
   data() {
     return {
       content_type: {
-        name: ''
+        name: '',
+        fields: []
       }
     }
   },
