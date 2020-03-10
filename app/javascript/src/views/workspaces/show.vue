@@ -6,7 +6,7 @@ div
     v-col(:cols="9")
       h1(v-html="workspace.title")
       p(v-html="workspace.content")
-      router-link(:to="{ name: 'edit_workspace_path', params: { workspaceId: workspace.id } }") Edit
+      router-link(:to="{ name: 'edit_workspace_path', params: { workspaceId: workspace.slug } }") Edit
       router-view
 </template>
 

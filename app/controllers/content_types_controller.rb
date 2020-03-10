@@ -55,7 +55,7 @@ class ContentTypesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_content_type
-      @content_type = current_workspace.content_types.find(params[:id])
+      @content_type = current_workspace.content_types.friendly.find(params[:id])
       authorize @content_type
     end
 end

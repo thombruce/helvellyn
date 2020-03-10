@@ -3,7 +3,7 @@ div
   h1 Edit Workspace
   workspace-form(v-if="workspace" :workspace="workspace", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'workspace_path' }") Back
+  router-link(:to="{ name: 'workspace_path', params: { workspaceId: workspace.slug } }") Back
 </template>
 
 <script>

@@ -65,7 +65,7 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let content_types = isArray ? payload : [payload]
     content_types.map((content_type) => {
-      state.list[content_type.id] = { ...state.list[content_type.id], ...content_type }
+      state.list[content_type.slug] = { ...state.list[content_type.slug], ...content_type }
     })
   },
   remove(state, id) {

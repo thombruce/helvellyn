@@ -65,7 +65,7 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let workspaces = isArray ? payload : [payload]
     workspaces.map((workspace) => {
-      state.list[workspace.id] = { ...state.list[workspace.id], ...workspace }
+      state.list[workspace.slug] = { ...state.list[workspace.slug], ...workspace }
     })
   },
   remove(state, id) {

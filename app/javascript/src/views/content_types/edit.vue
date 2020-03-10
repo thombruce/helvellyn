@@ -3,7 +3,7 @@ div
   h2 Edit Content Type
   content-type-form(v-if="content_type" :content_type="content_type", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'content_type_path' }") Back
+  router-link(:to="{ name: 'content_type_path', params: { content_typeId: content_type.slug } }") Back
 </template>
 
 <script>

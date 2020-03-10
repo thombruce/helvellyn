@@ -3,7 +3,7 @@ div
   div(v-if="content_type")
     h2(v-html="content_type.name")
     p(v-html="content_type.content")
-    router-link(:to="{ name: 'edit_content_type_path', params: { content_typeId: content_type.id } }") Edit
+    router-link(:to="{ name: 'edit_content_type_path', params: { content_typeId: content_type.slug } }") Edit
 </template>
 
 <script>
