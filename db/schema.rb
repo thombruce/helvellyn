@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_234953) do
+ActiveRecord::Schema.define(version: 2020_03_10_235108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,23 +52,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_234953) do
     t.string "session_token"
     t.index ["session_token"], name: "index_sessions_on_session_token", unique: true
     t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
-  create_table "string_fields", force: :cascade do |t|
-    t.integer "min_length"
-    t.integer "max_length"
-    t.string "default_value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "text_fields", force: :cascade do |t|
-    t.boolean "wysiwyg"
-    t.integer "min_length"
-    t.integer "max_length"
-    t.text "default_value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
