@@ -5,6 +5,5 @@ class Workspace < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  has_many :posts, dependent: :destroy
   has_many :content_types, dependent: :destroy
 end

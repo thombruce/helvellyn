@@ -8,8 +8,6 @@ v-navigation-drawer(v-model="drawer" app temporary)
     v-list-item(v-for="workspace in workspaces" link :to="{ name: 'workspace_path', params: { workspaceId: workspace.slug } }") {{ workspace.title }}
     v-list-item(link :to="{ name: 'new_workspace_path' }") New Workspace
     template(v-if="currentWorkspace")
-      v-list-item(link :to="{ name: 'posts_path' }") All
-      v-list-item(link :to="{ name: 'new_post_path' }") New Post
       v-list-item(link :to="{ name: 'new_content_type_path' }") New +
   template(v-slot:append)
     .pa-2
