@@ -27,8 +27,8 @@ class ContentEntriesController < ApplicationController
   # POST /content_entries
   # POST /content_entries.json
   def create
-    @content_entry = @content_type.content_entries.build(workspace: @workspace)
-    @content_entry.assign_attributes(content_entry_params) # TODO: Doesn't actually need to belong to workspace...
+    @content_entry = @content_type.content_entries.build
+    @content_entry.assign_attributes(content_entry_params)
     authorize @content_entry
 
     if @content_entry.save
