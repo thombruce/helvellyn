@@ -12,9 +12,9 @@ div
     tbody
       tr(v-for="content_type in content_types")
         td
-          router-link(:to="{ name: 'content_type_path', params: { content_typeId: content_type.slug } }") {{ content_type.id }}
+          router-link(:to="{ name: 'content_entries_path', params: { content_typeId: content_type.slug } }") {{ content_type.id }}
         td
-          router-link.mr-1(:to="{ name: 'content_type_path', params: { content_typeId: content_type.slug } }") View
+          router-link.mr-1(:to="{ name: 'content_entries_path', params: { content_typeId: content_type.slug } }") View
           router-link.mr-1(:to="{ name: 'edit_content_type_path', params: { content_typeId: content_type.slug } }") Edit
 
   p.lead.text-center(v-else) No items to show.

@@ -12,6 +12,11 @@ import ContentTypeShow from './views/content_types/show.vue'
 import ContentTypeNew from './views/content_types/new.vue'
 import ContentTypeEdit from './views/content_types/edit.vue'
 
+import ContentEntryIndex from './views/content_entries/index.vue'
+import ContentEntryShow from './views/content_entries/show.vue'
+import ContentEntryNew from './views/content_entries/new.vue'
+import ContentEntryEdit from './views/content_entries/edit.vue'
+
 import SessionNew from './views/sessions/new.vue'
 
 import UserShow from './views/users/show.vue'
@@ -32,7 +37,13 @@ const router = new VueRouter({
       children: [
         { path: 'content_types', component: ContentTypeIndex, name: 'content_types_path' },
         { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
-        { path: ':content_typeId', component: ContentTypeShow, name: 'content_type_path' },
+        { path: ':content_typeId', component: ContentTypeShow, name: 'content_type_path',
+          children: [
+            { path: '', component: ContentEntryIndex, name: 'content_entries_path' },
+            { path: 'new', component: ContentEntryNew, name: 'new_content_entry_path' },
+            { path: ':content_entryId', component: ContentEntryShow, name: 'content_entry_path' },
+            { path: ':content_entryId/edit', component: ContentEntryEdit, name: 'edit_content_entry_path' }
+          ] },
         { path: ':content_typeId/edit', component: ContentTypeEdit, name: 'edit_content_type_path' }
       ] },
     { path: '/:workspaceId/edit', component: WorkspaceEdit, name: 'edit_workspace_path' }
