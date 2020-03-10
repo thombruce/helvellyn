@@ -24,7 +24,7 @@ div
 
 <script>
 export default {
-  props: ['content_type'],
+  props: ['workspace', 'content_type'],
   data () {
     return {
       content_entries: null

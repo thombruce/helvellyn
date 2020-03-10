@@ -1,7 +1,7 @@
 <template lang="pug">
-div
+div(v-if="content_entry")
   h2 Edit Content Entry
-  content-entry-form(v-if="content_entry" :content_type="content_type" :content_entry="content_entry", :submit="update")
+  content-entry-form(:content_type="content_type" :content_entry="content_entry", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
   router-link(:to="{ name: 'content_entry_path', params: { content_entryId: content_entry.id } }") Back
 </template>
@@ -9,15 +9,13 @@ div
 <script>
 import ContentEntryForm from './_form.vue'
 export default {
-  props: ['content_type'],
+  props: ['workspace', 'content_type'],
   components: {
     ContentEntryForm
   },
   data() {
     return {
-      content_entry: {
-        name: ''
-      }
+      content_entry: {}
     }
   },
   created () {

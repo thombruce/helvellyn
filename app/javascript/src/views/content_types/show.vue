@@ -3,11 +3,12 @@ div
   div(v-if="content_type")
     h2(v-html="content_type.name")
     p(v-html="content_type.content")
-    router-view(:content_type="content_type")
+    router-view(:workspace="workspace" :content_type="content_type")
 </template>
 
 <script>
 export default {
+  props: ['workspace'],
   data () {
     return {
       content_type: null
