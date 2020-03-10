@@ -3,7 +3,7 @@ div
   div(v-if="content_entry")
     h2(v-html="content_entry.name")
     p(v-html="content_entry.content")
-    router-link(:to="{ name: 'edit_content_entry_path', params: { content_entryId: content_entry.slug } }") Edit
+    router-link(:to="{ name: 'edit_content_entry_path', params: { content_entryId: content_entry.id } }") Edit
     router-view
 </template>
 
@@ -23,8 +23,8 @@ export default {
   methods: {
     fetchData () {
       this.content_entry = null
-      this.$store.dispatch('content_entries/show', { workspaceId: this.$route.params.workspaceId, content_entryId: this.$route.params.content_entryId }).then(() => {
-        this.content_entry = this.$store.state.content_entrys.list[this.$route.params.content_entryId]
+      this.$store.dispatch('content_entries/show', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId, content_entryId: this.$route.params.content_entryId }).then(() => {
+        this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entryId]
       })
     }
   }

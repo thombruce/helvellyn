@@ -8,14 +8,16 @@ div
     thead.thead-dark
       tr
         th Name
+        th Contents
         th Actions
     tbody
       tr(v-for="content_entry in content_entries")
         td
-          router-link(:to="{ name: 'content_entry_path', params: { content_entryId: content_entry.slug } }") {{ content_entry.id }}
+          router-link(:to="{ name: 'content_entry_path', params: { content_entryId: content_entry.id } }") {{ content_entry.id }}
+        td {{ content_entry }}
         td
-          router-link.mr-1(:to="{ name: 'content_entry_path', params: { content_entryId: content_entry.slug } }") View
-          router-link.mr-1(:to="{ name: 'edit_content_entry_path', params: { content_entryId: content_entry.slug } }") Edit
+          router-link.mr-1(:to="{ name: 'content_entry_path', params: { content_entryId: content_entry.id } }") View
+          router-link.mr-1(:to="{ name: 'edit_content_entry_path', params: { content_entryId: content_entry.id } }") Edit
 
   p.lead.text-center(v-else) No items to show.
 </template>
@@ -36,7 +38,7 @@ export default {
   methods: {
     fetchData () {
       this.content_entries = null
-      this.$store.dispatch('content_entries/index', { workspaceId: this.$route.params.workspaceId }).then(() => {
+      this.$store.dispatch('content_entries/index', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId }).then(() => {
         this.content_entries = this.$store.state.content_entries.list
       })
     }

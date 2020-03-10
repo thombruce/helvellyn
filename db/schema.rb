@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_152342) do
+ActiveRecord::Schema.define(version: 2020_03_10_152758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_152342) do
     t.bigint "content_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "data"
     t.index ["content_type_id"], name: "index_content_entries_on_content_type_id"
     t.index ["workspace_id"], name: "index_content_entries_on_workspace_id"
   end

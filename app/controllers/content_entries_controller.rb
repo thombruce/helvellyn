@@ -1,4 +1,6 @@
 class ContentEntriesController < ApplicationController
+  before_action :set_workspace
+  before_action :set_content_type
   before_action :set_content_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /content_entries
@@ -14,7 +16,7 @@ class ContentEntriesController < ApplicationController
 
   # GET /content_entries/new
   def new
-    @content_entry = ContentEntry.new
+    @content_entry = @content_type.content_entries.build
     authorize @content_entry
   end
 
@@ -25,7 +27,8 @@ class ContentEntriesController < ApplicationController
   # POST /content_entries
   # POST /content_entries.json
   def create
-    @content_entry = ContentEntry.new(content_entry_params)
+    @content_entry = @content_type.content_entries.build(workspace: @workspace)
+    @content_entry.assign_attributes(content_entry_params) # TODO: Doesn't actually need to belong to workspace...
     authorize @content_entry
 
     if @content_entry.save
@@ -55,6 +58,14 @@ class ContentEntriesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_workspace
+      @workspace = Workspace.friendly.find(params[:workspace_id])
+    end
+
+    def set_content_type
+      @content_type = @workspace.content_types.friendly.find(params[:content_type_id])
+    end
+
     def set_content_entry
       @content_entry = ContentEntry.find(params[:id])
       authorize @content_entry
@@ -62,6 +73,8 @@ class ContentEntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def content_entry_params
-      params.require(:content_entry).permit(:workspace_id, :content_type_id)
+      content_type = @content_type.slug.to_sym
+      fields = @content_type.sanitized_fields.map { |f| f[:slug].to_sym }
+      params.require(content_type).permit(*fields)
     end
 end

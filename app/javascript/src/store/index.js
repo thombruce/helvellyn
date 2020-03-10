@@ -7,6 +7,7 @@ import sessions from './sessions'
 
 import workspaces from './workspaces'
 import content_types from './content_types'
+import content_entries from './content_entries'
 import posts from './posts'
 
 const store = new Vuex.Store({
@@ -15,6 +16,7 @@ const store = new Vuex.Store({
     sessions,
     workspaces,
     content_types,
+    content_entries,
     posts
   }
 })

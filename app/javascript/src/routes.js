@@ -37,7 +37,7 @@ const router = new VueRouter({
       children: [
         { path: 'content_types', component: ContentTypeIndex, name: 'content_types_path' },
         { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
-        { path: ':content_typeId', component: ContentTypeShow, name: 'content_type_path',
+        { path: ':content_typeId', component: ContentTypeShow,
           children: [
             { path: '', component: ContentEntryIndex, name: 'content_entries_path' },
             { path: 'new', component: ContentEntryNew, name: 'new_content_entry_path' },
