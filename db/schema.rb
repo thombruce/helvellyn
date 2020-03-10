@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_012725) do
+ActiveRecord::Schema.define(version: 2020_03_10_152342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,22 +24,13 @@ ActiveRecord::Schema.define(version: 2020_03_10_012725) do
     t.index ["workspace_id"], name: "index_content_entries_on_workspace_id"
   end
 
-  create_table "content_type_fields", force: :cascade do |t|
-    t.bigint "content_type_id", null: false
-    t.string "name"
-    t.integer "actable_id"
-    t.string "actable_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["content_type_id"], name: "index_content_type_fields_on_content_type_id"
-  end
-
   create_table "content_types", force: :cascade do |t|
     t.bigint "workspace_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.jsonb "fields"
     t.index ["workspace_id", "slug"], name: "index_content_types_on_workspace_id_and_slug", unique: true
     t.index ["workspace_id"], name: "index_content_types_on_workspace_id"
   end
@@ -113,7 +104,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_012725) do
 
   add_foreign_key "content_entries", "content_types"
   add_foreign_key "content_entries", "workspaces"
-  add_foreign_key "content_type_fields", "content_types"
   add_foreign_key "content_types", "workspaces"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "workspaces"
