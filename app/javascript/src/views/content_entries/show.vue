@@ -1,14 +1,17 @@
 <template lang="pug">
 div
   div(v-if="content_entry")
-    h2(v-html="content_entry.name")
-    p(v-html="content_entry.content")
+    p(v-for="field in content_type.fields")
+      strong {{ field.name }}
+      | &nbsp;
+      span {{ content_entry[field.slug] }}
     router-link(:to="{ name: 'edit_content_entry_path', params: { content_entryId: content_entry.id } }") Edit
     router-view
 </template>
 
 <script>
 export default {
+  props: ['content_type'],
   data () {
     return {
       content_entry: null
