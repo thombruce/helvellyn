@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## TODO
+
+* Update this README with useful information
+* Rename app 'Helvellyn CMS'
