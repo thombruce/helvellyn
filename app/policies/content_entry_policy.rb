@@ -4,12 +4,16 @@ class ContentEntryPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user || record.published?
   end
 
   class Scope < Scope
     def resolve
-      scope.all
+      if user
+        scope.all
+      else
+        scope.published
+      end
     end
   end
 end

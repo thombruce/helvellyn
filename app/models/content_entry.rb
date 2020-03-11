@@ -1,18 +1,23 @@
 class ContentEntry < ApplicationRecord
+  scope :draft, -> { where(published_at: nil) }
+  scope :published, -> { where('published_at < ?', DateTime.now) }
+
   belongs_to :content_type
 
-  def draft
+  def draft?
     !self.published_at
   end
+  alias_method :draft, :draft?
 
-  def published
-    !draft
+  def published?
+    !self.draft?
   end
+  alias_method :published, :published?
 
   def publish=(publish)
-    if draft && publish
+    if self.draft? && publish
       self.published_at = DateTime.now
-    elsif published && !publish
+    elsif self.published? && !publish
       self.published_at = nil
     end
   end
