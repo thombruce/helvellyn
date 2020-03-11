@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Access
+gem 'rack-cors'
+
 # Auth
 gem 'warden'
 gem 'pundit'
@@ -32,7 +35,6 @@ gem 'jwt'
 gem 'haml-rails'
 
 # Data Structure
-gem 'active_record-acts_as'
 gem 'friendly_id'
 
 # Use Active Storage variant

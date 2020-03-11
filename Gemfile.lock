@@ -37,9 +37,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_record-acts_as (4.0.1)
-      activerecord (>= 4.2)
-      activesupport (>= 4.2)
     activejob (6.0.2.1)
       activesupport (= 6.0.2.1)
       globalid (>= 0.3.6)
@@ -134,6 +131,8 @@ GEM
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.2.2)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -255,7 +254,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_record-acts_as
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   brakeman (~> 4.7)
@@ -270,6 +268,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   pundit
+  rack-cors
   rails (~> 6.0.0)
   rspec-rails (~> 4.0.0.beta3)
   rubocop (~> 0.77.0)
