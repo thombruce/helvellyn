@@ -1,28 +1,26 @@
 class WorkspacesController < ApplicationController
   before_action :set_workspace, only: [:show, :edit, :update, :destroy]
 
-  # GET /workspaces
   # GET /workspaces.json
   def index
     @workspaces = policy_scope(Workspace)
   end
 
-  # GET /workspaces/1
-  # GET /workspaces/1.json
+  # GET /workspaces/:id.json
+  # GET /:id.json
   def show
   end
 
-  # GET /workspaces/new
+  # GET /workspaces/new.json
   def new
     @workspace = current_user.workspaces.new
     authorize @workspace
   end
 
-  # GET /workspaces/1/edit
+  # GET /workspaces/:id/edit.json
   def edit
   end
 
-  # POST /workspaces
   # POST /workspaces.json
   def create
     @workspace = current_user.workspaces.build(permitted_attributes(Workspace))
@@ -39,8 +37,7 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /workspaces/1
-  # PATCH/PUT /workspaces/1.json
+  # PATCH/PUT /workspaces/:id.json
   def update
     respond_to do |format|
       if @workspace.update(permitted_attributes(@workspace))
@@ -53,8 +50,7 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  # DELETE /workspaces/1
-  # DELETE /workspaces/1.json
+  # DELETE /workspaces/:id.json
   def destroy
     @workspace.destroy
     respond_to do |format|

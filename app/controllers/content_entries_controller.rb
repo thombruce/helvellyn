@@ -3,29 +3,28 @@ class ContentEntriesController < ApplicationController
   before_action :set_content_type
   before_action :set_content_entry, only: [:show, :edit, :update, :destroy]
 
-  # GET /content_entries
-  # GET /content_entries.json
+  # GET /workspaces/:workspace_id/content_types/:content_type_id/content_entries.json
+  # GET /:workspace_id/:content_type_id.json
   def index
     @content_entries = policy_scope(ContentEntry.all)
   end
 
-  # GET /content_entries/1
-  # GET /content_entries/1.json
+  # GET /workspaces/:workspace_id/content_types/:content_type_id/content_entries/:id.json
+  # GET /:workspace_id/:content_type_id/:id.json
   def show
   end
 
-  # GET /content_entries/new
+  # GET /workspaces/:workspace_id/content_types/:content_type_id/content_entries/new.json
   def new
     @content_entry = @content_type.content_entries.build
     authorize @content_entry
   end
 
-  # GET /content_entries/1/edit
+  # GET /workspaces/:workspace_id/content_types/:content_type_id/content_entries/:id/edit.json
   def edit
   end
 
-  # POST /content_entries
-  # POST /content_entries.json
+  # POST /workspaces/:workspace_id/content_types/:content_type_id/content_entries.json
   def create
     @content_entry = @content_type.content_entries.build
     @content_entry.assign_attributes(content_entry_params)
@@ -38,8 +37,7 @@ class ContentEntriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /content_entries/1
-  # PATCH/PUT /content_entries/1.json
+  # PATCH/PUT /workspaces/:workspace_id/content_types/:content_type_id/content_entries/:id.json
   def update
 
     if @content_entry.update(content_entry_params)
@@ -49,8 +47,7 @@ class ContentEntriesController < ApplicationController
     end
   end
 
-  # DELETE /content_entries/1
-  # DELETE /content_entries/1.json
+  # DELETE /workspaces/:workspace_id/content_types/:content_type_id/content_entries/:id.json
   def destroy
     @content_entry.destroy
     format.json { head :no_content }

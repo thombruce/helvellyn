@@ -1,29 +1,26 @@
 class ContentTypesController < ApplicationController
   before_action :set_content_type, only: [:show, :edit, :update, :destroy]
 
-  # GET /content_types
-  # GET /content_types.json
+  # GET /workspaces/:workspace_id/content_types.json
   def index
     @content_types = policy_scope(current_workspace.content_types)
   end
 
-  # GET /content_types/1
-  # GET /content_types/1.json
+  # GET /workspaces/:workspace_id/content_types/:id.json
   def show
   end
 
-  # GET /content_types/new
+  # GET /workspaces/:workspace_id/content_types/new.json
   def new
     @content_type = current_workspace.content_types.build
     authorize @content_type
   end
 
-  # GET /content_types/1/edit
+  # GET /workspaces/:workspace_id/content_types/:id/edit.json
   def edit
   end
 
-  # POST /content_types
-  # POST /content_types.json
+  # POST /workspaces/:workspace_id/content_types.json
   def create
     @content_type = current_workspace.content_types.build(permitted_attributes(ContentType))
     authorize @content_type
@@ -35,8 +32,7 @@ class ContentTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /content_types/1
-  # PATCH/PUT /content_types/1.json
+  # PATCH/PUT /workspaces/:workspace_id/content_types/:id.json
   def update
     if @content_type.update(permitted_attributes(@content_type))
       render :show, status: :ok, location: @content_type
@@ -45,8 +41,7 @@ class ContentTypesController < ApplicationController
     end
   end
 
-  # DELETE /content_types/1
-  # DELETE /content_types/1.json
+  # DELETE /workspaces/:workspace_id/content_types/:id.json
   def destroy
     @content_type.destroy
     head :no_content
