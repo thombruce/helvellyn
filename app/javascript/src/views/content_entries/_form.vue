@@ -1,5 +1,6 @@
 <template lang="pug">
 v-form(ref="form" :model="content_entry")
+  v-switch(v-model="content_entry.published" label="Publish")
   dynamic-field(v-for="field in content_type.fields" :model="content_entry" :field="field")
   v-btn(color="primary" @click="submit") Submit
 </template>

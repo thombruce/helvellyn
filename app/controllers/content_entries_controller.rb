@@ -71,7 +71,7 @@ class ContentEntriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def content_entry_params
       content_type = @content_type.slug.to_sym
-      fields = @content_type.sanitized_fields.map { |f| f[:slug].to_sym }
-      params.require(content_type).permit(*fields)
+      fields = @content_type.dynamic_attributes
+      params.require(content_type).permit(*fields, :published, :publish)
     end
 end

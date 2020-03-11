@@ -7,7 +7,13 @@ class ContentType < ApplicationRecord
 
   has_many :content_entries, dependent: :destroy
 
-  def sanitized_fields # TODO: good case for a decorator if you don't fix by fixing below.
-    fields&.map { |field| field.merge({slug: field["name"].parameterize}) } # TODO: We need to also ensure uniqueness of these slugs somehow... and maybe allow user to set.
+  serialize :fields, FieldsSerializer
+
+  before_validation do
+    self.fields = fields&.map { |field| field[:slug] ? field : field.merge({ slug: field[:name].parameterize }) }
+  end
+
+  def dynamic_attributes
+    fields&.map { |field| field[:slug] }
   end
 end
