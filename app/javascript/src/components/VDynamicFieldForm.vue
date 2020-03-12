@@ -2,9 +2,11 @@
 div
   h3 New Field
 
-  v-text-field(label="Name" v-model="inputVal.name")
-
-  v-dynamic-field-type-select(label="Type" v-model="inputVal.type")
+  v-row
+    v-col(cols="12" sm="6")
+      v-text-field(label="Name" v-model="inputVal.name")
+    v-col(cols="12" sm="6")
+      v-dynamic-field-type-select(label="Type" v-model="inputVal.type")
 </template>
 
 <script>
