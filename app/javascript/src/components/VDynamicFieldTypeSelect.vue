@@ -12,7 +12,8 @@ export default {
     return {
       fieldTypeOptions: [
         'String',
-        'Text'
+        'Text',
+        'Markdown'
       ]
     }
   },

@@ -28,6 +28,8 @@ export default {
         case 'String':
           return 'v-text-field'
         case 'Text':
+          return 'v-textarea'
+        case 'Markdown':
           return 'v-wysiwyg'
         default:
           return 'v-text-field'
