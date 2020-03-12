@@ -33,20 +33,20 @@ const router = new VueRouter({
     { path: '/users/:user_id/edit', component: UserEdit, name: 'edit_user_path' },
     { path: '/workspaces', component: WorkspaceIndex, name: 'workspaces_path' },
     { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
+    { path: '/:workspace_id/edit', component: WorkspaceEdit, name: 'edit_workspace_path' },
     { path: '/:workspace_id', component: WorkspaceShow, name: 'workspace_path',
       children: [
         { path: 'content_types', component: ContentTypeIndex, name: 'content_types_path' },
         { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
+        { path: ':content_type_id/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
         { path: ':content_type_id', component: ContentTypeShow,
           children: [
             { path: '', component: ContentEntryIndex, name: 'content_entries_path' },
             { path: 'new', component: ContentEntryNew, name: 'new_content_entry_path' },
-            { path: ':content_entry_id', component: ContentEntryShow, name: 'content_entry_path' },
-            { path: ':content_entry_id/edit', component: ContentEntryEdit, name: 'edit_content_entry_path' }
-          ] },
-        { path: ':content_type_id/edit', component: ContentTypeEdit, name: 'edit_content_type_path' }
-      ] },
-    { path: '/:workspace_id/edit', component: WorkspaceEdit, name: 'edit_workspace_path' }
+            { path: ':content_entry_id/edit', component: ContentEntryEdit, name: 'edit_content_entry_path' },
+            { path: ':content_entry_id', component: ContentEntryShow, name: 'content_entry_path' }
+          ] }
+      ] }
   ]
 })
 
