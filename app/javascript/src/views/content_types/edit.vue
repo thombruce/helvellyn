@@ -1,7 +1,7 @@
 <template lang="pug">
 div(v-if="content_type")
   h2 Edit Content Type
-  content-type-form(v-if="content_type" :content_type="content_type", :submit="update")
+  content-type-form(v-if="content_type" :workspace="workspace" :content_type="content_type", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
   router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") Back
 </template>
@@ -9,6 +9,7 @@ div(v-if="content_type")
 <script>
 import ContentTypeForm from './_form.vue'
 export default {
+  props: ['workspace'],
   components: {
     ContentTypeForm
   },

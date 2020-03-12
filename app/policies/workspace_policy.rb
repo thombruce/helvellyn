@@ -1,6 +1,6 @@
 class WorkspacePolicy < ApplicationPolicy
   def permitted_attributes
-    [:title]
+    [:title, :slug]
   end
 
   def show?

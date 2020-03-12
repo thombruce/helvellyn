@@ -2,6 +2,7 @@ class ContentTypePolicy < ApplicationPolicy
   def permitted_attributes
     [
       :name,
+      :slug,
       fields: [
         :name,
         :type
