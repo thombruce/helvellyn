@@ -1,12 +1,12 @@
 <template lang="pug">
 v-form(ref="form" :model="content_entry")
   v-switch(v-model="content_entry.published" label="Publish")
-  dynamic-field(v-for="field in content_type.fields" :model="content_entry" :field="field")
+  v-dynamic-field(v-for="field in content_type.fields" :label="field.name" :type="field.type" v-model="content_entry[field.slug]")
   v-btn(color="primary" @click="submit") Submit
 </template>
 
 <script>
-import DynamicField from './_dynamicField.vue'
+import VDynamicField from '../../components/VDynamicField.vue'
 
 export default {
   props: [
@@ -15,7 +15,7 @@ export default {
     'submit'
   ],
   components: {
-    DynamicField
+    VDynamicField
   }
 }
 </script>

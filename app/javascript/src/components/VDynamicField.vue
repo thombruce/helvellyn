@@ -1,21 +1,30 @@
 <template lang="pug">
-component(:is="fieldComponent" :label="field.name" v-model="model[field.slug]")
+component(:is="fieldComponent" :label="label" v-model="inputVal")
 </template>
 
 <script>
-import VWysiwyg from '../../components/VWysiwyg.vue'
+import VWysiwyg from './VWysiwyg.vue'
 
 export default {
   props: [
-    'model',
-    'field'
+    'value',
+    'label',
+    'type'
   ],
   components: {
     VWysiwyg
   },
   computed: {
+    inputVal: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
+    },
     fieldComponent() {
-      switch(this.field.type) {
+      switch(this.type) {
         case 'String':
           return 'v-text-field'
         case 'Text':
