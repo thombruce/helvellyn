@@ -15,7 +15,7 @@ class Session < ApplicationRecord
   def jwt
     payload = {
       data: jwt_data,
-      iss: 'CmsByThom'
+      iss: 'Helvellyn'
     }
     JWT.encode payload, Rails.application.credentials.secret_key_base, 'HS256'
   end

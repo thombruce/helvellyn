@@ -26,4 +26,3 @@ Things you may want to cover:
 ## TODO
 
 * Update this README with useful information
-* Rename app 'Helvellyn CMS' (try: then Heroku name, then local refs, then app renaming)

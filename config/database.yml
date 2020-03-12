@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: cms_by_thom_development
+  database: helvellyn_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: cms_by_thom
+  #username: helvellyn
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: cms_by_thom_test
+  database: helvellyn_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: cms_by_thom_production
-  username: cms_by_thom
-  password: <%= ENV['CMS_BY_THOM_DATABASE_PASSWORD'] %>
+  database: helvellyn_production
+  username: helvellyn
+  password: <%= ENV['HELVELLYN_DATABASE_PASSWORD'] %>

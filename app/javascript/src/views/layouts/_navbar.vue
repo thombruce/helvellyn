@@ -3,7 +3,7 @@ div
   v-app-bar(app)
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")
     v-toolbar-title
-      router-link(:to="{ name: 'root_path' }") CMS by Thom
+      router-link(:to="{ name: 'root_path' }") Helvellyn
     v-spacer
     v-btn(icon)
       v-icon mdi-heart
