@@ -26,8 +26,8 @@ export default {
   methods: {
     fetchData () {
       this.user = null
-      this.$store.dispatch('users/show', this.$route.params.userId).then(() => {
-        this.user = this.$store.state.users.list[this.$route.params.userId]
+      this.$store.dispatch('users/show', this.$route.params.user_id).then(() => {
+        this.user = this.$store.state.users.list[this.$route.params.user_id]
       })
     },
     update: function () {

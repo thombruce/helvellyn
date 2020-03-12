@@ -23,8 +23,8 @@ export default {
   methods: {
     fetchData () {
       this.content_type = null
-      this.$store.dispatch('content_types/show', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId }).then(() => {
-        this.content_type = this.$store.state.content_types.list[this.$route.params.content_typeId]
+      this.$store.dispatch('content_types/show', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id }).then(() => {
+        this.content_type = this.$store.state.content_types.list[this.$route.params.content_type_id]
       })
     }
   }

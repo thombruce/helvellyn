@@ -18,7 +18,7 @@ const workspaces = {
       this.workspaces = null
       this.$store.dispatch('workspaces/index').then(() => {
         this.workspaces = this.$store.state.workspaces.list
-        this.currentWorkspace = this.workspaces[this.$route.params.workspaceId]
+        this.currentWorkspace = this.workspaces[this.$route.params.workspace_id]
       })
     }
   }

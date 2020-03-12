@@ -6,7 +6,7 @@ div
     v-col(:cols="9")
       h1(v-html="workspace.title")
       p(v-html="workspace.content")
-      router-link(:to="{ name: 'edit_workspace_path', params: { workspaceId: workspace.slug } }") Edit
+      router-link(:to="{ name: 'edit_workspace_path', params: { workspace_id: workspace.slug } }") Edit
       router-view(:workspace="workspace")
 </template>
 
@@ -30,8 +30,8 @@ export default {
   methods: {
     fetchData () {
       this.workspace = null
-      this.$store.dispatch('workspaces/show', this.$route.params.workspaceId).then(() => {
-        this.workspace = this.$store.state.workspaces.list[this.$route.params.workspaceId]
+      this.$store.dispatch('workspaces/show', this.$route.params.workspace_id).then(() => {
+        this.workspace = this.$store.state.workspaces.list[this.$route.params.workspace_id]
       })
     }
   }

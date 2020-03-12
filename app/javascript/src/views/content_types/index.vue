@@ -12,10 +12,10 @@ div
     tbody
       tr(v-for="content_type in content_types")
         td
-          router-link(:to="{ name: 'content_entries_path', params: { content_typeId: content_type.slug } }") {{ content_type.id }}
+          router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") {{ content_type.id }}
         td
-          router-link.mr-1(:to="{ name: 'content_entries_path', params: { content_typeId: content_type.slug } }") View
-          router-link.mr-1(:to="{ name: 'edit_content_type_path', params: { content_typeId: content_type.slug } }") Edit
+          router-link.mr-1(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") View
+          router-link.mr-1(:to="{ name: 'edit_content_type_path', params: { content_type_id: content_type.slug } }") Edit
 
   p.lead.text-center(v-else) No items to show.
 </template>
@@ -36,7 +36,7 @@ export default {
   methods: {
     fetchData () {
       this.content_types = null
-      this.$store.dispatch('content_types/index', { workspaceId: this.$route.params.workspaceId }).then(() => {
+      this.$store.dispatch('content_types/index', { workspace_id: this.$route.params.workspace_id }).then(() => {
         this.content_types = this.$store.state.content_types.list
       })
     }

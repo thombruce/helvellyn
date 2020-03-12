@@ -5,13 +5,13 @@ v-navigation-drawer(v-model="drawer" app temporary)
       v-list-item-title {{ currentWorkspace.title }}
       v-list-item-subtitle subtext
   v-list(v-if="workspaces")
-    v-list-item(v-for="workspace in workspaces" link :to="{ name: 'workspace_path', params: { workspaceId: workspace.slug } }") {{ workspace.title }}
+    v-list-item(v-for="workspace in workspaces" link :to="{ name: 'workspace_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
     v-list-item(link :to="{ name: 'new_workspace_path' }") New Workspace
     template(v-if="currentWorkspace")
       v-list-item(link :to="{ name: 'new_content_type_path' }") New +
   template(v-slot:append)
     .pa-2
-      v-btn(block :to="{ name: 'user_path', params: { userId: currentUser.id } }") Account
+      v-btn(block :to="{ name: 'user_path', params: { user_id: currentUser.id } }") Account
 </template>
 
 <script>

@@ -10,7 +10,7 @@ const getters = {}
 const actions = {
   index({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId + '/content_entries')
+      .get('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -20,7 +20,7 @@ const actions = {
   },
   show({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId + '/content_entries/' + params.content_entryId) // TODO: Consistent naming
+      .get('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -30,7 +30,7 @@ const actions = {
   },
   create({ commit }, params) {
     return axios
-      .post('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId + '/content_entries', params.data)
+      .post('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries', params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -40,7 +40,7 @@ const actions = {
   },
   update({ commit }, params) {
     return axios
-      .patch('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId + '/content_entries/' + params.content_entryId, params.data)
+      .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id, params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -50,9 +50,9 @@ const actions = {
   },
   destroy({ commit }, params) {
     return axios
-      .delete('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId + '/content_entries/' + params.content_entryId)
+      .delete('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id)
       .then((res) => {
-        commit('remove', params.content_entryId)
+        commit('remove', params.content_entry_id)
       })
       .catch(function(error) {
         console.log(error)

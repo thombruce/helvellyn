@@ -4,7 +4,7 @@ div
   div(v-if="user")
     p(v-html="user.name")
     p(v-html="user.email")
-    router-link(:to="{ name: 'edit_user_path', params: { userId: user.id } }") Edit
+    router-link(:to="{ name: 'edit_user_path', params: { user_id: user.id } }") Edit
     v-btn(@click="signOut") Logout
 </template>
 
@@ -24,8 +24,8 @@ export default {
   methods: {
     fetchData () {
       this.user = null
-      this.$store.dispatch('users/show', this.$route.params.userId).then(() => {
-        this.user = this.$store.state.users.list[this.$route.params.userId]
+      this.$store.dispatch('users/show', this.$route.params.user_id).then(() => {
+        this.user = this.$store.state.users.list[this.$route.params.user_id]
       })
     },
     signOut: function () {

@@ -4,7 +4,7 @@ div(v-if="content_entry")
     strong {{ field.name }}
     | &nbsp;
     span {{ content_entry[field.slug] }}
-  router-link(:to="{ name: 'edit_content_entry_path', params: { content_entryId: content_entry.id } }") Edit
+  router-link(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: content_entry.id } }") Edit
   router-view
 </template>
 
@@ -25,8 +25,8 @@ export default {
   methods: {
     fetchData () {
       this.content_entry = null
-      this.$store.dispatch('content_entries/show', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId, content_entryId: this.$route.params.content_entryId }).then(() => {
-        this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entryId]
+      this.$store.dispatch('content_entries/show', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.$route.params.content_entry_id }).then(() => {
+        this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entry_id]
       })
     }
   }

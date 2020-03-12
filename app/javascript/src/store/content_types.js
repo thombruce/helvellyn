@@ -10,7 +10,7 @@ const getters = {}
 const actions = {
   index({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspaceId + '/content_types')
+      .get('/workspaces/' + params.workspace_id + '/content_types')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -20,7 +20,7 @@ const actions = {
   },
   show({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId) // TODO: Consistent naming
+      .get('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -30,7 +30,7 @@ const actions = {
   },
   create({ commit }, params) {
     return axios
-      .post('/workspaces/' + params.workspaceId + '/content_types', params.data)
+      .post('/workspaces/' + params.workspace_id + '/content_types', params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -40,7 +40,7 @@ const actions = {
   },
   update({ commit }, params) {
     return axios
-      .patch('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId, params.data)
+      .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id, params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -50,9 +50,9 @@ const actions = {
   },
   destroy({ commit }, params) {
     return axios
-      .delete('/workspaces/' + params.workspaceId + '/content_types/' + params.content_typeId)
+      .delete('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id)
       .then((res) => {
-        commit('remove', params.content_typeId)
+        commit('remove', params.content_type_id)
       })
       .catch(function(error) {
         console.log(error)

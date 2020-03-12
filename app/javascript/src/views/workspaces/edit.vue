@@ -3,7 +3,7 @@ div
   h1 Edit Workspace
   workspace-form(v-if="workspace" :workspace="workspace", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'workspace_path', params: { workspaceId: workspace.slug } }") Back
+  router-link(:to="{ name: 'workspace_path', params: { workspace_id: workspace.slug } }") Back
 </template>
 
 <script>
@@ -26,8 +26,8 @@ export default {
   methods: {
     fetchData () {
       this.workspace = null
-      this.$store.dispatch('workspaces/show', this.$route.params.workspaceId).then(() => {
-        this.workspace = this.$store.state.workspaces.list[this.$route.params.workspaceId]
+      this.$store.dispatch('workspaces/show', this.$route.params.workspace_id).then(() => {
+        this.workspace = this.$store.state.workspaces.list[this.$route.params.workspace_id]
       })
     },
     update: function () {

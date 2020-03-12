@@ -3,7 +3,7 @@ div(v-if="content_entry")
   h2 Edit Content Entry
   content-entry-form(:content_type="content_type" :content_entry="content_entry", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'content_entry_path', params: { content_entryId: content_entry.id } }") Back
+  router-link(:to="{ name: 'content_entry_path', params: { content_entry_id: content_entry.id } }") Back
 </template>
 
 <script>
@@ -27,17 +27,17 @@ export default {
   methods: {
     fetchData () {
       this.content_entry = null
-      this.$store.dispatch('content_entries/show', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId, content_entryId: this.$route.params.content_entryId }).then(() => {
-        this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entryId]
+      this.$store.dispatch('content_entries/show', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.$route.params.content_entry_id }).then(() => {
+        this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entry_id]
       })
     },
     update: function () {
-      this.$store.dispatch('content_entries/update', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId, content_entryId: this.content_entry.id, data: { [this.content_type.slug]: this.content_entry } }).then(() => {
+      this.$store.dispatch('content_entries/update', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.content_entry.id, data: { [this.content_type.slug]: this.content_entry } }).then(() => {
         this.$router.push('/')
       })
     },
     destroy: function () {
-      this.$store.dispatch('content_entries/destroy', { workspaceId: this.$route.params.workspaceId, content_typeId: this.$route.params.content_typeId, content_entryId: this.content_entry.id }).then(() => {
+      this.$store.dispatch('content_entries/destroy', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.content_entry.id }).then(() => {
         this.$router.push('/')
       })
     }
