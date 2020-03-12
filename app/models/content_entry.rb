@@ -4,6 +4,8 @@ class ContentEntry < ApplicationRecord
 
   belongs_to :content_type
 
+  serialize :data, HashSerializer
+
   def draft?
     !self.published_at
   end
@@ -30,10 +32,8 @@ class ContentEntry < ApplicationRecord
   # TODO: Review below
   def method_missing(method_name, *arguments, &block)
     if dynamic_attributes.include?(method_name)
-      self.data ||= {}
       self.data[method_name]
     elsif dynamic_attributes.map { |attr| "#{attr}=" }.include?(method_name.to_s)
-      self.data ||= {}
       self.data[method_name.to_s.chomp('=').to_sym] = arguments.first
     else
       super
