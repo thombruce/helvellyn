@@ -16,6 +16,7 @@ export default {
     return {
       content_type: {
         name: '',
+        slug: '',
         fields: []
       }
     }

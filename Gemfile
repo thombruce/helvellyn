@@ -35,7 +35,7 @@ gem 'jwt'
 gem 'haml-rails'
 
 # Data Structure
-gem 'friendly_id'
+gem 'friendly_id', '5.2.3' # TODO: https://github.com/norman/friendly_id/issues/912
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

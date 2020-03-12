@@ -3,7 +3,7 @@ class ContentType < ApplicationRecord
 
   belongs_to :workspace
 
-  friendly_id :name, use: :scoped, scope: :workspace
+  friendly_id :name, use: [:slugged, :scoped], scope: :workspace
 
   has_many :content_entries, dependent: :destroy
 
