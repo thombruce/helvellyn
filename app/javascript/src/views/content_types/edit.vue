@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div(v-if="content_type")
   h2 Edit Content Type
   content-type-form(v-if="content_type" :content_type="content_type", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
