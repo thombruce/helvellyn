@@ -31,7 +31,7 @@ class ContentEntriesController < ApplicationController
     authorize @content_entry
 
     if @content_entry.save
-      render :show, status: :created, location: @content_entry
+      render :show, status: :created, location: [@workspace, @content_type, @content_entry]
     else
       render json: @content_entry.errors, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class ContentEntriesController < ApplicationController
   def update
 
     if @content_entry.update(content_entry_params)
-      render :show, status: :ok, location: @content_entry
+      render :show, status: :ok, location: [@workspace, @content_type, @content_entry]
     else
       render json: @content_entry.errors, status: :unprocessable_entity
     end

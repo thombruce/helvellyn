@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_session
 
-  def current_workspace
-    @current_workspace ||= params[:workspace_id] ? Workspace.friendly.find(params[:workspace_id]) : nil
-  end
-
   def pundit_user
     current_session
   end
