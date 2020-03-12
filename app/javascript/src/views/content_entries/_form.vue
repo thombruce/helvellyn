@@ -8,6 +8,8 @@ v-form(ref="form" :model="content_entry")
 <script>
 import VDynamicField from '../../components/VDynamicField.vue'
 
+// TODO: Need to be able to slug content_entries for benefit of API consumption.
+
 export default {
   props: [
     'content_type',
