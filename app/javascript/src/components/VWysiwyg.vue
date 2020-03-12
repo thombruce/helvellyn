@@ -1,5 +1,7 @@
 <template lang="pug">
-tui-editor(v-model="inputVal")
+div
+  v-label {{ label }}
+  tui-editor(v-model="inputVal")
 </template>
 
 <script>
@@ -10,6 +12,7 @@ import Editor from '@toast-ui/vue-editor/src/Editor.vue'
 
 export default {
   props: [
+    'label',
     'value'
   ],
   components: {
