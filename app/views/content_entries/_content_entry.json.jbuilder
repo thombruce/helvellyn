@@ -6,4 +6,4 @@ content_entry.data.each do |key, value|
   json.set! key, value
 end
 
-# json.url content_entry_url(content_entry, format: :json)
+json.url workspace_content_type_content_entry_url(@workspace, @content_type, content_entry, format: :json) # TODO: Pretty route (conditionally?)
