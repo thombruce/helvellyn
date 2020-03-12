@@ -19,9 +19,11 @@ Rails.application.routes.draw do
     resources :users, except: [:index]
 
     # Pretty Routes
-    resources :workspaces, path: '', only: [:show] do
-      resources :content_types, path: '', only: [] do
-        resources :content_entries, path: '', only: [:index, :show]
+    scope as: 'pretty' do
+      resources :workspaces, path: '', only: [:show] do
+        resources :content_types, path: '', only: [] do
+          resources :content_entries, path: '', only: [:index, :show]
+        end
       end
     end
   end
