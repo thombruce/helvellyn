@@ -42,7 +42,7 @@ const actions = {
     return axios
       .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id, params.data)
       .then((res) => {
-        commit('modify', { slug: params.content_type_id, data: res.data })
+        commit('modify', { slug: params.content_entry_id, data: res.data })
       })
       .catch(function(error) {
         console.log(error)
