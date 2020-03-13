@@ -1,5 +1,7 @@
 import axios from '../axios'
 
+import prototype from './prototypes/base'
+
 const state = () => ({
   list: {}
 })
@@ -11,7 +13,10 @@ const actions = {
     return axios
       .post('/sessions', payload)
       .then((res) => {
-        localStorage.setItem('user-token', res.data.jwt)
+        if (res.data.jwt) {
+          localStorage.setItem('user-token', res.data.jwt)
+        }
+        commit('insert', res.data)
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
@@ -29,7 +34,15 @@ const actions = {
   }
 }
 
-const mutations = {}
+const mutations = {
+  insert(state, payload) {
+    const isArray = Array.isArray(payload)
+    let sessions = isArray ? payload : [payload]
+    sessions.map((session) => {
+      state.list[session.id] = { ...state.list[session.id], ...prototype, ...session }
+    })
+  }
+}
 
 const sessions = {
   namespaced: true,

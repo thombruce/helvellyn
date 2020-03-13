@@ -1,6 +1,8 @@
 import Vue from 'vue/dist/vue.esm'
 import axios from '../axios'
 
+import prototype from './prototypes/base'
+
 const state = () => ({
   list: {}
 })
@@ -65,11 +67,11 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let content_entries = isArray ? payload : [payload]
     content_entries.map((content_entry) => {
-      state.list[content_entry.slug] = { ...state.list[content_entry.slug], ...content_entry }
+      state.list[content_entry.slug] = { ...state.list[content_entry.slug], ...prototype, ...content_entry }
     })
   },
   modify(state, params) {
-    state.list[params.data.slug] = { ...state.list[params.slug], ...params.data }
+    state.list[params.data.slug] = { ...state.list[params.slug], ...prototype, ...params.data }
     if (params.slug != params.data.slug) {
       Vue.delete(state.list, params.slug)
     }

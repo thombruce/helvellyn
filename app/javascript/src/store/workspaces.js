@@ -1,6 +1,8 @@
 import Vue from 'vue/dist/vue.esm'
 import axios from '../axios'
 
+import prototype from './prototypes/base'
+
 const state = () => ({
   list: {}
 })
@@ -65,11 +67,11 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let workspaces = isArray ? payload : [payload]
     workspaces.map((workspace) => {
-      state.list[workspace.slug] = { ...state.list[workspace.slug], ...workspace }
+      state.list[workspace.slug] = { ...state.list[workspace.slug], ...prototype, ...workspace }
     })
   },
   modify(state, params) {
-    state.list[params.data.slug] = { ...state.list[params.slug], ...params.data }
+    state.list[params.data.slug] = { ...state.list[params.slug], ...prototype, ...params.data }
     if (params.slug != params.data.slug) {
       Vue.delete(state.list, params.slug)
     }

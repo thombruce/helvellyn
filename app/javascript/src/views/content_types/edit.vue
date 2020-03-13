@@ -15,10 +15,7 @@ export default {
   },
   data() {
     return {
-      content_type: {
-        name: '',
-        errors: []
-      }
+      content_type: null
     }
   },
   created () {

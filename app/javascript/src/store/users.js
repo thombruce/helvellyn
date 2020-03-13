@@ -1,5 +1,7 @@
 import axios from '../axios'
 
+import prototype from './prototypes/base'
+
 const state = () => ({
   list: {}
 })
@@ -58,7 +60,7 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let users = isArray ? payload : [payload]
     users.map((user) => {
-      state.list[user.id] = { ...state.list[user.id], ...user }
+      state.list[user.id] = { ...state.list[user.id], ...prototype, ...user }
     })
   },
   remove(state, id) {
