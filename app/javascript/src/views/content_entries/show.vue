@@ -1,5 +1,6 @@
 <template lang="pug">
 div(v-if="content_entry")
+  h2 {{ content_type.name }}
   p(v-for="field in content_type.fields")
     strong {{ field.name }}
     | &nbsp;

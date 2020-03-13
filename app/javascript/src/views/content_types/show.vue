@@ -1,8 +1,6 @@
 <template lang="pug">
 div
   div(v-if="content_type")
-    h2(v-html="content_type.name")
-    p(v-html="content_type.content")
     router-view(:workspace="workspace" :content_type="content_type")
 </template>
 

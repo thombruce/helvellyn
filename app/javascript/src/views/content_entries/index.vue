@@ -1,8 +1,6 @@
 <template lang="pug">
 div
-  h2 Content Entries
-
-  router-link(:to="{ name: 'new_content_entry_path' }") New content_entry
+  h2 All {{ content_type.name }}
 
   table.table(v-if="content_entries")
     thead.thead-dark

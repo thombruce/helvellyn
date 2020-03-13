@@ -1,15 +1,21 @@
 <template lang="pug">
 div
-  h1 Edit Workspace
-  workspace-form(v-if="workspace" :workspace="workspace", :submit="update")
-  a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'workspace_path', params: { workspace_id: workspace.slug } }") Back
+  v-row(v-if="workspace")
+    v-col
+      workspace-nav(:workspace="workspace")
+    v-col(:cols="9")
+      h1 Edit Workspace
+      workspace-form(:workspace="workspace", :submit="update")
+      a(v-on:click.stop="destroy" href="javascript:;") Delete
+      router-link(:to="{ name: 'workspace_path', params: { workspace_id: workspace.slug } }") Back
 </template>
 
 <script>
+import WorkspaceNav from './_nav.vue'
 import WorkspaceForm from './_form.vue'
 export default {
   components: {
+    WorkspaceNav,
     WorkspaceForm
   },
   data() {

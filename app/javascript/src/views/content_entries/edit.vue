@@ -1,6 +1,6 @@
 <template lang="pug">
 div(v-if="content_entry")
-  h2 Edit Content Entry
+  h2 Edit {{ content_type.name }}
   content-entry-form(:content_type="content_type" :content_entry="content_entry", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
   router-link(:to="{ name: 'content_entry_path', params: { content_entry_id: content_entry.id } }") Back

@@ -4,9 +4,6 @@ div
     v-col
       workspace-nav(:workspace="workspace")
     v-col(:cols="9")
-      h1(v-html="workspace.title")
-      p(v-html="workspace.content")
-      router-link(:to="{ name: 'edit_workspace_path', params: { workspace_id: workspace.slug } }") Edit
       router-view(:workspace="workspace")
 </template>
 
