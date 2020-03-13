@@ -15,7 +15,9 @@ export default {
   },
   data() {
     return {
-      content_entry: {}
+      content_entry: {
+        errors: []
+      }
     }
   },
   created () {
@@ -34,6 +36,8 @@ export default {
     update: function () {
       this.$store.dispatch('content_entries/update', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.$route.params.content_entry_id, data: { [this.content_type.slug]: this.content_entry } }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.content_entry.errors = errors
       })
     },
     destroy: function () {

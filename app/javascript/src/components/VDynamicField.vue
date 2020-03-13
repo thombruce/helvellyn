@@ -1,5 +1,5 @@
 <template lang="pug">
-component(:is="fieldComponent" :label="label" v-model="inputVal")
+component(:is="fieldComponent" :label="label" v-model="inputVal" :error-messages="errorMessages")
 </template>
 
 <script>
@@ -9,7 +9,8 @@ export default {
   props: [
     'value',
     'label',
-    'type'
+    'type',
+    'errorMessages'
   ],
   components: {
     VWysiwyg

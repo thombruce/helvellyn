@@ -16,7 +16,8 @@ export default {
       user: {
         name: '',
         email: '',
-        password: ''
+        password: '',
+        errors: []
       }
     }
   },
@@ -24,6 +25,8 @@ export default {
     signUp: function () {
       this.$store.dispatch('users/create', { user: this.user }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.user.errors = errors
       })
     }
   }

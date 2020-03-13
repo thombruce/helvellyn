@@ -17,7 +17,8 @@ export default {
       content_type: {
         name: '',
         slug: '',
-        fields: []
+        fields: [],
+        errors: []
       }
     }
   },
@@ -25,6 +26,8 @@ export default {
     create: function () {
       this.$store.dispatch('content_types/create', { workspace_id: this.$route.params.workspace_id, data: { content_type: this.content_type } }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.content_type.errors = errors
       })
     }
   }

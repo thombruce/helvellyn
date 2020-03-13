@@ -20,7 +20,9 @@ export default {
   },
   data() {
     return {
-      workspace: null
+      workspace: {
+        errors: []
+      }
     }
   },
   created () {
@@ -39,6 +41,8 @@ export default {
     update: function () {
       this.$store.dispatch('workspaces/update', { workspace_id: this.$route.params.workspace_id, data: { workspace: this.workspace } }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.workspace.errors = errors
       })
     },
     destroy: function () {

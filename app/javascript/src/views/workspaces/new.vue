@@ -14,7 +14,8 @@ export default {
   data() {
     return {
       workspace: {
-        title: ''
+        title: '',
+        errors: []
       }
     }
   },
@@ -22,6 +23,8 @@ export default {
     create: function () {
       this.$store.dispatch('workspaces/create', { data: { workspace: this.workspace } }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.workspace.errors = errors
       })
     }
   }

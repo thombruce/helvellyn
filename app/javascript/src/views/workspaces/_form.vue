@@ -1,8 +1,8 @@
 <template lang="pug">
 v-form(ref="form" :model="workspace")
-  v-text-field(label="Title" v-model="workspace.title" @input="updateSlug" hint="The name of your workspace (e.g. My Awesome Blog)")
+  v-text-field(label="Title" v-model="workspace.title" :error-messages="workspace.errors.title" @input="updateSlug" hint="The name of your workspace (e.g. My Awesome Blog)")
 
-  v-text-field(label="Slug" :prefix="baseUrl" v-model="workspace.slug" hint="The URL path of your workspace (e.g. my-awesome-blog)")
+  v-text-field(label="Slug" :prefix="baseUrl" v-model="workspace.slug" :error-messages="workspace.errors.slug" hint="The URL path of your workspace (e.g. my-awesome-blog)")
 
   v-btn(color="primary" @click="submit") Submit
 </template>

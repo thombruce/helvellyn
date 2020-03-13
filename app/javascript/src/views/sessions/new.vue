@@ -15,7 +15,8 @@ export default {
     return {
       user: {
         login: '',
-        password: ''
+        password: '',
+        errors: []
       }
     }
   }

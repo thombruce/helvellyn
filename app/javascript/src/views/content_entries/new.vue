@@ -14,13 +14,17 @@ export default {
   },
   data() {
     return {
-      content_entry: {}
+      content_entry: {
+        errors: []
+      }
     }
   },
   methods: {
     create: function () {
       this.$store.dispatch('content_entries/create', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, data: { [this.content_type.slug]: this.content_entry } }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.content_entry.errors = errors
       })
     }
   }

@@ -14,7 +14,9 @@ export default {
   },
   data() {
     return {
-      user: null
+      user: {
+        errors: []
+      }
     }
   },
   created () {
@@ -33,6 +35,8 @@ export default {
     update: function () {
       this.$store.dispatch('users/update', { id: this.user.id, user: this.user }).then(() => {
         this.$router.push('/')
+      }).catch((errors) => {
+        this.user.errors = errors
       })
     },
     destroy: function () {

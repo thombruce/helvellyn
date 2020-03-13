@@ -1,9 +1,9 @@
 <template lang="pug">
 v-form(ref="form" :model="content_entry")
-  v-switch(v-model="content_entry.published" label="Publish")
+  v-switch(v-model="content_entry.published" :error-messages="content_entries.errors.published" label="Publish")
   div(v-for="field in content_type.fields")
-    v-dynamic-field(:label="field.name" :type="field.type" @input="field.sluggable ? updateSlug($event) : null" v-model="content_entry[field.slug]")
-    v-text-field(v-if="field.sluggable" label="Slug" :prefix="contentTypeUrl" v-model="content_entry.slug" hint="The URL path of your content (e.g. my-first-post)")
+    v-dynamic-field(:label="field.name" :type="field.type" @input="field.sluggable ? updateSlug($event) : null" v-model="content_entry[field.slug]" :error-messages="content_entry.errors[field.slug]")
+    v-text-field(v-if="field.sluggable" label="Slug" :prefix="contentTypeUrl" v-model="content_entry.slug" :error-messages="content_entry.errors.slug" hint="The URL path of your content (e.g. my-first-post)")
   v-btn(color="primary" @click="submit") Submit
 </template>
 
