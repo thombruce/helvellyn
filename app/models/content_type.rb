@@ -17,8 +17,8 @@ class ContentType < ApplicationRecord
   validates_uniqueness_of :slug, scope: :workspace
   validates_format_of :slug, with: /\A(?:[a-z0-9][_-]?)*[a-z0-9]\z/i, message: 'must only contain letters, numbers, dashes and underscores (e.g. my_slug-1)'
   validates_format_of :slug, without: /\A\d+\Z/, message: 'cannot contain only numbers'
-  # TODO: Slug validation to avoid method/attribute/path conflicts - reserved words
 
+  validate :fields_do_not_conflict_with_content_entry_methods
   validate :sluggable_fields_do_not_exceed_one
   validate :sluggable_field_must_be_a_string
 
@@ -27,6 +27,12 @@ class ContentType < ApplicationRecord
   end
 
   private
+
+  def fields_do_not_conflict_with_content_entry_methods
+    if (ContentEntry.new.methods & dynamic_attributes).any?
+      errors[:base] << "Field names contain reserved words"
+    end
+  end
 
   def sluggable_fields_do_not_exceed_one
     if fields.select { |field| field[:sluggable] }.count > 1
