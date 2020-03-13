@@ -17,7 +17,7 @@ export default {
   ],
   computed: {
     baseUrl() {
-      return window.location.host + "/" // TODO: A configurable URL would be better, for reusability in open source and app form.
+      return window.location.host + "/" // NOTE: Fine for web app; may need reconsideration for native app support.
     }
   },
   methods: {
