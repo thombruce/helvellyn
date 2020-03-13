@@ -42,7 +42,7 @@ const actions = {
     return axios
       .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id, params.data)
       .then((res) => {
-        commit('insert', res.data)
+        commit('modify', { slug: params.content_type_id, data: res.data })
       })
       .catch(function(error) {
         console.log(error)
@@ -65,11 +65,17 @@ const mutations = {
     const isArray = Array.isArray(payload)
     let content_entries = isArray ? payload : [payload]
     content_entries.map((content_entry) => {
-      state.list[content_entry.id] = { ...state.list[content_entry.id], ...content_entry }
+      state.list[content_entry.slug] = { ...state.list[content_entry.slug], ...content_entry }
     })
   },
-  remove(state, id) {
-    Vue.delete(state.list, id)
+  modify(state, params) {
+    state.list[params.data.slug] = { ...state.list[params.slug], ...params.data }
+    if (params.slug != params.data.slug) {
+      Vue.delete(state.list, params.slug)
+    }
+  },
+  remove(state, slug) {
+    Vue.delete(state.list, slug)
   }
 }
 

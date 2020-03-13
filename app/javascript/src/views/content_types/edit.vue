@@ -3,7 +3,7 @@ div(v-if="content_type")
   h2 Edit Content Type
   content-type-form(v-if="content_type" :workspace="workspace" :content_type="content_type", :submit="update")
   a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") Back
+  router-link(:to="{ name: 'content_entries_path', params: { content_type_id: $route.params.content_type_id } }") Back
 </template>
 
 <script>

@@ -5,7 +5,7 @@ div(v-if="content_entry")
     strong {{ field.name }}
     | &nbsp;
     span {{ content_entry[field.slug] }}
-  router-link(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: content_entry.id } }") Edit
+  router-link(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: content_entry.slug } }") Edit
   router-view
 </template>
 

@@ -64,7 +64,7 @@ class ContentEntriesController < ApplicationController
     end
 
     def set_content_entry
-      @content_entry = ContentEntry.find(params[:id])
+      @content_entry = @content_type.content_entries.friendly.find(params[:id])
       authorize @content_entry
     end
 
