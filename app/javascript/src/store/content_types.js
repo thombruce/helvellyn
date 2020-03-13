@@ -66,6 +66,8 @@ const mutations = {
     let content_types = isArray ? payload : [payload]
     content_types.map((content_type) => {
       state.list[content_type.slug] = { ...state.list[content_type.slug], ...content_type }
+      // TODO: Use of slug as key means editing slug causes duplication
+      //       Update action should be aware of which item it's editing.
     })
   },
   remove(state, id) {
