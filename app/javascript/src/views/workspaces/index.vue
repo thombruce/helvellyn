@@ -4,8 +4,8 @@ div
 
   router-link(:to="{ name: 'new_workspace_path' }") New workspace
 
-  table.table(v-if="workspaces")
-    thead.thead-dark
+  v-simple-table(v-if="workspaces")
+    thead
       tr
         th Title
         th Content

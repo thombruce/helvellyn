@@ -2,8 +2,8 @@
 div
   h2 All {{ content_type.name }}
 
-  table.table(v-if="content_entries")
-    thead.thead-dark
+  v-simple-table(v-if="content_entries")
+    thead
       tr
         th Name
         th(v-for="field in content_type.fields") {{ field.name }}

@@ -4,8 +4,8 @@ div
 
   router-link(:to="{ name: 'new_content_type_path' }") New content_type
 
-  table.table(v-if="content_types")
-    thead.thead-dark
+  v-simple-table(v-if="content_types")
+    thead
       tr
         th Name
         th Actions
