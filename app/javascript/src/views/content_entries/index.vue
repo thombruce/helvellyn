@@ -5,13 +5,10 @@ div
   v-simple-table(v-if="content_entries")
     thead
       tr
-        th Name
         th(v-for="field in content_type.fields") {{ field.name }}
         th Actions
     tbody
       tr(v-for="content_entry in content_entries")
-        td
-          router-link(:to="{ name: 'content_entry_path', params: { content_entry_id: content_entry.slug } }") {{ content_entry.id }}
         td(v-for="field in content_type.fields") {{ content_entry[field.slug] }}
         td
           router-link.mr-1(:to="{ name: 'content_entry_path', params: { content_entry_id: content_entry.slug } }") View

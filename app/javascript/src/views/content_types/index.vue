@@ -12,7 +12,7 @@ div
     tbody
       tr(v-for="content_type in content_types")
         td
-          router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") {{ content_type.id }}
+          router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") {{ content_type.name }}
         td
           router-link.mr-1(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") View
           router-link.mr-1(:to="{ name: 'edit_content_type_path', params: { content_type_id: content_type.slug } }") Edit

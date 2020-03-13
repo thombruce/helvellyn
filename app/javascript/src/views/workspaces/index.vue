@@ -8,13 +8,11 @@ div
     thead
       tr
         th Title
-        th Content
         th Actions
     tbody
       tr(v-for="workspace in workspaces")
         td
           router-link(:to="{ name: 'workspace_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
-        td(v-html="workspace.content")
         td
           router-link.mr-1(:to="{ name: 'workspace_path', params: { workspace_id: workspace.slug } }") View
           router-link.mr-1(:to="{ name: 'edit_workspace_path', params: { workspace_id: workspace.slug } }") Edit
