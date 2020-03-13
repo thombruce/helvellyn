@@ -72,6 +72,6 @@ class ContentEntriesController < ApplicationController
     def content_entry_params
       content_type = @content_type.slug.to_sym
       fields = @content_type.dynamic_attributes
-      params.require(content_type).permit(*fields, :published, :publish)
+      params.require(content_type).permit(*fields, :slug, :published, :publish)
     end
 end
