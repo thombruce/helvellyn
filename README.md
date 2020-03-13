@@ -23,6 +23,6 @@ Things you may want to cover:
 
 * ...
 
-## TODO
+## TODO:
 
 * Update this README with useful information
