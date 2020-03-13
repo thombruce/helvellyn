@@ -34,9 +34,9 @@ const router = new VueRouter({
     { path: '/workspaces', component: WorkspaceIndex, name: 'workspaces_path' },
     { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
     { path: '/:workspace_id/edit', component: WorkspaceEdit, name: 'edit_workspace_path' },
-    { path: '/:workspace_id', component: WorkspaceShow, name: 'workspace_path',
+    { path: '/:workspace_id', component: WorkspaceShow,
       children: [
-        { path: 'content_types', component: ContentTypeIndex, name: 'content_types_path' },
+        { path: '', component: ContentTypeIndex, name: 'content_types_path' },
         { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
         { path: ':content_type_id/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
         { path: ':content_type_id', component: ContentTypeShow,
