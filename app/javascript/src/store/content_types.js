@@ -42,7 +42,7 @@ const actions = {
     return axios
       .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id, params.data)
       .then((res) => {
-        commit('insert', res.data)
+        commit('modify', { slug: params.content_type_id, data: res.data })
       })
       .catch(function(error) {
         console.log(error)
@@ -66,12 +66,16 @@ const mutations = {
     let content_types = isArray ? payload : [payload]
     content_types.map((content_type) => {
       state.list[content_type.slug] = { ...state.list[content_type.slug], ...content_type }
-      // TODO: Use of slug as key means editing slug causes duplication
-      //       Update action should be aware of which item it's editing.
     })
   },
-  remove(state, id) {
-    Vue.delete(state.list, id)
+  modify(state, params) {
+    state.list[params.data.slug] = { ...state.list[params.slug], ...params.data }
+    if (params.slug != params.data.slug) {
+      Vue.delete(state.list, params.slug)
+    }
+  },
+  remove(state, slug) {
+    Vue.delete(state.list, slug)
   }
 }
 

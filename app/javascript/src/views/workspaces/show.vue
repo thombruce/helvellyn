@@ -27,7 +27,7 @@ export default {
   methods: {
     fetchData () {
       this.workspace = null
-      this.$store.dispatch('workspaces/show', this.$route.params.workspace_id).then(() => {
+      this.$store.dispatch('workspaces/show', { workspace_id: this.$route.params.workspace_id }).then(() => {
         this.workspace = this.$store.state.workspaces.list[this.$route.params.workspace_id]
       })
     }

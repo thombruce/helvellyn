@@ -8,7 +8,7 @@ const state = () => ({
 const getters = {}
 
 const actions = {
-  index({ commit }) {
+  index({ commit }, _params) {
     return axios
       .get('/workspaces')
       .then((res) => {
@@ -18,9 +18,9 @@ const actions = {
         console.log(error)
       })
   },
-  show({ commit }, id) {
+  show({ commit }, params) {
     return axios
-      .get('/workspaces/' + id)
+      .get('/workspaces/' + params.workspace_id)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -28,9 +28,9 @@ const actions = {
         console.log(error)
       })
   },
-  create({ commit }, payload) {
+  create({ commit }, params) {
     return axios
-      .post('/workspaces', payload)
+      .post('/workspaces', params.data)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -38,21 +38,21 @@ const actions = {
         console.log(error)
       })
   },
-  update({ commit }, payload) {
+  update({ commit }, params) {
     return axios
-      .patch('/workspaces/' + payload.id, payload)
+      .patch('/workspaces/' + params.workspace_id, params.data)
       .then((res) => {
-        commit('insert', res.data)
+        commit('modify', { slug: params.workspace_id, data: res.data })
       })
       .catch(function(error) {
         console.log(error)
       })
   },
-  destroy({ commit }, id) {
+  destroy({ commit }, params) {
     return axios
-      .delete('/workspaces/' + id)
+      .delete('/workspaces/' + params.workspace_id)
       .then((res) => {
-        commit('remove', id)
+        commit('remove', params.workspace_id)
       })
       .catch(function(error) {
         console.log(error)
@@ -67,6 +67,12 @@ const mutations = {
     workspaces.map((workspace) => {
       state.list[workspace.slug] = { ...state.list[workspace.slug], ...workspace }
     })
+  },
+  modify(state, params) {
+    state.list[params.data.slug] = { ...state.list[params.slug], ...params.data }
+    if (params.slug != params.data.slug) {
+      Vue.delete(state.list, params.slug)
+    }
   },
   remove(state, id) {
     Vue.delete(state.list, id)

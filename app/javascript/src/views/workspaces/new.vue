@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     create: function () {
-      this.$store.dispatch('workspaces/create', { workspace: this.workspace }).then(() => {
+      this.$store.dispatch('workspaces/create', { data: { workspace: this.workspace } }).then(() => {
         this.$router.push('/')
       })
     }

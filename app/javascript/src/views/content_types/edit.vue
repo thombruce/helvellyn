@@ -34,12 +34,12 @@ export default {
       })
     },
     update: function () {
-      this.$store.dispatch('content_types/update', { workspace_id: this.$route.params.workspace_id, content_type_id: this.content_type.id, data: { content_type: this.content_type } }).then(() => {
+      this.$store.dispatch('content_types/update', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, data: { content_type: this.content_type } }).then(() => {
         this.$router.push('/')
       })
     },
     destroy: function () {
-      this.$store.dispatch('content_types/destroy', { workspace_id: this.$route.params.workspace_id, content_type_id: this.content_type.id }).then(() => {
+      this.$store.dispatch('content_types/destroy', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id }).then(() => {
         this.$router.push('/')
       })
     }

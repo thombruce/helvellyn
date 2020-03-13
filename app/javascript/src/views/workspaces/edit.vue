@@ -32,17 +32,17 @@ export default {
   methods: {
     fetchData () {
       this.workspace = null
-      this.$store.dispatch('workspaces/show', this.$route.params.workspace_id).then(() => {
+      this.$store.dispatch('workspaces/show', { workspace_id: this.$route.params.workspace_id }).then(() => {
         this.workspace = this.$store.state.workspaces.list[this.$route.params.workspace_id]
       })
     },
     update: function () {
-      this.$store.dispatch('workspaces/update', { id: this.workspace.id, workspace: this.workspace }).then(() => {
+      this.$store.dispatch('workspaces/update', { workspace_id: this.$route.params.workspace_id, data: { workspace: this.workspace } }).then(() => {
         this.$router.push('/')
       })
     },
     destroy: function () {
-      this.$store.dispatch('workspaces/destroy', this.workspace.id).then(() => {
+      this.$store.dispatch('workspaces/destroy', { workspace_id: this.$route.params.workspace_id }).then(() => {
         this.$router.push('/')
       })
     }
