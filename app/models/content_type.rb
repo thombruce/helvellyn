@@ -13,6 +13,12 @@ class ContentType < ApplicationRecord
     self.fields = fields&.map { |field| field[:slug] ? field : field.merge({ slug: field[:name].parameterize }) }
   end
 
+  validates_presence_of :slug
+  validates_uniqueness_of :slug, scope: :workspace
+  validates_format_of :slug, with: /\A(?:[a-z0-9][_-]?)*[a-z0-9]\z/i, message: 'must only contain letters, numbers, dashes and underscores (e.g. my_slug-1)'
+  validates_format_of :slug, without: /\A\d+\Z/, message: 'cannot contain only numbers'
+  # TODO: Slug validation to avoid method/attribute/path conflicts - reserved words
+
   validate :sluggable_fields_do_not_exceed_one
   validate :sluggable_field_must_be_a_string
 
