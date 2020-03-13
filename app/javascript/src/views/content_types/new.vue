@@ -27,6 +27,7 @@ export default {
       this.$store.dispatch('content_types/create', { workspace_id: this.$route.params.workspace_id, data: { content_type: this.content_type } }).then(() => {
         this.$router.push('/')
       }).catch((errors) => {
+        console.log(errors)
         this.content_type.errors = errors
       })
     }

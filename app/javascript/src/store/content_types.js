@@ -34,8 +34,8 @@ const actions = {
       .then((res) => {
         commit('insert', res.data)
       })
-      .catch(function(error) {
-        console.log(error)
+      .catch((error) => {
+        return Promise.reject(error.response.data)
       })
   },
   update({ commit }, params) {
@@ -44,8 +44,8 @@ const actions = {
       .then((res) => {
         commit('modify', { slug: params.content_type_id, data: res.data })
       })
-      .catch(function(error) {
-        console.log(error)
+      .catch((error) => {
+        return Promise.reject(error.response.data)
       })
   },
   destroy({ commit }, params) {

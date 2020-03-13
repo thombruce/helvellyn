@@ -26,8 +26,8 @@ const actions = {
         }
         commit('insert', res.data)
       })
-      .catch(function(error) {
-        console.log(error)
+      .catch((error) => {
+        return Promise.reject(error.response.data)
       })
   },
   update({ commit }, payload) {
@@ -36,8 +36,8 @@ const actions = {
       .then((res) => {
         commit('insert', res.data)
       })
-      .catch(function(error) {
-        console.log(error)
+      .catch((error) => {
+        return Promise.reject(error.response.data)
       })
   },
   destroy({ commit }, id) {

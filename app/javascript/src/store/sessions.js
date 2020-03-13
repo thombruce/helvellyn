@@ -13,8 +13,8 @@ const actions = {
       .then((res) => {
         localStorage.setItem('user-token', res.data.jwt)
       })
-      .catch(function(error) {
-        console.log(error)
+      .catch((error) => {
+        return Promise.reject(error.response.data)
       })
   },
   destroy({ commit }, id) {
@@ -23,7 +23,7 @@ const actions = {
       .then((res) => {
         localStorage.removeItem('user-token')
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error)
       })
   }
