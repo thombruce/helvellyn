@@ -3,7 +3,7 @@ class ContentType < ApplicationRecord
 
   belongs_to :workspace
 
-  friendly_id :name, use: [:slugged, :scoped], scope: :workspace
+  friendly_id :slug_candidates, use: [:slugged, :scoped], scope: :workspace
 
   has_many :content_entries, dependent: :destroy
 
@@ -14,6 +14,7 @@ class ContentType < ApplicationRecord
   end
 
   validates_presence_of :name
+  validates_presence_of :plural
 
   validates_presence_of :slug
   validates_uniqueness_of :slug, scope: :workspace
@@ -26,6 +27,10 @@ class ContentType < ApplicationRecord
 
   def dynamic_attributes
     fields&.map { |field| field[:slug] }
+  end
+
+  def slug_candidates
+    [:plural, :name]
   end
 
   private

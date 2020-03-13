@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h2 All {{ content_type.name }}
+  h2 All {{ content_type.plural }}
 
   v-simple-table(v-if="content_entries")
     thead
