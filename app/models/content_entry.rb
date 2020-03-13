@@ -1,8 +1,12 @@
 class ContentEntry < ApplicationRecord
+  extend FriendlyId
+
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where('published_at < ?', DateTime.now) }
 
   belongs_to :content_type
+
+  friendly_id :dynamic_slug_field, use: [:slugged, :scoped], scope: :content_type
 
   serialize :data, HashSerializer
 
@@ -40,6 +44,15 @@ class ContentEntry < ApplicationRecord
   end
 
   private
+
+  def dynamic_slug_field
+    if sluggable_field = content_type.fields.find { |dg| dg[:sluggable] }
+      slug_field = sluggable_field[:slug]
+      data[slug_field]
+    else
+      SecureRandom.uuid
+    end
+  end
 
   def dynamic_methods
     dynamic_getters + dynamic_setters

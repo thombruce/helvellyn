@@ -5,7 +5,8 @@ class ContentTypePolicy < ApplicationPolicy
       :slug,
       fields: [
         :name,
-        :type
+        :type,
+        :sluggable
       ]
     ]
   end
