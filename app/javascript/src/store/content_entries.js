@@ -7,7 +7,22 @@ const state = () => ({
   list: {}
 })
 
-const getters = {}
+const getters = {
+  forContentType: (state) => (content_type_id) => {
+    return Object.values(state.list).filter(content_entry => content_entry.content_type_id === content_type_id)
+
+    // NOTE: The below uses the same approach but returns an Object, rather than an Array.
+    //       I don't know that there's any reason an Array won't do.
+
+    // let entriesForContentType = {}
+    // Object.values(state.list)
+    //       .filter(content_entry => content_entry.content_type_id === content_type_id)
+    //       .forEach((content_entry) => {
+    //         entriesForContentType[content_entry.slug] = { ...prototype, ...content_entry }
+    //       })
+    // return entriesForContentType
+  }
+}
 
 const actions = {
   index({ commit }, params) {

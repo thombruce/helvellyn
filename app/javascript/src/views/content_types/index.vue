@@ -37,7 +37,8 @@ export default {
     fetchData () {
       this.content_types = null
       this.$store.dispatch('content_types/index', { workspace_id: this.$route.params.workspace_id }).then(() => {
-        this.content_types = this.$store.state.content_types.list
+        // this.content_types = this.$store.state.content_types.list
+        this.content_types = this.$store.getters['content_types/forWorkspace'](this.worksapce.id)
       })
     }
   }

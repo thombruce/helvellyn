@@ -7,7 +7,11 @@ const state = () => ({
   list: {}
 })
 
-const getters = {}
+const getters = {
+  forWorkspace: (state) => (workspace_id) => {
+    return Object.values(state.list).filter(content_type => content_type.workspace_id === workspace_id)
+  }
+}
 
 const actions = {
   index({ commit }, params) {
