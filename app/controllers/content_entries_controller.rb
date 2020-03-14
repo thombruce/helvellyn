@@ -6,7 +6,7 @@ class ContentEntriesController < ApplicationController
   # GET /workspaces/:workspace_id/content_types/:content_type_id/content_entries.json
   # GET /:workspace_id/:content_type_id.json
   def index
-    @content_entries = policy_scope(ContentEntry.all)
+    @content_entries = policy_scope(@content_type.content_entries)
   end
 
   # GET /workspaces/:workspace_id/content_types/:content_type_id/content_entries/:id.json
