@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     create: function () {
-      this.$store.dispatch('content_entries/create', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, data: { [this.content_type.slug]: this.content_entry } }).then(() => {
-        this.$router.push('/')
+      this.$store.dispatch('content_entries/create', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, data: { [this.content_type.slug]: this.content_entry } }).then((res) => {
+        this.$router.push({ name: 'content_entry_path', params: { content_entry_id: res.slug } })
       }).catch((errors) => {
         this.content_entry.errors = errors
       })

@@ -34,8 +34,8 @@ export default {
       })
     },
     update: function () {
-      this.$store.dispatch('content_entries/update', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.$route.params.content_entry_id, data: { [this.content_type.slug]: this.content_entry } }).then(() => {
-        this.$router.push('/')
+      this.$store.dispatch('content_entries/update', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.$route.params.content_entry_id, data: { [this.content_type.slug]: this.content_entry } }).then((res) => {
+        this.$router.push({ name: 'content_entry_path', params: { content_entry_id: res.slug } })
       }).catch((errors) => {
         this.content_entry.errors = errors
       })

@@ -30,21 +30,23 @@ const actions = {
         console.log(error)
       })
   },
-  create({ commit }, params) {
+  create({ state, commit }, params) {
     return axios
       .post('/workspaces', params.data)
       .then((res) => {
         commit('insert', res.data)
+        return Promise.resolve(state.list[res.data.slug])
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
-  update({ commit }, params) {
+  update({ state, commit }, params) {
     return axios
       .patch('/workspaces/' + params.workspace_id, params.data)
       .then((res) => {
         commit('modify', { slug: params.workspace_id, data: res.data })
+        return Promise.resolve(state.list[res.data.slug])
       })
       .catch((error) => {
         return Promise.reject(error.response.data)

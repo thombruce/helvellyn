@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     create: function () {
-      this.$store.dispatch('workspaces/create', { data: { workspace: this.workspace } }).then(() => {
-        this.$router.push('/')
+      this.$store.dispatch('workspaces/create', { data: { workspace: this.workspace } }).then((res) => {
+        this.$router.push({ name: 'content_types_path', params: { workspace_id: res.slug } })
       }).catch((errors) => {
         this.workspace.errors = errors
       })
