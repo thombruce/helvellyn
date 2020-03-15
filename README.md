@@ -1,6 +1,15 @@
 # Helvellyn
 
-A Ruby on Rails based content management system.
+A Ruby on Rails based content management system that exposes a customisable API for publishing content.
+
+## Dependencies
+
+- Ruby
+- Ruby on Rails
+- Vue.js
+- Vuex
+- Vuetify
+- Webpack
 
 ## TODO:
 
