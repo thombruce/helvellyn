@@ -27,7 +27,8 @@ export default {
     fetchData () {
       this.content_entry = null
       this.$store.dispatch('content_entries/show', { workspace_id: this.$route.params.workspace_id, content_type_id: this.$route.params.content_type_id, content_entry_id: this.$route.params.content_entry_id }).then(() => {
-        this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entry_id]
+        // this.content_entry = this.$store.state.content_entries.list[this.$route.params.content_entry_id]
+        this.content_entry = this.$store.getters['content_entries/findBySlug'](this.content_type.id, this.$route.params.content_entry_id)
       })
     }
   }

@@ -10,6 +10,12 @@ const state = () => ({
 const getters = {
   forWorkspace: (state) => (workspace_id) => {
     return Object.values(state.list).filter(content_type => content_type.workspace_id === workspace_id)
+  },
+  findBySlug: (state) => (workspace_id, slug) => {
+    // TODO: This would do better to allow a hash of params and inclusively use them in the find function below.
+    return Object.values(state.list).find(
+      content_type => (content_type.workspace_id === workspace_id) && (content_type.slug === slug)
+    )
   }
 }
 

@@ -21,6 +21,12 @@ const getters = {
     //         entriesForContentType[content_entry.slug] = { ...prototype, ...content_entry }
     //       })
     // return entriesForContentType
+  },
+  findBySlug: (state) => (content_type_id, slug) => {
+    // TODO: This would do better to allow a hash of params and inclusively use them in the find function below.
+    return Object.values(state.list).find(
+      content_entry => (content_entry.content_type_id === content_type_id) && (content_entry.slug === slug)
+    )
   }
 }
 
