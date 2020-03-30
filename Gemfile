@@ -33,6 +33,7 @@ gem 'jwt'
 
 # Presentation
 gem 'haml-rails'
+gem 'redcarpet'
 
 # Data Structure
 gem 'friendly_id', '5.2.3' # NOTE: https://github.com/norman/friendly_id/issues/912

@@ -1,4 +1,4 @@
-json.extract! content_entry, :id, :content_type_id, :slug, :created_at, :updated_at, :published_at
+json.extract! content_entry, :id, :content_type_id, :slug, :created_at, :updated_at, :published_at, :generated_fields
 
 json.published content_entry.published
 

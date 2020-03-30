@@ -9,6 +9,7 @@ class ContentEntry < ApplicationRecord
   friendly_id :dynamic_slug_field, use: [:slugged, :scoped], scope: :content_type
 
   serialize :data, HashSerializer
+  serialize :generated_fields, HashSerializer
 
   validates_presence_of :slug
   validates_uniqueness_of :slug, scope: :content_type
@@ -38,6 +39,11 @@ class ContentEntry < ApplicationRecord
     if key = find_getter(method_name)
       self.data[key]
     elsif key = find_setter(method_name)
+      # TODO: Review this code.
+      field_type = content_type.fields.find { |field| field[:slug] == key.to_s }[:type]
+      if field_type == 'Markdown'
+        self.generated_fields[key.to_s + '_as_html'] = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(arguments.first)
+      end
       self.data[key] = arguments.first
     else
       super
