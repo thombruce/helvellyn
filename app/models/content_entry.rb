@@ -42,7 +42,12 @@ class ContentEntry < ApplicationRecord
       # TODO: Review this code.
       field_type = content_type.fields.find { |field| field[:slug] == key.to_s }[:type]
       if field_type == 'Markdown'
-        self.generated_fields[key.to_s + '_as_html'] = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(arguments.first)
+        self.generated_fields[key.to_s + '_as_html'] =
+          Redcarpet::Markdown.new(
+            Redcarpet::Render::HTML,
+            no_intra_emphasis: true,
+            fenced_code_blocks: true
+          ).render(arguments.first)
       end
       self.data[key] = arguments.first
     else
