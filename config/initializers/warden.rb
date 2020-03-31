@@ -21,8 +21,8 @@ Warden::Strategies.add(:jwt) do
       header = env['HTTP_AUTHORIZATION']
       jwt = header.gsub(pattern, '') if header && header.match(pattern)
       token =
-        JWT.decode jwt, Rails.application.credentials.secret_key_base, true,
-                   iss: 'Helvellyn', verify_iss: true, algorithm: 'HS256'
+        JWT.decode jwt, Rails.application.secrets.secret_key_base, true,
+                   iss: 'Helvellyn', verify_iss: true, algorithm: 'HS256' # [1]
     rescue JWT::InvalidIssuerError
       fail!('Could not authenticate')
     end
@@ -36,3 +36,5 @@ Warden::Strategies.add(:jwt) do
     false
   end
 end
+
+# [1] Use of `secrets` instead of `credentials` makes for a container-ready deploy on Heroku (easier setup for open source)

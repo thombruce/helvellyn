@@ -17,7 +17,7 @@ class Session < ApplicationRecord
       data: jwt_data,
       iss: 'Helvellyn'
     }
-    JWT.encode payload, Rails.application.credentials.secret_key_base, 'HS256'
+    JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
   end
 
   private
@@ -40,3 +40,5 @@ class Session < ApplicationRecord
     }
   end
 end
+
+# [1] Use of `secrets` instead of `credentials` makes for a container-ready deploy on Heroku (easier setup for open source)
