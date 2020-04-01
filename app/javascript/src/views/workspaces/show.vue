@@ -2,17 +2,11 @@
 div
   v-row(v-if="workspace")
     v-col
-      workspace-nav(:workspace="workspace")
-    v-col(:cols="9")
       router-view(:workspace="workspace")
 </template>
 
 <script>
-import WorkspaceNav from './_nav.vue'
 export default {
-  components: {
-    WorkspaceNav
-  },
   data () {
     return {
       workspace: null

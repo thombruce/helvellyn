@@ -2,8 +2,6 @@
 div
   v-row(v-if="workspace")
     v-col
-      workspace-nav(:workspace="workspace")
-    v-col(:cols="9")
       h1 Edit Workspace
       workspace-form(:workspace="workspace", :submit="update")
       a(v-on:click.stop="destroy" href="javascript:;") Delete
@@ -11,11 +9,9 @@ div
 </template>
 
 <script>
-import WorkspaceNav from './_nav.vue'
 import WorkspaceForm from './_form.vue'
 export default {
   components: {
-    WorkspaceNav,
     WorkspaceForm
   },
   data() {

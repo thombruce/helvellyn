@@ -1,6 +1,6 @@
 <template lang="pug">
 v-list
-  v-list-item
+  v-list-item(link :to="{ name: 'content_types_path', params: { workspace_id: workspace.slug } }" exact)
     v-list-item-title {{ workspace.title }}
   content-type-list-group(v-for="content_type in workspace.content_types" :content_type="content_type")
   v-list-item(link :to="{ name: 'new_content_type_path' }")
