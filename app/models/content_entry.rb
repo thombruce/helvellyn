@@ -44,9 +44,11 @@ class ContentEntry < ApplicationRecord
       if field_type == 'Markdown'
         self.generated_fields[key.to_s + '_as_html'] =
           Redcarpet::Markdown.new(
-            Redcarpet::Render::HTML,
+            HelvellynRenderer,
             no_intra_emphasis: true,
-            fenced_code_blocks: true
+            tables: true,
+            fenced_code_blocks: true,
+            strikethrough: true
           ).render(arguments.first)
       end
       self.data[key] = arguments.first
