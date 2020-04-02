@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h3 New Field
+  h4 {{ inputVal.name || 'New Field' }}
 
   v-row
     v-col(cols="12" sm="6")
