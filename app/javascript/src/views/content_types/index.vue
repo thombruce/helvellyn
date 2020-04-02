@@ -12,7 +12,7 @@ div
     tbody
       tr(v-for="content_type in content_types")
         td
-          router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") {{ content_type.name }}
+          router-link(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") {{ content_type.plural }}
         td
           router-link.mr-1(:to="{ name: 'content_entries_path', params: { content_type_id: content_type.slug } }") View
           router-link.mr-1(:to="{ name: 'edit_content_type_path', params: { content_type_id: content_type.slug } }") Edit
@@ -22,6 +22,7 @@ div
 
 <script>
 export default {
+  props: ['workspace'],
   data () {
     return {
       content_types: null
@@ -38,7 +39,7 @@ export default {
       this.content_types = null
       this.$store.dispatch('content_types/index', { workspace_id: this.$route.params.workspace_id }).then(() => {
         // this.content_types = this.$store.state.content_types.list
-        this.content_types = this.$store.getters['content_types/forWorkspace'](this.worksapce.id)
+        this.content_types = this.$store.getters['content_types/forWorkspace'](this.workspace.id)
       })
     }
   }
