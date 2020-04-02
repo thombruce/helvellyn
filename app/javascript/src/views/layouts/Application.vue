@@ -22,7 +22,7 @@ v-app(:dark="$vuetify.theme.dark")
       v-toolbar-title Helvellyn
     v-spacer
     .pt-5
-      v-switch(v-model="$vuetify.theme.dark" label="Dark Theme")
+      v-switch(v-model="$vuetify.theme.dark")
   v-content
     v-container
       slot
