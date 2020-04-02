@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app(dark)
+v-app(:dark="$vuetify.theme.dark")
   v-navigation-drawer(
     v-model="drawer"
     clipped
@@ -20,6 +20,9 @@ v-app(dark)
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")
     v-btn(:to="{ name: 'root_path' }" text)
       v-toolbar-title Helvellyn
+    v-spacer
+    .pt-5
+      v-switch(v-model="$vuetify.theme.dark" label="Dark Theme")
   v-content
     v-container
       slot
