@@ -16,12 +16,25 @@ export default {
   props: ['content_type', 'content_entries'],
   computed: {
     tableHeaders() {
-      let headers = this.content_type.fields.map(field => {
-        return { text: field.name, value: field.slug }
-      })
-      headers.push({ text: 'Actions', value: 'actions', sortable: false })
-      return headers
+      return [
+        { text: this.content_type.fields[0].name, value: this.content_type.fields[0].slug },
+        { text: 'Created', value: 'created_at' },
+        { text: 'Updated', value: 'updated_at' },
+        { text: 'Actions', value: 'actions', sortable: false }
+      ]
     }
+    // NOTE: Below works to show all fields, but fields can't be filtered in place
+    //       to, for example, truncate long content fields... Might be a good case
+    //       for expandable forms, actually. A feature of these tables.
+    // TODO: Look into expandable items as an option.
+    //
+    // tableHeaders() {
+    //   let headers = this.content_type.fields.map(field => {
+    //     return { text: field.name, value: field.slug }
+    //   })
+    //   headers.push({ text: 'Actions', value: 'actions', sortable: false })
+    //   return headers
+    // }
   }
 }
 
