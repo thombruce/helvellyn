@@ -3,35 +3,21 @@ div
   h2 All {{ content_type.plural }}
 
   div(v-if="content_entries")
-    v-data-table(
-      :headers="tableHeaders"
-      :items="content_entries"
-      :items-per-page="5"
-    )
-      template(v-slot:item.actions="{ item }")
-        v-btn(:to="{ name: 'content_entry_path', params: { content_entry_id: item.slug } }" icon)
-          v-icon(small) mdi-eye
-        v-btn(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: item.slug } }" icon)
-          v-icon(small) mdi-pencil
+    content-entries-table(:content_type="content_type" :content_entries="content_entries")
 
   p.lead.text-center(v-else) No items to show.
 </template>
 
 <script>
+import ContentEntriesTable from './_table.vue'
 export default {
   props: ['workspace', 'content_type'],
+  components: {
+    ContentEntriesTable
+  },
   data () {
     return {
       content_entries: null
-    }
-  },
-  computed: {
-    tableHeaders() {
-      const headers = this.content_type.fields.map(field => {
-        return { text: field.name, value: field.slug }
-      })
-      headers.push({ text: 'Actions', value: 'actions', sortable: false })
-      return headers
     }
   },
   created () {
