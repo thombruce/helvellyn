@@ -1,3 +1,5 @@
+// QUESTION: Currently unused - can this be deleted?
+
 module.exports = {
   test: /\.s(c|a)ss$/,
   use: [
