@@ -14,15 +14,21 @@ v-app(:dark="$vuetify.theme.dark")
         v-list-item-icon
           v-icon mdi-plus
     template(v-slot:append)
+      v-list-item(
+        @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark"
+      )
+        v-list-item-action
+          v-icon mdi-{{ $vuetify.theme.dark ? 'eye' : 'eye-off' }}
+        v-list-item-title {{ $vuetify.theme.dark ? 'Light' : 'Dark' }} Mode
       .pa-2
-        v-btn(block :to="{ name: 'user_path', params: { user_id: currentUser.id } }") Account
+        v-btn(block :to="{ name: 'user_path', params: { user_id: currentUser.id } }") Admin
   v-app-bar(clipped-left fixed app)
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")
     v-btn(:to="{ name: 'root_path' }" text)
       v-toolbar-title Helvellyn
     v-spacer
-    .pt-5
-      v-switch(v-model="$vuetify.theme.dark")
+    v-btn(icon :to="{ name: 'user_path', params: { user_id: currentUser.id } }")
+      v-icon mdi-account
   v-content
     v-container
       slot

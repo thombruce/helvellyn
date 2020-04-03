@@ -10,7 +10,7 @@ v-list
   v-list-item(:to="{ name: 'edit_workspace_path', params: { workspace_id: workspace.slug } }")
     v-list-item-icon
       v-icon mdi-settings
-    v-list-item-content Edit
+    v-list-item-content Settings
 </template>
 
 <script>
