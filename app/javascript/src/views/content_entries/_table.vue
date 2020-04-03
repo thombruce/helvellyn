@@ -4,6 +4,12 @@ v-data-table(
   :items="content_entries"
   :items-per-page="5"
 )
+  template(v-slot:item.created_at="{ item }")
+    span {{ new Date(item.created_at).toLocaleDateString() }}
+  template(v-slot:item.updated_at="{ item }")
+    span {{ new Date(item.updated_at).toLocaleDateString() }}
+  template(v-slot:item.published_at="{ item }")
+    span {{ item.published ? new Date(item.published_at).toLocaleDateString() : '' }}
   template(v-slot:item.actions="{ item }")
     v-btn(:to="{ name: 'content_entry_path', params: { content_entry_id: item.slug } }" icon)
       v-icon(small) mdi-eye
@@ -20,6 +26,7 @@ export default {
         { text: this.content_type.fields[0].name, value: this.content_type.fields[0].slug },
         { text: 'Created', value: 'created_at' },
         { text: 'Updated', value: 'updated_at' },
+        { text: 'Published', value: 'published_at' },
         { text: 'Actions', value: 'actions', sortable: false }
       ]
     }
