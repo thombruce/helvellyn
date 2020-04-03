@@ -24,4 +24,6 @@ export default {
     }
   }
 }
+
+// TODO: https://vuetifyjs.com/en/components/data-tables/#paginate-and-sort-server-side
 </script>
