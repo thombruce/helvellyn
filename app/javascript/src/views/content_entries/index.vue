@@ -2,17 +2,17 @@
 div
   h2 All {{ content_type.plural }}
 
-  v-simple-table(v-if="content_entries")
-    thead
-      tr
-        th(v-for="field in content_type.fields") {{ field.name }}
-        th Actions
-    tbody
-      tr(v-for="content_entry in content_entries")
-        td(v-for="field in content_type.fields") {{ content_entry[field.slug] }}
-        td
-          router-link.mr-1(:to="{ name: 'content_entry_path', params: { content_entry_id: content_entry.slug } }") View
-          router-link.mr-1(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: content_entry.slug } }") Edit
+  div(v-if="content_entries")
+    v-data-table(
+      :headers="tableHeaders"
+      :items="content_entries"
+      :items-per-page="5"
+    )
+      template(v-slot:item.actions="{ item }")
+        v-btn(:to="{ name: 'content_entry_path', params: { content_entry_id: item.slug } }" icon)
+          v-icon(small) mdi-eye
+        v-btn(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: item.slug } }" icon)
+          v-icon(small) mdi-pencil
 
   p.lead.text-center(v-else) No items to show.
 </template>
@@ -23,6 +23,15 @@ export default {
   data () {
     return {
       content_entries: null
+    }
+  },
+  computed: {
+    tableHeaders() {
+      const headers = this.content_type.fields.map(field => {
+        return { text: field.name, value: field.slug }
+      })
+      headers.push({ text: 'Actions', value: 'actions', sortable: false })
+      return headers
     }
   },
   created () {
