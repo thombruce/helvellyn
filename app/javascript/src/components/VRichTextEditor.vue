@@ -44,9 +44,13 @@ div
           v-icon mdi-format-list-bulleted
         v-btn(icon :input-value="isActive.ordered_list()" @click="commands.ordered_list")
           v-icon mdi-format-list-numbered
-        //v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list")
-        //  v-icon mdi-format-list-checkbox
+        v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list")
+          v-icon mdi-format-list-checkbox
         v-divider.mx-2(vertical)
+        //v-btn(icon :input-value="isActive.table()" @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
+        //  v-icon mdi-table
+        //v-btn(icon :input-value="isActive.image()" @click="commands.image")
+        //  v-icon mdi-image
         //v-btn(icon :input-value="isActive.link()" @click="commands.link")
         //  v-icon mdi-link
         //v-divider.mx-2(vertical)
@@ -81,7 +85,12 @@ import {
   Link,
   Strike,
   Underline,
-  History
+  History,
+  Image,
+  Table,
+  TableHeader,
+  TableRow,
+  TableCell
 } from 'tiptap-extensions'
 
 export default {
@@ -127,6 +136,11 @@ export default {
         new Strike(),
         new Underline(),
         new History(),
+        new Image(),
+        new Table(),
+        new TableHeader(),
+        new TableCell(),
+        new TableRow()
       ],
       onUpdate: ({getHTML}) => {
         const state = getHTML()
