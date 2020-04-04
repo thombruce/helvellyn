@@ -13,8 +13,9 @@ export default {
       fieldTypeOptions: [
         'String',
         'Text',
+        'Rich Text',
         'Markdown'
-      ]
+      ] // TODO: These should be key,value pairs with parameterized values (needs database change)
     }
   },
   computed: {

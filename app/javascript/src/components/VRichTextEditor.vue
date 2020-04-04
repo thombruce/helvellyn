@@ -1,0 +1,148 @@
+<template lang="pug">
+div
+  v-label {{ label }}
+  v-card
+    editor-menu-bar(:editor="editor" v-slot="{ commands, isActive }")
+      v-toolbar(color="primary" dark dense flat)
+        v-menu
+          template(v-slot:activator="{ on }")
+            v-btn(
+              icon
+              v-on="on"
+              :input-value="isActive.heading()"
+            )
+              v-icon mdi-format-title
+          v-list
+            v-list-item(
+              :input-value="isActive.heading({ level: 1 })"
+              @click="commands.heading({ level: 1 })"
+            )
+              v-list-item-title Heading 1
+            v-list-item(
+              :input-value="isActive.heading({ level: 2 })"
+              @click="commands.heading({ level: 2 })"
+            )
+              v-list-item-title Heading 2
+            v-list-item(
+              :input-value="isActive.heading({ level: 3 })"
+              @click="commands.heading({ level: 3 })"
+            )
+              v-list-item-title Heading 3
+        v-divider.mx-2(vertical)
+        v-btn(icon :input-value="isActive.bold()" @click="commands.bold")
+          v-icon mdi-format-bold
+        v-btn(icon :input-value="isActive.italic()" @click="commands.italic")
+          v-icon mdi-format-italic
+        v-btn(icon :input-value="isActive.strike()" @click="commands.strike")
+          v-icon mdi-format-strikethrough
+        v-divider.mx-2(vertical)
+        v-btn(icon :input-value="isActive.horizontal_rule()" @click="commands.horizontal_rule")
+          v-icon mdi-minus
+        v-btn(icon :input-value="isActive.blockquote()" @click="commands.blockquote")
+          v-icon mdi-format-quote-close
+        v-btn(icon :input-value="isActive.bullet_list()" @click="commands.bullet_list")
+          v-icon mdi-format-list-bulleted
+        v-btn(icon :input-value="isActive.ordered_list()" @click="commands.ordered_list")
+          v-icon mdi-format-list-numbered
+        //v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list")
+        //  v-icon mdi-format-list-checkbox
+        v-divider.mx-2(vertical)
+        //v-btn(icon :input-value="isActive.link()" @click="commands.link")
+        //  v-icon mdi-link
+        //v-divider.mx-2(vertical)
+        v-btn(icon :input-value="isActive.code()" @click="commands.code")
+          v-icon mdi-code-tags
+        v-btn(icon :input-value="isActive.code_block()" @click="commands.code_block")
+          v-icon mdi-code-brackets
+        v-divider.mx-2(vertical)
+        v-btn(icon @click="commands.undo")
+          v-icon mdi-undo
+        v-btn(icon @click="commands.redo")
+          v-icon mdi-redo
+    v-container
+      editor-content(:editor="editor" v-model="inputVal")
+</template>
+
+<script>
+import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
+import {
+  Blockquote,
+  CodeBlock,
+  HorizontalRule,
+  Heading,
+  OrderedList,
+  BulletList,
+  ListItem,
+  TodoItem,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  History
+} from 'tiptap-extensions'
+
+export default {
+  props: [
+    'label',
+    'value'
+  ],
+  components: {
+    EditorContent,
+    EditorMenuBar
+  },
+  data() {
+    return {
+      editor: null
+    }
+  },
+  computed: {
+    inputVal: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('input', val);
+      }
+    }
+  },
+  mounted() {
+    this.editor = new Editor({
+      extensions: [
+        new Blockquote(),
+        new CodeBlock(),
+        new HorizontalRule(),
+        new Heading({ levels: [1, 2, 3] }),
+        new BulletList(),
+        new OrderedList(),
+        new ListItem(),
+        new TodoItem(),
+        new TodoList(),
+        new Bold(),
+        new Code(),
+        new Italic(),
+        new Link(),
+        new Strike(),
+        new Underline(),
+        new History(),
+      ],
+      onUpdate: ({getHTML}) => {
+        const state = getHTML()
+        this.$emit('input', state)
+      },
+      content: this.value
+    })
+  },
+  beforeDestroy() {
+    this.editor.destroy()
+  }
+}
+</script>
+
+<style lang="scss">
+.ProseMirror[contenteditable]:focus {
+  outline: 0px solid transparent;
+}
+</style>

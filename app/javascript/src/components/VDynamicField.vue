@@ -3,7 +3,8 @@ component(:is="fieldComponent" :label="label" v-model="inputVal")
 </template>
 
 <script>
-import VWysiwyg from './VWysiwyg.vue'
+import VRichTextEditor from './VRichTextEditor.vue'
+import VMarkdownEditor from './VMarkdownEditor.vue'
 
 export default {
   props: [
@@ -12,7 +13,8 @@ export default {
     'type'
   ],
   components: {
-    VWysiwyg
+    VRichTextEditor,
+    VMarkdownEditor
   },
   computed: {
     inputVal: {
@@ -29,8 +31,10 @@ export default {
           return 'v-text-field'
         case 'Text':
           return 'v-textarea'
+        case 'Rich Text':
+          return 'v-rich-text-editor'
         case 'Markdown':
-          return 'v-wysiwyg'
+          return 'v-markdown-editor'
         default:
           return 'v-text-field'
       }

@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   v-label {{ label }}
-  .wysiwyg.mb-4
+  .markdown-editor.mb-4
     v-tabs-slider
     v-tabs(v-model="tab")
       v-tab(key="editTab")
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss">
-.wysiwyg {
+.markdown-editor {
   textarea {
     height: 300px;
   }
