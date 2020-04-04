@@ -1,13 +1,15 @@
 <template lang="pug">
-div
-  h4 {{ inputVal.name || 'New Field' }}
+v-card.mb-5
+  v-container
+    h4 {{ inputVal.name || 'New Field' }}
 
-  v-row
-    v-col(cols="12" sm="6")
-      v-text-field(label="Name" v-model="inputVal.name")
-    v-col(cols="12" sm="6")
-      v-dynamic-field-type-select(label="Type" v-model="inputVal.type")
-      v-switch(v-if="canSlug" v-model="inputVal.sluggable" label="Sluggable" hint="Use this field to create a URL friendly ID")
+    v-row
+      v-col(cols="12" sm="6")
+        v-text-field(label="Name" v-model="inputVal.name")
+      v-col(cols="12" :sm="inputVal.type === 'String' ? '4' : '6'")
+        v-dynamic-field-type-select(label="Type" v-model="inputVal.type")
+      v-col(cols="12" sm="2")
+        v-switch(v-if="canSlug" v-model="inputVal.sluggable" label="Sluggable" hint="Use this field to create a URL friendly ID")
 </template>
 
 <script>

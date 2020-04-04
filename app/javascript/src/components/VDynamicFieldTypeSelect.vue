@@ -1,23 +1,18 @@
 <template lang="pug">
-v-select(:label="label" :items="fieldTypeOptions" v-model="inputVal")
+v-select(:label="label" :items="field_types" v-model="inputVal")
 </template>
 
 <script>
+import FieldTypes from '../mixins/field_types.js'
+
 export default {
   props: [
     'label',
     'value'
   ],
-  data () {
-    return {
-      fieldTypeOptions: [
-        'String',
-        'Text',
-        'Rich Text',
-        'Markdown'
-      ] // TODO: These should be key,value pairs with parameterized values (needs database change)
-    }
-  },
+  mixins: [
+    FieldTypes
+  ],
   computed: {
     inputVal: {
       get() {

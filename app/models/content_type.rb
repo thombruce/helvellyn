@@ -25,6 +25,8 @@ class ContentType < ApplicationRecord
   validate :sluggable_fields_do_not_exceed_one
   validate :sluggable_field_must_be_a_string
 
+  # TODO: Validate presence of field name and type
+
   def dynamic_attributes
     fields&.map { |field| field[:slug] }
   end
