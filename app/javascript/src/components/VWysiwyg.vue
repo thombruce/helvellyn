@@ -1,22 +1,33 @@
 <template lang="pug">
 div
   v-label {{ label }}
-  tui-editor(v-model="inputVal")
+  .wysiwyg.mb-4
+    v-tabs-slider
+    v-tabs(v-model="tab")
+      v-tab(key="editTab")
+        | Edit
+      v-tab(key="previewTab")
+        | Preview
+    v-tabs-items(v-model="tab")
+      v-tab-item(key="editTab")
+        v-textarea(v-model="inputVal" no-resize hide-details)
+      v-tab-item(key="previewTab")
+        .preview(v-html="asHtml")
 </template>
 
 <script>
-import 'tui-editor/dist/tui-editor.css'
-import 'tui-editor/dist/tui-editor-contents.css'
-import 'codemirror/lib/codemirror.css'
-import Editor from '@toast-ui/vue-editor/src/Editor.vue'
+import marked from 'marked'
+import DOMPurify from 'dompurify'
 
 export default {
   props: [
     'label',
     'value'
   ],
-  components: {
-    'tui-editor': Editor
+  data() {
+    return {
+      tab: null
+    }
   },
   computed: {
     inputVal: {
@@ -26,7 +37,24 @@ export default {
       set(val) {
         this.$emit('input', val);
       }
+    },
+    asHtml() {
+      return this.value ? DOMPurify.sanitize(marked(this.value)) : ''
     }
   }
 }
 </script>
+
+<style lang="scss">
+.wysiwyg {
+  textarea {
+    height: 300px;
+  }
+  div.preview {
+    height: 300px;
+    margin-top: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+</style>
