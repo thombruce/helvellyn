@@ -39,18 +39,6 @@ class ContentEntry < ApplicationRecord
     if key = find_getter(method_name)
       self.data[key]
     elsif key = find_setter(method_name)
-      # TODO: Review this code.
-      field_type = content_type.fields.find { |field| field[:slug] == key.to_s }[:type]
-      if field_type == 'Markdown'
-        self.generated_fields[key.to_s + '_as_html'] =
-          Redcarpet::Markdown.new(
-            HelvellynRenderer,
-            no_intra_emphasis: true,
-            tables: true,
-            fenced_code_blocks: true,
-            strikethrough: true
-          ).render(arguments.first)
-      end
       self.data[key] = arguments.first
     else
       super
@@ -92,3 +80,27 @@ class ContentEntry < ApplicationRecord
     dynamic_setters.find { |ds| ds == method_name }.to_s.chomp('=').to_sym
   end
 end
+
+# Legacy
+
+# def method_missing(method_name, *arguments, &block)
+#   if key = find_getter(method_name)
+#     self.data[key]
+#   elsif key = find_setter(method_name)
+#     # TODO: Review this code.
+#     field_type = content_type.fields.find { |field| field[:slug] == key.to_s }[:type]
+#     if field_type == 'Markdown'
+#       self.generated_fields[key.to_s + '_as_html'] =
+#         Redcarpet::Markdown.new(
+#           HelvellynRenderer,
+#           no_intra_emphasis: true,
+#           tables: true,
+#           fenced_code_blocks: true,
+#           strikethrough: true
+#         ).render(arguments.first)
+#     end
+#     self.data[key] = arguments.first
+#   else
+#     super
+#   end
+# end
