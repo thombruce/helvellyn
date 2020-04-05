@@ -1,6 +1,8 @@
 class ContentEntry < ApplicationRecord
   extend FriendlyId
 
+  resourcify
+
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where('published_at < ?', DateTime.now) }
 

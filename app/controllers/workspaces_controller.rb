@@ -3,7 +3,7 @@ class WorkspacesController < ApplicationController
 
   # GET /workspaces.json
   def index
-    @workspaces = policy_scope(Workspace)
+    @workspaces = policy_scope(current_user.workspaces)
   end
 
   # GET /workspaces/:id.json
@@ -27,6 +27,7 @@ class WorkspacesController < ApplicationController
     authorize @workspace
 
     if @workspace.save
+      current_user.add_role :admin, @workspace
       render :show, status: :created, location: @workspace
     else
       render json: @workspace.errors, status: :unprocessable_entity

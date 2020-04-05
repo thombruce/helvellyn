@@ -28,6 +28,7 @@ gem 'rack-cors'
 # Auth
 gem 'warden'
 gem 'pundit'
+gem 'rolify'
 # Use JSON Web Tokens
 gem 'jwt'
 

@@ -169,6 +169,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.5.0)
+    rolify (5.2.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.0)
@@ -272,6 +273,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.0)
   redcarpet
+  rolify
   rspec-rails (~> 4.0.0.beta3)
   rubocop (~> 0.77.0)
   sass-rails (~> 5)

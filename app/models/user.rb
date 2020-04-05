@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  rolify
 
   has_many :sessions, dependent: :destroy
 

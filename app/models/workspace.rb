@@ -1,6 +1,8 @@
 class Workspace < ApplicationRecord
   extend FriendlyId
 
+  resourcify
+
   belongs_to :user
 
   friendly_id :title, use: :slugged

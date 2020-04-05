@@ -31,6 +31,7 @@ class ContentEntriesController < ApplicationController
     authorize @content_entry
 
     if @content_entry.save
+      current_user.add_role :author, @content_entry
       render :show, status: :created, location: [@workspace, @content_type, @content_entry]
     else
       render json: @content_entry.errors, status: :unprocessable_entity

@@ -7,6 +7,14 @@ class WorkspacePolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    user&.has_role?(:admin, record)
+  end
+
+  def destroy?
+    user&.has_role?(:admin, record)
+  end
+
   class Scope < Scope
     def resolve
       scope.all
