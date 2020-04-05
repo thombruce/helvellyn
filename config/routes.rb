@@ -5,7 +5,6 @@ Rails.application.routes.draw do
         resources :content_types do
           resources :content_entries
         end
-        resources :posts
       end
 
       resources :sessions, only: [:new, :create, :destroy] do
