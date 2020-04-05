@@ -1,17 +1,16 @@
 <template lang="pug">
 div
   h1 Edit User
-  user-form(v-if="user" :user="user", :submit="update")
+  v-form(ref="form" :model="user")
+    v-text-field(label="Name" v-model="user.name" :error-messages="user.errors.name")
+    v-text-field(label="Email" v-model="user.email" :error-messages="user.errors.email")
+    v-text-field(label="Password" type="password" v-model="user.password" :error-messages="user.errors.password")
+    v-btn(color="primary" @click="update") Submit
   a(v-on:click.stop="destroy" href="javascript:;") Delete
-  router-link(:to="{ name: 'user_path' }") Back
 </template>
 
 <script>
-import UserForm from './_form.vue'
 export default {
-  components: {
-    UserForm
-  },
   data() {
     return {
       user: {
@@ -28,8 +27,8 @@ export default {
   methods: {
     fetchData () {
       this.user = null
-      this.$store.dispatch('users/show', this.$route.params.user_id).then(() => {
-        this.user = this.$store.state.users.list[this.$route.params.user_id]
+      this.$store.dispatch('users/show', this.currentUser.id).then(() => {
+        this.user = this.$store.state.users.list[this.currentUser.id]
       })
     },
     update: function () {

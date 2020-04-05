@@ -17,20 +17,17 @@ import ContentEntryShow from './views/content_entries/show.vue'
 import ContentEntryNew from './views/content_entries/new.vue'
 import ContentEntryEdit from './views/content_entries/edit.vue'
 
-import SessionNew from './views/sessions/new.vue'
-
-import UserShow from './views/users/show.vue'
-import UserNew from './views/users/new.vue'
-import UserEdit from './views/users/edit.vue'
+import Login from './views/authentication/login.vue'
+import Signup from './views/authentication/signup.vue'
+import Account from './views/authentication/account.vue'
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: WorkspaceIndex, name: 'root_path' },
-    { path: '/sessions/new', component: SessionNew, name: 'new_session_path', meta: { layout: "authentication" } },
-    { path: '/users/new', component: UserNew, name: 'new_user_path', meta: { layout: "authentication" } },
-    { path: '/users/:user_id', component: UserShow, name: 'user_path' },
-    { path: '/users/:user_id/edit', component: UserEdit, name: 'edit_user_path' },
+    { path: '/login', component: Login, name: 'login_path', meta: { layout: "authentication" } },
+    { path: '/signup', component: Signup, name: 'signup_path', meta: { layout: "authentication" } },
+    { path: '/account', component: Account, name: 'account_path' },
     { path: '/workspaces', component: WorkspaceIndex, name: 'workspaces_path' },
     { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
     { path: '/:workspace_id/edit', component: WorkspaceEdit, name: 'edit_workspace_path' },
@@ -52,12 +49,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/sessions/new', '/users/new']
+  const publicPages = ['/login', '/signup']
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = localStorage.getItem('user-token')
 
   if (authRequired && !loggedIn) {
-    return next('/sessions/new')
+    return next('/login')
   } else if (!authRequired && loggedIn) {
     return next('/')
   }
