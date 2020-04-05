@@ -7,6 +7,11 @@ import WorkspaceShow from './views/workspaces/show.vue'
 import WorkspaceNew from './views/workspaces/new.vue'
 import WorkspaceEdit from './views/workspaces/edit.vue'
 
+import UserIndex from './views/users/index.vue'
+import UserShow from './views/users/show.vue'
+import UserNew from './views/users/new.vue'
+import UserEdit from './views/users/edit.vue'
+
 import ContentTypeIndex from './views/content_types/index.vue'
 import ContentTypeShow from './views/content_types/show.vue'
 import ContentTypeNew from './views/content_types/new.vue'
@@ -34,6 +39,10 @@ const router = new VueRouter({
     { path: '/:workspace_id', component: WorkspaceShow,
       children: [
         { path: '', component: ContentTypeIndex, name: 'content_types_path' },
+        { path: 'users', component: UserIndex, name: 'users_path' },
+        { path: 'users/new', component: UserNew, name: 'new_user_path' },
+        { path: 'users/:user_id/edit', component: UserEdit, name: 'edit_user_path' },
+        { path: 'users/:user_id', component: UserShow, name: 'user_path' },
         { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
         { path: ':content_type_id/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
         { path: ':content_type_id', component: ContentTypeShow,

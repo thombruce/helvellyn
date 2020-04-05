@@ -7,7 +7,7 @@ v-list
     v-list-item-icon
       v-icon mdi-plus
     v-list-item-content New Type
-  v-list-item(to="#")
+  v-list-item(:to="{ name: 'users_path', params: { workspace_id: workspace.slug } }")
     v-list-item-icon
       v-icon mdi-account-multiple
     v-list-item-content Users

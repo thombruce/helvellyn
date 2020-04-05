@@ -1,7 +1,7 @@
 import Vue from 'vue/dist/vue.esm'
 import axios from '../axios'
 
-import prototype from './prototypes/base'
+import prototype from './prototypes/workspace'
 
 const state = () => ({
   list: {}
@@ -77,6 +77,9 @@ const mutations = {
     if (params.slug != params.data.slug) {
       Vue.delete(state.list, params.slug)
     }
+  },
+  addUsers(state, params) {
+    state.list[params.workspace_id] = { ...state.list[params.workspace_id], ...prototype, ...{ users: params.users } }
   },
   remove(state, id) {
     Vue.delete(state.list, id)

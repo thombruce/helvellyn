@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope '/api', format: false, defaults: { format: 'json' } do
     constraints lambda { |req| req.format == :json } do # TODO: Does the above line now render this one redundant?
       resources :workspaces, constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i } do
+        resources :users
         resources :content_types do
           resources :content_entries
         end
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       # Pretty Routes
       scope as: 'pretty' do
         resources :workspaces, path: '', constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i }, only: [:show] do
+          resources :users
           resources :content_types, path: '', only: [] do
             resources :content_entries, path: '', only: [:index, :show]
           end

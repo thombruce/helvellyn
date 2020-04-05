@@ -3,7 +3,9 @@ class Workspace < ApplicationRecord
 
   resourcify
 
-  belongs_to :user
+  belongs_to :user # TODO: Change to created_by to avoid confusion with roles/members
+
+  has_many :users, through: :roles, class_name: 'User', source: :users
 
   friendly_id :title, use: :slugged
 
