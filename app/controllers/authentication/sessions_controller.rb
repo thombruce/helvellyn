@@ -22,7 +22,7 @@ class Authentication::SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.authenticate(permitted_attributes(Session))
+    @session = Session.authenticate(permitted_attributes([:authentication, Session]))
     authorize [:authentication, @session]
 
     if @session.save

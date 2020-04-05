@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     signUp: function () {
-      this.$store.dispatch('authentication/users/create', { user: this.user }).then(() => {
+      this.$store.dispatch('signup', { user: this.user }).then(() => {
         this.$router.push('/')
       }).catch((errors) => {
         this.user.errors = errors

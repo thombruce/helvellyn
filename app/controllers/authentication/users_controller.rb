@@ -17,7 +17,7 @@ class Authentication::UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(permitted_attributes(User))
+    @user = User.new(permitted_attributes([:authentication, User]))
     authorize [:authentication, @user]
 
     if @user.save
@@ -35,7 +35,7 @@ class Authentication::UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    if @user.update(permitted_attributes(@user))
+    if @user.update(permitted_attributes([:authentication, @user]))
       render :show, status: :ok, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
