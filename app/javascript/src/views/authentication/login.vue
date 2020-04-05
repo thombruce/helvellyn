@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     login: function () {
-      this.$store.dispatch('sessions/create', { session: this.user }).then(() => {
+      this.$store.dispatch('authentication/sessions/create', { session: this.user }).then(() => {
         this.$router.push('/')
       }).catch((errors) => {
         this.user.errors = errors

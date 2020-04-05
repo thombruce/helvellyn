@@ -1,6 +1,6 @@
-import axios from '../axios'
+import axios from '../../axios'
 
-import prototype from './prototypes/base'
+import prototype from '../prototypes/base'
 
 const state = () => ({
   list: {}
@@ -11,7 +11,7 @@ const getters = {}
 const actions = {
   show({ commit }, id) {
     return axios
-      .get('/users/' + id)
+      .get('/account')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -21,7 +21,7 @@ const actions = {
   },
   create({ commit }, payload) {
     return axios
-      .post('/users', payload)
+      .post('/signup', payload)
       .then((res) => {
         if (res.data.jwt) {
           localStorage.setItem('user-token', res.data.jwt)
@@ -34,7 +34,7 @@ const actions = {
   },
   update({ commit }, payload) {
     return axios
-      .patch('/users/' + payload.id, payload)
+      .patch('/account', payload)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -44,7 +44,7 @@ const actions = {
   },
   destroy({ commit }, id) {
     return axios
-      .delete('/users/' + id)
+      .delete('/account')
       .then((res) => {
         localStorage.removeItem('user-token')
         commit('remove', id)

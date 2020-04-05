@@ -7,10 +7,16 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :sessions, only: [:new, :create, :destroy] do
-        delete 'current', action: :destroy, on: :collection
+      scope module: 'authentication' do
+        post 'login', to: 'sessions#create'
+        post 'signup', to: 'users#create'
+        delete 'signout', to: 'sessions#destroy'
+
+        scope '/account' do
+          resources :sessions, except: [:new, :create, :edit, :update]
+          resource :user, path: '', except: [:new, :create]
+        end
       end
-      resources :users, except: [:index]
 
       # Pretty Routes
       scope as: 'pretty' do

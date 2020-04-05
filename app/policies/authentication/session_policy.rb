@@ -1,10 +1,10 @@
-class SessionPolicy < ApplicationPolicy
+class Authentication::SessionPolicy < ApplicationPolicy
   def permitted_attributes
     [:login, :password]
   end
 
-  def new?
-    !user
+  def show?
+    user && user == record.user
   end
 
   def create?

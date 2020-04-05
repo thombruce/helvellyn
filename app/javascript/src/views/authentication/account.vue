@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div(v-if="user")
   h1 Edit User
   v-form(ref="form" :model="user")
     v-text-field(label="Name" v-model="user.name" :error-messages="user.errors.name")
@@ -27,19 +27,19 @@ export default {
   methods: {
     fetchData () {
       this.user = null
-      this.$store.dispatch('users/show', this.currentUser.id).then(() => {
-        this.user = this.$store.state.users.list[this.currentUser.id]
+      this.$store.dispatch('authentication/users/show', this.currentUser.id).then(() => {
+        this.user = this.$store.state.authentication.users.list[this.currentUser.id]
       })
     },
     update: function () {
-      this.$store.dispatch('users/update', { id: this.user.id, user: this.user }).then(() => {
+      this.$store.dispatch('authentication/users/update', { id: this.user.id, user: this.user }).then(() => {
         this.$router.push('/')
       }).catch((errors) => {
         this.user.errors = errors
       })
     },
     destroy: function () {
-      this.$store.dispatch('users/destroy', this.user.id).then(() => {
+      this.$store.dispatch('authentication/users/destroy', this.user.id).then(() => {
         this.$router.push('/')
       })
     }

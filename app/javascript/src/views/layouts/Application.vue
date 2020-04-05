@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     signOut: function () {
-      this.$store.dispatch('sessions/destroy').then(() => {
+      this.$store.dispatch('authentication/sessions/destroy').then(() => {
         this.$router.push('/login')
       })
     }

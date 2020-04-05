@@ -1,18 +1,14 @@
-class UserPolicy < ApplicationPolicy
+class Authentication::UserPolicy < ApplicationPolicy
   def permitted_attributes
     [:name, :email, :password]
   end
 
-  def new?
-    !user
+  def show?
+    user && user == record
   end
 
   def create?
     !user
-  end
-
-  def edit?
-    user && user == record
   end
 
   def update?

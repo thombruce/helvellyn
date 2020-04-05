@@ -1,6 +1,6 @@
-import axios from '../axios'
+import axios from '../../axios'
 
-import prototype from './prototypes/base'
+import prototype from '../prototypes/base'
 
 const state = () => ({
   list: {}
@@ -11,7 +11,7 @@ const getters = {}
 const actions = {
   create({ dispatch }, payload) {
     return axios
-      .post('/sessions', payload)
+      .post('/login', payload)
       .then((res) => {
         if (res.data.jwt) {
           localStorage.setItem('user-token', res.data.jwt)
@@ -24,7 +24,7 @@ const actions = {
   },
   destroy({ commit }, id) {
     return axios
-      .delete('/sessions/current')
+      .delete('/signout')
       .then((res) => {
         localStorage.removeItem('user-token')
       })
