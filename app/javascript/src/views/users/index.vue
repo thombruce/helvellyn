@@ -14,7 +14,7 @@ div
       tr(v-for="user in users")
         td
           router-link(:to="{ name: 'user_path', params: { user_id: user.id } }") {{ user.name }}
-        td TODO:
+        td {{ user.role }}
         td
           router-link.mr-1(:to="{ name: 'user_path', params: { user_id: user.id } }") View
           router-link.mr-1(:to="{ name: 'edit_user_path', params: { user_id: user.id } }") Edit

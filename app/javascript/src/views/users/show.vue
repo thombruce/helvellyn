@@ -5,6 +5,10 @@ div(v-if="user")
     strong Name
     | &nbsp;
     span {{ user.name }}
+  p
+    strong Role
+    | &nbsp;
+    span {{ user.role }}
   router-link(:to="{ name: 'edit_user_path', params: { workspace_id: workspace.slug } }") Edit
 </template>
 
