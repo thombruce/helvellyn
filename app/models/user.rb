@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
 
-  has_many :workspaces, dependent: :destroy
+  has_many :workspaces, dependent: :destroy, inverse_of: 'created_by'
 
   validates :name, presence: true
 

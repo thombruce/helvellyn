@@ -8,6 +8,11 @@ class ContentEntry < ApplicationRecord
 
   belongs_to :content_type
 
+  # TODO: Associated to user via :author role. But if user leaves app, :author becomes
+  #       empty. Maybe an optional Author type field that stores key info... indefinitely.
+  #       Perhaps. Something to maybe be added to content_type models: Author field_type
+  #       that would... associate some author with the content_entry.
+
   friendly_id :dynamic_slug_field, use: [:slugged, :scoped], scope: :content_type
 
   serialize :data, HashSerializer
