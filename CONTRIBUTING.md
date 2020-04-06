@@ -1,3 +1,5 @@
+# Guide to Contributing
+
 ## Introduction
 
 Thank you for considering contributing to Helvellyn. Right now, I really want to know what you want from a CMS. If you'd really like to see a feature added to Helvellyn, please jump straight to [How to Suggest a Feature or Enhancement](#How-to-Suggest-a-Feature-or-Enhancement).
