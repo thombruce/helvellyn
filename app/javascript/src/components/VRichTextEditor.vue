@@ -44,8 +44,8 @@ div
           v-icon mdi-format-list-bulleted
         v-btn(icon :input-value="isActive.ordered_list()" @click="commands.ordered_list")
           v-icon mdi-format-list-numbered
-        //v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list")
-        //  v-icon mdi-format-list-checkbox
+        v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list")
+          v-icon mdi-format-list-checkbox
         v-divider.mx-2(vertical)
         //v-btn(icon :input-value="isActive.table()" @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
         //  v-icon mdi-table
@@ -171,10 +171,60 @@ export default {
   outline: 0px solid transparent;
 }
 
-.rte-content pre > code {
-  padding:10px;
-  &:before, &:after {
-    content: "";
+.rte-content {
+  pre > code {
+    padding:10px;
+    &:before, &:after {
+      content: "";
+    }
+  }
+
+  ul[data-type="todo_list"] {
+    padding-left: 0;
+
+    li[data-type="todo_item"] {
+      display: flex;
+      flex-direction: row;
+
+      .todo-checkbox {
+        border: 2px solid black;
+        height: 0.9em;
+        width: 0.9em;
+        box-sizing: border-box;
+        margin-right: 10px;
+        margin-top: 0.3rem;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: pointer;
+        border-radius: 0.2em;
+        background-color: transparent;
+        transition: 0.4s background;
+      }
+      .todo-content {
+        flex: 1;
+        > p:last-of-type {
+          margin-bottom: 0;
+        }
+        > ul[data-type="todo_list"] {
+          margin: .5rem 0;
+        }
+      }
+
+      &[data-done="true"] {
+        > .todo-content {
+          > p {
+            text-decoration: line-through;
+          }
+        }
+        > .todo-checkbox {
+          background-color: black;
+        }
+      }
+
+      &[data-done="false"] {
+        text-decoration: none;
+      }
+    }
   }
 }
 </style>
