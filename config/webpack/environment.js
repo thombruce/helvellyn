@@ -18,6 +18,11 @@ const resolver = {
 }
 environment.config.merge(resolver)
 
+const compiler = {
+  runtimeCompiler: true
+}
+environment.config.merge(compiler)
+
 module.exports = environment
 
 // [1] Removed custom SCSS loader as it appears to conflict with Vuetify.
