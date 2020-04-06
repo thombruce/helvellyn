@@ -10,7 +10,7 @@ A Ruby on Rails based content management system that exposes a customisable API 
 ## Table of Contents
 
 1. [Dependencies](#dependencies)
-2. [Development](#devlopment)
+2. [Development](#development)
 
 ## Dependencies
 
