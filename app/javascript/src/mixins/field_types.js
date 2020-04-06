@@ -17,11 +17,11 @@ const field_types = {
           value: 'Rich Text',
           icon: 'mdi-format-pilcrow'
         },
-        {
-          text: 'Markdown',
-          value: 'Markdown',
-          icon: 'mdi-markdown'
-        }
+        // {
+        //   text: 'Markdown',
+        //   value: 'Markdown',
+        //   icon: 'mdi-markdown'
+        // }
       ]
     }
   }
