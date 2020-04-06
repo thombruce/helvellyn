@@ -1,4 +1,7 @@
-# Helvellyn [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+# Helvellyn
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![Contributions](https://img.shields.io/badge/Contributions-welcome-blue.svg)](CONTRIBUTING.md)
 
 A Ruby on Rails based content management system that exposes a customisable API for publishing content.
 
