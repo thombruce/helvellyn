@@ -1,4 +1,4 @@
-# Helvellyn
+# Helvellyn [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 A Ruby on Rails based content management system that exposes a customisable API for publishing content.
 
@@ -18,6 +18,6 @@ Helvellyn devlopment uses [GitHub Flow](https://guides.github.com/introduction/f
 ## TODO:
 
 * Update this README with useful information
-* Add Contributing Guidelines
-* Add Code of Conduct
+* Add Contributing Guidelines: https://github.com/nayafia/contributing-template/blob/master/CONTRIBUTING-template.md
+* Add Code of Conduct: 
 * See: https://opensource.guide/starting-a-project/#launching-your-own-open-source-project for more info
