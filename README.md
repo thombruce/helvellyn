@@ -14,7 +14,7 @@ A Ruby on Rails based content management system that exposes a customisable API 
 
 ## Getting Started
 
-```
+```shell
 git clone https://github.com/thombruce/helvellyn.git
 cd helvellyn
 rake db:setup
