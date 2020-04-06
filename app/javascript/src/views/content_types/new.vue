@@ -17,6 +17,7 @@ export default {
       content_type: {
         name: '',
         slug: '',
+        publishable: true,
         fields: [],
         errors: []
       }

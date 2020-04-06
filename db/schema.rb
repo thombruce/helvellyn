@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_233129) do
+ActiveRecord::Schema.define(version: 2020_04_06_044233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_233129) do
     t.string "slug"
     t.jsonb "fields"
     t.string "plural"
+    t.boolean "publishable", default: true
     t.index ["workspace_id", "slug"], name: "index_content_types_on_workspace_id_and_slug", unique: true
     t.index ["workspace_id"], name: "index_content_types_on_workspace_id"
   end

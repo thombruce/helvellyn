@@ -4,6 +4,7 @@ class ContentTypePolicy < ApplicationPolicy
       :name,
       :plural,
       :slug,
+      :publishable,
       fields: [
         :name,
         :type,

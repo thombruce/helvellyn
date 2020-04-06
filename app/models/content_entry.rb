@@ -18,6 +18,10 @@ class ContentEntry < ApplicationRecord
   validates_format_of :slug, with: /\A(?:[a-z0-9][_-]?)*[a-z0-9]\z/i, message: 'must only contain letters, numbers, dashes and underscores (e.g. my_slug-1)'
   validates_format_of :slug, without: /\A\d+\Z/, message: 'cannot contain only numbers'
 
+  # TODO: We essentially have a frontend validation of whether content is publishable right now.
+  #       We should validate here to see that the content_type is publishable to prevent
+  #       non-publishable content types from becoming public.
+
   def draft?
     !self.published_at
   end

@@ -10,6 +10,10 @@ v-form(ref="form" :model="content_type")
 
   v-text-field(label="Slug" :prefix="workspaceUrl" v-model="content_type.slug" :error-messages="content_type.errors.slug" hint="The URL path of your content type (e.g. posts)")
 
+  h3 Publishing Settings
+
+  v-checkbox(v-model="content_type.publishable" label="Publishable" hint="Whether or not it should be possible to publish the content, making it public.")
+
   div.mb-5
     h3 Custom Fields
 
