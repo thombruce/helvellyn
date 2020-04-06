@@ -18,4 +18,6 @@ Helvellyn devlopment uses [GitHub Flow](https://guides.github.com/introduction/f
 ## TODO:
 
 * Update this README with useful information
-* Add an open source license
+* Add Contributing Guidelines
+* Add Code of Conduct
+* See: https://opensource.guide/starting-a-project/#launching-your-own-open-source-project for more info
