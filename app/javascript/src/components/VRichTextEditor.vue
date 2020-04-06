@@ -64,7 +64,7 @@ div
         v-btn(icon @click="commands.redo")
           v-icon mdi-redo
     v-container
-      editor-content(:editor="editor" v-model="inputVal")
+      editor-content.rte-content(:editor="editor" v-model="inputVal")
 </template>
 
 <script>
@@ -169,5 +169,12 @@ export default {
 <style lang="scss">
 .ProseMirror[contenteditable]:focus {
   outline: 0px solid transparent;
+}
+
+.rte-content pre > code {
+  padding:10px;
+  &:before, &:after {
+    content: "";
+  }
 }
 </style>
