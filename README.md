@@ -9,17 +9,17 @@ A Ruby on Rails based content management system that exposes a customisable API 
 
 ## Table of Contents
 
-1. [Dependencies](#dependencies)
+1. [Getting Started](#getting-started)
 2. [Development](#development)
 
-## Dependencies
+## Getting Started
 
-- Ruby
-- Ruby on Rails
-- Vue.js
-- Vuex
-- Vuetify
-- Webpack
+```
+git clone https://github.com/thombruce/helvellyn.git
+cd helvellyn
+rake db:setup
+rails s
+```
 
 ## Development
 
