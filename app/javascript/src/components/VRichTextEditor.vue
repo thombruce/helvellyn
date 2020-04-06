@@ -44,8 +44,8 @@ div
           v-icon mdi-format-list-bulleted
         v-btn(icon :input-value="isActive.ordered_list()" @click="commands.ordered_list")
           v-icon mdi-format-list-numbered
-        v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list")
-          v-icon mdi-format-list-checkbox
+        //v-btn(icon :input-value="isActive.todo_list()" @click="commands.todo_list") // [1]
+        //  v-icon mdi-format-list-checkbox // [1]
         v-divider.mx-2(vertical)
         //v-btn(icon :input-value="isActive.table()" @click="commands.createTable({rowsCount: 3, colsCount: 3, withHeaderRow: false })")
         //  v-icon mdi-table
@@ -77,8 +77,8 @@ import {
   OrderedList,
   BulletList,
   ListItem,
-  TodoItem,
-  TodoList,
+  //TodoItem, // [1]
+  //TodoList, // [1]
   Bold,
   Code,
   Italic,
@@ -127,8 +127,8 @@ export default {
         new BulletList(),
         new OrderedList(),
         new ListItem(),
-        new TodoItem(),
-        new TodoList(),
+        //new TodoItem(), // [1]
+        //new TodoList(), // [1]
         new Bold(),
         new Code(),
         new Italic(),
@@ -159,11 +159,23 @@ export default {
 //       - from url
 //       - upload
 // TODO: Add table support
-// TODO: Add todo list support
 // TODO: Add formatting to display for better previewing
 //       - blockquote
 //       - image max width
 //       - appropriate margins and padding
+
+// NOTE: Todo list support pending on resolution of [1]
+
+// [1] Todo list fails for some reason.
+//     Possibly... runtime-only build issue? But... we definitely have Vue setup for both... locally, anyway.
+//     Initial error is: "TypeError: h.hasAttribute is not a function"
+//
+//     Possibly related issues:
+//     - https://github.com/scrumpy/tiptap/issues/69
+//     - https://github.com/scrumpy/tiptap/issues/428
+//
+//     Possible solution:
+//     - https://github.com/scrumpy/tiptap/pull/576
 </script>
 
 <style lang="scss">
@@ -179,52 +191,52 @@ export default {
     }
   }
 
-  ul[data-type="todo_list"] {
-    padding-left: 0;
+  // ul[data-type="todo_list"] {
+  //   padding-left: 0;
 
-    li[data-type="todo_item"] {
-      display: flex;
-      flex-direction: row;
+  //   li[data-type="todo_item"] {
+  //     display: flex;
+  //     flex-direction: row;
 
-      .todo-checkbox {
-        border: 2px solid black;
-        height: 0.9em;
-        width: 0.9em;
-        box-sizing: border-box;
-        margin-right: 10px;
-        margin-top: 0.3rem;
-        user-select: none;
-        -webkit-user-select: none;
-        cursor: pointer;
-        border-radius: 0.2em;
-        background-color: transparent;
-        transition: 0.4s background;
-      }
-      .todo-content {
-        flex: 1;
-        > p:last-of-type {
-          margin-bottom: 0;
-        }
-        > ul[data-type="todo_list"] {
-          margin: .5rem 0;
-        }
-      }
+  //     .todo-checkbox {
+  //       border: 2px solid black;
+  //       height: 0.9em;
+  //       width: 0.9em;
+  //       box-sizing: border-box;
+  //       margin-right: 10px;
+  //       margin-top: 0.3rem;
+  //       user-select: none;
+  //       -webkit-user-select: none;
+  //       cursor: pointer;
+  //       border-radius: 0.2em;
+  //       background-color: transparent;
+  //       transition: 0.4s background;
+  //     }
+  //     .todo-content {
+  //       flex: 1;
+  //       > p:last-of-type {
+  //         margin-bottom: 0;
+  //       }
+  //       > ul[data-type="todo_list"] {
+  //         margin: .5rem 0;
+  //       }
+  //     }
 
-      &[data-done="true"] {
-        > .todo-content {
-          > p {
-            text-decoration: line-through;
-          }
-        }
-        > .todo-checkbox {
-          background-color: black;
-        }
-      }
+  //     &[data-done="true"] {
+  //       > .todo-content {
+  //         > p {
+  //           text-decoration: line-through;
+  //         }
+  //       }
+  //       > .todo-checkbox {
+  //         background-color: black;
+  //       }
+  //     }
 
-      &[data-done="false"] {
-        text-decoration: none;
-      }
-    }
-  }
+  //     &[data-done="false"] {
+  //       text-decoration: none;
+  //     }
+  //   }
+  // } // [1]
 }
 </style>
