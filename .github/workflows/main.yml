@@ -43,6 +43,7 @@ jobs:
         PGHOST: localhost
         PGUSER: postgres
         RAILS_ENV: test
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: bundle exec rspec
 
 # Based on: https://andycroll.com/ruby/github-actions-ci-for-rails-with-postgresql/
