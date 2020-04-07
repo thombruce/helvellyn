@@ -2,7 +2,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/helvellyn/CI)](https://github.com/thombruce/helvellyn/actions)
+[![CI](https://github.com/thombruce/helvellyn/workflows/CI/badge.svg)](https://github.com/thombruce/helvellyn/actions)
 
 [![GitHub](https://img.shields.io/github/license/thombruce/helvellyn)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
