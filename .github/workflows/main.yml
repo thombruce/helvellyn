@@ -43,7 +43,7 @@ jobs:
         PGHOST: localhost
         PGUSER: postgres
         RAILS_ENV: test
-        CI: $GITHUB_ACTIONS
+        CI: ${{ $GITHUB_ACTIONS }}
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: bundle exec rspec
 
