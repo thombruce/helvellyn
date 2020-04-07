@@ -36,3 +36,4 @@ Helvellyn devlopment uses [GitHub Flow](https://guides.github.com/introduction/f
 - [x] Heroku Review Apps
 - [x] Coverage Reporting
 - [ ] Achieve min. coverage of 80%
+- [ ] Consider use of GitHub projects for multi-part tasks
