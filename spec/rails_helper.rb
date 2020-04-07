@@ -18,6 +18,9 @@ require 'rspec/rails'
 require 'support/factory_bot'
 require 'pundit/rspec'
 
+require 'capybara/rails'
+Capybara.server = :puma, { Silent: true }
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
