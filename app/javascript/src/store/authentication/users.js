@@ -1,4 +1,4 @@
-import axios from '../../axios'
+import { authAPI as axios } from '../../axios'
 
 import prototype from '../prototypes/base'
 

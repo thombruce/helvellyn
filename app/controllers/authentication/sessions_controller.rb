@@ -1,4 +1,4 @@
-class Authentication::SessionsController < ApplicationController
+class Authentication::SessionsController < AuthenticationController
   before_action :set_session, only: [:show, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create]
@@ -16,14 +16,14 @@ class Authentication::SessionsController < ApplicationController
   # GET /sessions/new
   def new
     @session = Session.new
-    authorize [:authentication, @session]
+    authorize @session
   end
 
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.authenticate(permitted_attributes([:authentication, Session]))
-    authorize [:authentication, @session]
+    @session = Session.authenticate(permitted_attributes(Session))
+    authorize @session
 
     if @session.save
       render :show, status: :created, location: @session
@@ -46,6 +46,6 @@ class Authentication::SessionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_session
       @session = current_session
-      authorize [:authentication, @session]
+      authorize @session
     end
 end
