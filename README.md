@@ -2,8 +2,8 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![CI](https://github.com/thombruce/helvellyn/workflows/CI/badge.svg)](https://github.com/thombruce/helvellyn/actions)
-[![codecov](https://codecov.io/gh/thombruce/helvellyn/branch/master/graph/badge.svg)](https://codecov.io/gh/thombruce/helvellyn)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/helvellyn/CI?logo=github)](https://github.com/thombruce/helvellyn/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/thombruce/helvellyn?logo=codecov)](https://codecov.io/gh/thombruce/helvellyn)
 [![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -37,8 +37,8 @@ Helvellyn devlopment uses [GitHub Flow](https://guides.github.com/introduction/f
 
 ## Testing
 
-[![CI](https://github.com/thombruce/helvellyn/workflows/CI/badge.svg)](https://github.com/thombruce/helvellyn/actions)
-[![codecov](https://codecov.io/gh/thombruce/helvellyn/branch/master/graph/badge.svg)](https://codecov.io/gh/thombruce/helvellyn)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/helvellyn/CI?logo=github)](https://github.com/thombruce/helvellyn/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/thombruce/helvellyn?logo=codecov)](https://codecov.io/gh/thombruce/helvellyn)
 
 ```shell
 bundle exec rspec
