@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   # Pretty Routes
   # /api/**/*.json
-  scope '/api', as: 'pretty', format: false, defaults: { format: 'json' } do
+  scope '/api', module: 'api', as: 'pretty', format: false, defaults: { format: 'json' } do
     # /api/:worspace_id/*.json
     resources :workspaces, path: '', constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i }, only: [:show] do
       # /api/:worspace_id/users/*.json

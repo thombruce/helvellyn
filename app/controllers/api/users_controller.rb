@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   before_action :set_workspace
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
