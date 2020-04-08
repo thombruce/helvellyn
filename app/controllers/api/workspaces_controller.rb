@@ -1,4 +1,4 @@
-class Api::WorkspacesController < ApplicationController
+class Api::WorkspacesController < ApiController
   before_action :set_workspace, only: [:show, :edit, :update, :destroy]
 
   # GET /workspaces.json

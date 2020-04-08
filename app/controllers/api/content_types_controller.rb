@@ -1,4 +1,4 @@
-class Api::ContentTypesController < ApplicationController
+class Api::ContentTypesController < ApiController
   before_action :set_workspace
   before_action :set_content_type, only: [:show, :edit, :update, :destroy]
 

@@ -1,4 +1,4 @@
-class Api::ContentEntriesController < ApplicationController
+class Api::ContentEntriesController < ApiController
   before_action :set_workspace
   before_action :set_content_type
   before_action :set_content_entry, only: [:show, :edit, :update, :destroy]
