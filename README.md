@@ -44,6 +44,8 @@ Helvellyn devlopment uses [GitHub Flow](https://guides.github.com/introduction/f
 bundle exec rspec
 ```
 
+*You may need to install [Chromedriver](https://chromedriver.chromium.org/) to run system specs.*
+
 ## Todo
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
