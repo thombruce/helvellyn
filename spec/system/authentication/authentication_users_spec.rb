@@ -5,9 +5,9 @@ RSpec.describe "Authentication::Users", type: :system do
     driven_by(:selenium_chrome_headless)
   end
 
-  it "enables me to create widgets" do
-    visit "/login"
+  it "renders a title" do
+    visit "/signup"
 
-    expect(page).to have_text("New Session")
+    expect(page).to have_text("New User")
   end
 end
