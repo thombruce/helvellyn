@@ -1,4 +1,4 @@
-class Authentication::UsersController < ApplicationController
+class Authentication::UsersController < AuthenticationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :authenticate!, only: [:new, :create]
@@ -11,14 +11,14 @@ class Authentication::UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    authorize [:authentication, @user]
+    authorize @user
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(permitted_attributes([:authentication, User]))
-    authorize [:authentication, @user]
+    @user = User.new(permitted_attributes(User))
+    authorize @user
 
     if @user.save
       @session = Session.create(user: @user)
@@ -35,7 +35,7 @@ class Authentication::UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    if @user.update(permitted_attributes([:authentication, @user]))
+    if @user.update(permitted_attributes(@user))
       render :show, status: :ok, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -53,6 +53,6 @@ class Authentication::UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = current_user
-      authorize [:authentication, @user]
+      authorize @user
     end  
 end
