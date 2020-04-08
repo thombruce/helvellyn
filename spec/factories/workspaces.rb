@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :workspace do
-    user { nil }
+    association :created_by, factory: :user
     title { "MyString" }
   end
 end

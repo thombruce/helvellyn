@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :content_entry do
-    workspace { nil }
-    content_type { nil }
+    content_type
   end
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :content_type do
-    workspace { nil }
+    workspace
     name { "MyString" }
   end
 end
