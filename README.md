@@ -17,6 +17,8 @@ A Ruby on Rails based content management system that exposes a customisable API 
 
 1. [Getting Started](#getting-started)
 2. [Development](#development)
+2. [Testing](#testing)
+2. [Todo](#todo)
 
 ## Getting Started
 
@@ -33,7 +35,18 @@ rails s
 
 Helvellyn devlopment uses [GitHub Flow](https://guides.github.com/introduction/flow/), which is a very minimalist approach to Git flow. The master branch is always production-code, ready to deploy. Code that is in development is reviewed in isolation on its own feature branch and its related pull request before being merged to master.
 
-### TODO
+## Testing
+
+[![CI](https://github.com/thombruce/helvellyn/workflows/CI/badge.svg)](https://github.com/thombruce/helvellyn/actions)
+[![codecov](https://codecov.io/gh/thombruce/helvellyn/branch/master/graph/badge.svg)](https://codecov.io/gh/thombruce/helvellyn)
+
+```shell
+bundle exec rspec
+```
+
+## Todo
+
+[![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
 
 - [x] GitHub Actions
 - [x] Heroku Review Apps
