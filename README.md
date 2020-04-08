@@ -46,6 +46,12 @@ bundle exec rspec
 
 *You may need to install [Chromedriver](https://chromedriver.chromium.org/) to run system specs.*
 
+To exclude system specs from the test run:
+
+```shell
+rspec --exclude-pattern "spec/system/**/*.rb"
+```
+
 ## Todo
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
