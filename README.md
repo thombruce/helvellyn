@@ -61,3 +61,8 @@ bundle exec rspec --exclude-pattern "spec/system/**/*.rb"
 - [x] Coverage Reporting
 - [ ] Achieve min. coverage of 80%
 - [ ] Consider use of GitHub projects for multi-part tasks
+- [ ] Separation into engines/packages:
+    - Helvellyn::Admin - Admin API for Helvellyn CMS
+    - Helvellyn::Api - Public API for Helvellyn CMS
+    - Helvellyn::Auth - Authentication API for Helvellyn CMS (I may have different plans for this)
+    - HelvellynJS - Frontend JavaScript
