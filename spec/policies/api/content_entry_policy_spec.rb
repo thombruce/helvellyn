@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ContentEntryPolicy, type: :policy do
+RSpec.describe Api::ContentEntryPolicy, type: :policy do
   let(:user) { User.new }
 
   subject { described_class }

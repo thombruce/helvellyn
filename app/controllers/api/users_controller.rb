@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApiController
   before_action :set_workspace
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -20,5 +20,5 @@ class UsersController < ApplicationController
     def set_user
       @user = @workspace.users.find(params[:id])
       authorize @user
-    end  
+    end
 end

@@ -1,4 +1,4 @@
-class ContentTypePolicy < ApplicationPolicy
+class Api::ContentTypePolicy < ApplicationPolicy
   def permitted_attributes
     [
       :name,

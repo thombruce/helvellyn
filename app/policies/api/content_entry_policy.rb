@@ -1,4 +1,4 @@
-class ContentEntryPolicy < ApplicationPolicy
+class Api::ContentEntryPolicy < ApplicationPolicy
   def index?
     true
   end

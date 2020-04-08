@@ -1,4 +1,4 @@
-class WorkspacePolicy < ApplicationPolicy
+class Api::WorkspacePolicy < ApplicationPolicy
   def permitted_attributes
     [:title, :slug]
   end

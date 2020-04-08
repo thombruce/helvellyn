@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ContentTypePolicy, type: :policy do
+RSpec.describe Api::WorkspacePolicy, type: :policy do
   let(:user) { User.new }
 
   subject { described_class }
