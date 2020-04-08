@@ -1,9 +1,5 @@
 require 'simplecov'
-SimpleCov.start do
-  add_filter %r{^/config/}
-  add_filter %r{^/db/}
-  add_filter %r{^/spec/}
-end
+SimpleCov.start 'rails'
 
 if ENV['CI'] == 'true'
   require 'codecov'
