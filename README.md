@@ -49,7 +49,7 @@ bundle exec rspec
 To exclude system specs from the test run:
 
 ```shell
-rspec --exclude-pattern "spec/system/**/*.rb"
+bundle exec rspec --exclude-pattern "spec/system/**/*.rb"
 ```
 
 ## Todo
