@@ -1,6 +1,5 @@
 <template lang="pug">
 v-list
-  fuck
   v-list-item(link :to="{ name: 'templates_path', params: { workspace_id: workspace.slug } }" exact)
     v-list-item-title {{ workspace.title }}
   template-list-group(v-for="template in workspace.templates" :template="template")
