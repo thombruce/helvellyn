@@ -93,11 +93,32 @@ div
             v-btn(icon dark :input-value="isActive.link()" @click="showLinkMenu(getMarkAttrs('link'))")
               v-icon mdi-link
 
+      editor-floating-menu(:editor="editor" v-slot="{ commands, isActive, getMarkAttrs, menu }")
+        .floating-menu(
+          :class="{ 'is-active': menu.isActive }"
+          :style="`top: ${menu.top}px`"
+        )
+          v-btn(icon small :input-value="isActive.heading({ level: 1 })" @click="commands.heading({ level: 1 })")
+            v-icon mdi-format-header-1
+          v-btn(icon small :input-value="isActive.heading({ level: 2 })" @click="commands.heading({ level: 2 })")
+            v-icon mdi-format-header-2
+          v-btn(icon small :input-value="isActive.heading({ level: 3 })" @click="commands.heading({ level: 3 })")
+            v-icon mdi-format-header-3
+          v-divider.mx-2(vertical)
+          v-btn(icon :input-value="isActive.horizontal_rule()" @click="commands.horizontal_rule")
+            v-icon mdi-minus
+          v-btn(icon :input-value="isActive.blockquote()" @click="commands.blockquote")
+            v-icon mdi-format-quote-close
+          v-divider.mx-2(vertical)
+          v-btn(icon :input-value="isActive.code_block()" @click="commands.code_block")
+            v-icon mdi-code-brackets
+
+
       editor-content.rte-content(:editor="editor" v-model="inputVal")
 </template>
 
 <script>
-import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
+import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble, EditorFloatingMenu } from 'tiptap'
 import {
   Blockquote,
   CodeBlock,
@@ -130,7 +151,8 @@ export default {
   components: {
     EditorContent,
     EditorMenuBar,
-    EditorMenuBubble
+    EditorMenuBubble,
+    EditorFloatingMenu
   },
   data() {
     return {
@@ -341,5 +363,18 @@ export default {
   //   background: transparent;
   //   color: white;
   // }
+}
+
+.floating-menu {
+  position: absolute;
+  z-index: 1;
+  margin-top: -0.25rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 </style>
