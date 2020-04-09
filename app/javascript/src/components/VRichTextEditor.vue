@@ -64,11 +64,40 @@ div
         v-btn(icon @click="commands.redo")
           v-icon mdi-redo
     v-container
+      editor-menu-bubble(:editor="editor" keep-in-bounds v-slot="{ commands, isActive, getMarkAttrs, menu }")
+        .menububble(
+          :class="{ 'is-active': menu.isActive }"
+          :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
+        )
+          v-btn(icon dark :input-value="isActive.bold()" @click="commands.bold")
+            v-icon mdi-format-bold
+          v-btn(icon dark :input-value="isActive.italic()" @click="commands.italic")
+            v-icon mdi-format-italic
+          v-btn(icon dark :input-value="isActive.strike()" @click="commands.strike")
+            v-icon mdi-format-strikethrough
+          v-btn(icon dark :input-value="isActive.code()" @click="commands.code")
+            v-icon mdi-code-tags
+          v-form(v-if="linkMenuIsActive" @submit.prevent="setLinkUrl(commands.link, linkUrl)")
+            v-text-field.ma-0.pa-0(
+              label="URL"
+              dark
+              dense
+              hide-details
+              single-line
+              clearable
+              v-model="linkUrl"
+              @keydown.esc="hideLinkMenu"
+              @click:clear="setLinkUrl(commands.link, null)"
+            )
+          template(v-else)
+            v-btn(icon dark :input-value="isActive.link()" @click="showLinkMenu(getMarkAttrs('link'))")
+              v-icon mdi-link
+
       editor-content.rte-content(:editor="editor" v-model="inputVal")
 </template>
 
 <script>
-import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
+import { Editor, EditorContent, EditorMenuBar, EditorMenuBubble } from 'tiptap'
 import {
   Blockquote,
   CodeBlock,
@@ -100,11 +129,14 @@ export default {
   ],
   components: {
     EditorContent,
-    EditorMenuBar
+    EditorMenuBar,
+    EditorMenuBubble
   },
   data() {
     return {
-      editor: null
+      editor: null,
+      linkUrl: null,
+      linkMenuIsActive: false
     }
   },
   computed: {
@@ -115,6 +147,23 @@ export default {
       set(val) {
         this.$emit('input', val);
       }
+    }
+  },
+  methods: {
+    showLinkMenu(attrs) {
+      this.linkUrl = attrs.href
+      this.linkMenuIsActive = true
+      this.$nextTick(() => {
+        this.$refs.linkInput.focus()
+      })
+    },
+    hideLinkMenu() {
+      this.linkUrl = null
+      this.linkMenuIsActive = false
+    },
+    setLinkUrl(command, url) {
+      command({ href: url })
+      this.hideLinkMenu()
     }
   },
   mounted() {
@@ -238,5 +287,59 @@ export default {
   //     }
   //   }
   // } // [1]
+}
+
+.menububble {
+  position: absolute;
+  display: flex;
+  z-index: 20;
+  background: black;
+  border-radius: 5px;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // &__button {
+  //   display: inline-flex;
+  //   background: transparent;
+  //   border: 0;
+  //   color: white;
+  //   padding: 0.2rem 0.5rem;
+  //   margin-right: 0.2rem;
+  //   border-radius: 3px;
+  //   cursor: pointer;
+
+  //   &:last-child {
+  //     margin-right: 0;
+  //   }
+
+  //   &:hover {
+  //     background-color: rgba(white, 0.1);
+  //   }
+
+  //   &.is-active {
+  //     background-color: rgba(white, 0.2);
+  //   }
+  // }
+
+  // &__form {
+  //   display: flex;
+  //   align-items: center;
+  // }
+
+  // &__input {
+  //   font: inherit;
+  //   border: none;
+  //   background: transparent;
+  //   color: white;
+  // }
 }
 </style>
