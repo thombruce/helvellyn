@@ -5,15 +5,23 @@ v-dialog(v-model="dialog" persistent max-width="290")
       v-icon mdi-image
   v-card
     v-card-title(class="headline") Add an image
-    v-form(@submit.prevent="setImageSrc(command, src)")
+    v-form(@submit.prevent="setImageSrc(command, image)")
       v-card-text
         v-text-field.ma-0.pa-0(
           label="Image URL"
-          v-model="src"
+          v-model="image.src"
+        )
+        v-text-field.ma-0.pa-0(
+          label="Alt Text"
+          v-model="image.alt"
+        )
+        v-text-field.ma-0.pa-0(
+          label="Hover Text"
+          v-model="image.title"
         )
     v-card-actions
       v-spacer
-      v-btn(color="green darken-1" text @click="setImageSrc(command, src)") Submit
+      v-btn(color="green darken-1" text @click="setImageSrc(command, image)") Submit
 </template>
 
 <script>
@@ -22,12 +30,16 @@ export default {
   data() {
     return {
       dialog: false,
-      src: null
+      image: {
+        src: null,
+        alt: null,
+        title: null
+      }
     }
   },
   methods: {
-    setImageSrc(command, src) {
-      command({ src })
+    setImageSrc(command, image) {
+      command(image)
       this.dialog = false
     }
   }
