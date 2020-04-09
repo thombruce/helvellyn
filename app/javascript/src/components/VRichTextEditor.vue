@@ -64,7 +64,7 @@ div
         v-btn(icon @click="commands.redo")
           v-icon mdi-redo
     v-container
-      editor-menu-bubble(:editor="editor" keep-in-bounds v-slot="{ commands, isActive, menu }")
+      editor-menu-bubble(:editor="editor" keep-in-bounds v-slot="{ commands, isActive, getMarkAttrs, menu }")
         .menububble(
           :class="{ 'is-active': menu.isActive }"
           :style="`left: ${menu.left}px; bottom: ${menu.bottom}px;`"
@@ -77,6 +77,21 @@ div
             v-icon mdi-format-strikethrough
           v-btn(icon dark :input-value="isActive.code()" @click="commands.code")
             v-icon mdi-code-tags
+          v-form(v-if="linkMenuIsActive" @submit.prevent="setLinkUrl(commands.link, linkUrl)")
+            v-text-field.ma-0.pa-0(
+              label="URL"
+              dark
+              dense
+              hide-details
+              single-line
+              clearable
+              v-model="linkUrl"
+              @keydown.esc="hideLinkMenu"
+              @click:clear="setLinkUrl(commands.link, null)"
+            )
+          template(v-else)
+            v-btn(icon dark :input-value="isActive.link()" @click="showLinkMenu(getMarkAttrs('link'))")
+              v-icon mdi-link
 
       editor-content.rte-content(:editor="editor" v-model="inputVal")
 </template>
@@ -119,7 +134,9 @@ export default {
   },
   data() {
     return {
-      editor: null
+      editor: null,
+      linkUrl: null,
+      linkMenuIsActive: false
     }
   },
   computed: {
@@ -130,6 +147,23 @@ export default {
       set(val) {
         this.$emit('input', val);
       }
+    }
+  },
+  methods: {
+    showLinkMenu(attrs) {
+      this.linkUrl = attrs.href
+      this.linkMenuIsActive = true
+      this.$nextTick(() => {
+        this.$refs.linkInput.focus()
+      })
+    },
+    hideLinkMenu() {
+      this.linkUrl = null
+      this.linkMenuIsActive = false
+    },
+    setLinkUrl(command, url) {
+      command({ href: url })
+      this.hideLinkMenu()
     }
   },
   mounted() {
