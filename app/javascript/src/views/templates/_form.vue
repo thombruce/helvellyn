@@ -1,23 +1,23 @@
 <template lang="pug">
-v-form(ref="form" :model="content_type")
-  v-alert(v-for="error in content_type.errors.base" type="error") {{ error }}
+v-form(ref="form" :model="template")
+  v-alert(v-for="error in template.errors.base" type="error") {{ error }}
 
   h3 Ident
 
-  v-text-field(label="Name" v-model="content_type.name" :error-messages="content_type.errors.name" @input="updatePlural();updateSlug()" hint="The name of your content type (e.g. Post)")
+  v-text-field(label="Name" v-model="template.name" :error-messages="template.errors.name" @input="updatePlural();updateSlug()" hint="The name of your content type (e.g. Post)")
 
-  v-text-field(label="Plural" v-model="content_type.plural" :error-messages="content_type.errors.plural" @input="updateSlug" hint="The plural name of your content type (e.g. Posts)")
+  v-text-field(label="Plural" v-model="template.plural" :error-messages="template.errors.plural" @input="updateSlug" hint="The plural name of your content type (e.g. Posts)")
 
-  v-text-field(label="Slug" :prefix="workspaceUrl" v-model="content_type.slug" :error-messages="content_type.errors.slug" hint="The URL path of your content type (e.g. posts)")
+  v-text-field(label="Slug" :prefix="workspaceUrl" v-model="template.slug" :error-messages="template.errors.slug" hint="The URL path of your content type (e.g. posts)")
 
   h3 Publishing Settings
 
-  v-checkbox(v-model="content_type.publishable" label="Publishable" hint="Whether or not it should be possible to publish the content, making it public.")
+  v-checkbox(v-model="template.publishable" label="Publishable" hint="Whether or not it should be possible to publish the content, making it public.")
 
   div.mb-5
     h3 Custom Fields
 
-    v-dynamic-field-form(v-for="(field, i) in content_type.fields" v-model="content_type.fields[i]")
+    v-dynamic-field-form(v-for="(field, i) in template.fields" v-model="template.fields[i]")
 
     v-dialog(v-model="dialog" persistent max-width="600px")
       template(v-slot:activator="{ on }")
@@ -50,7 +50,7 @@ import VDynamicFieldForm from '../../components/VDynamicFieldForm.vue'
 export default {
   props: [
     'workspace',
-    'content_type',
+    'template',
     'submit'
   ],
   mixins: [
@@ -71,17 +71,17 @@ export default {
   },
   methods: {
     addField (type) {
-      this.content_type.fields.push({ name: '', type: type })
+      this.template.fields.push({ name: '', type: type })
       this.dialog = false
     },
     updatePlural () {
-      if (!this.content_type.id) {
-        this.content_type.plural = pluralize(this.content_type.name)
+      if (!this.template.id) {
+        this.template.plural = pluralize(this.template.name)
       }
     },
     updateSlug () {
-      if (!this.content_type.id) {
-        this.content_type.slug = parameterize(this.content_type.plural)
+      if (!this.template.id) {
+        this.template.slug = parameterize(this.template.plural)
       }
     }
   }

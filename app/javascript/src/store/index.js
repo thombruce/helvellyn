@@ -6,8 +6,8 @@ import authentication from './authentication'
 
 import workspaces from './workspaces'
 import users from './users'
-import content_types from './content_types'
-import content_entries from './content_entries'
+import templates from './templates'
+import entities from './entities'
 
 const actions = {
   login({ dispatch }, payload) { // A shortcut for...
@@ -27,8 +27,8 @@ const store = new Vuex.Store({
     authentication,
     workspaces,
     users,
-    content_types,
-    content_entries
+    templates,
+    entities
   }
 })
 

@@ -1,7 +1,7 @@
 <template lang="pug">
 v-data-table(
   :headers="tableHeaders"
-  :items="content_entries"
+  :items="entities"
   :items-per-page="5"
 )
   template(v-slot:item.created_at="{ item }")
@@ -11,19 +11,19 @@ v-data-table(
   template(v-slot:item.published_at="{ item }")
     span {{ item.published ? new Date(item.published_at).toLocaleDateString() : '' }}
   template(v-slot:item.actions="{ item }")
-    v-btn(:to="{ name: 'content_entry_path', params: { content_entry_id: item.slug } }" icon)
+    v-btn(:to="{ name: 'entity_path', params: { entity_id: item.slug } }" icon)
       v-icon(small) mdi-eye
-    v-btn(:to="{ name: 'edit_content_entry_path', params: { content_entry_id: item.slug } }" icon)
+    v-btn(:to="{ name: 'edit_entity_path', params: { entity_id: item.slug } }" icon)
       v-icon(small) mdi-pencil
 </template>
 
 <script>
 export default {
-  props: ['content_type', 'content_entries'],
+  props: ['template', 'entities'],
   computed: {
     tableHeaders() {
       return [
-        { text: this.content_type.fields[0].name, value: this.content_type.fields[0].slug },
+        { text: this.template.fields[0].name, value: this.template.fields[0].slug },
         { text: 'Created', value: 'created_at' },
         { text: 'Updated', value: 'updated_at' },
         { text: 'Published', value: 'published_at' },
@@ -36,7 +36,7 @@ export default {
     // TODO: Look into expandable items as an option.
     //
     // tableHeaders() {
-    //   let headers = this.content_type.fields.map(field => {
+    //   let headers = this.template.fields.map(field => {
     //     return { text: field.name, value: field.slug }
     //   })
     //   headers.push({ text: 'Actions', value: 'actions', sortable: false })

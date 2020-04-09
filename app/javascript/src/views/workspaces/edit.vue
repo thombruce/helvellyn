@@ -5,7 +5,7 @@ div
       h1 Edit Workspace
       workspace-form(:workspace="workspace", :submit="update")
       a(v-on:click.stop="destroy" href="javascript:;") Delete
-      router-link(:to="{ name: 'content_types_path', params: { workspace_id: $route.params.workspace_id } }") Back
+      router-link(:to="{ name: 'templates_path', params: { workspace_id: $route.params.workspace_id } }") Back
 </template>
 
 <script>
@@ -36,7 +36,7 @@ export default {
     },
     update: function () {
       this.$store.dispatch('workspaces/update', { workspace_id: this.$route.params.workspace_id, data: { workspace: this.workspace } }).then((res) => {
-        this.$router.push({ name: 'content_types_path', params: { workspace_id: res.slug } })
+        this.$router.push({ name: 'templates_path', params: { workspace_id: res.slug } })
       }).catch((errors) => {
         this.workspace.errors = errors
       })

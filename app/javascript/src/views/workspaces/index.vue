@@ -12,9 +12,9 @@ div
     tbody
       tr(v-for="workspace in workspaces")
         td
-          router-link(:to="{ name: 'content_types_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
+          router-link(:to="{ name: 'templates_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
         td
-          router-link.mr-1(:to="{ name: 'content_types_path', params: { workspace_id: workspace.slug } }") View
+          router-link.mr-1(:to="{ name: 'templates_path', params: { workspace_id: workspace.slug } }") View
           router-link.mr-1(:to="{ name: 'edit_workspace_path', params: { workspace_id: workspace.slug } }") Edit
 
   p.lead.text-center(v-else) No items to show.
