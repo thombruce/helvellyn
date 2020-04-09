@@ -9,7 +9,7 @@ const state = () => ({
 
 const getters = {
   forContentType: (state) => (content_type_id) => {
-    return Object.values(state.list).filter(content_entry => content_entry.content_type_id === content_type_id)
+    return Object.values(state.list).filter(content_entry => content_entry.template_id === content_type_id)
 
     // NOTE: The below uses the same approach but returns an Object, rather than an Array.
     //       I don't know that there's any reason an Array won't do.
@@ -25,7 +25,7 @@ const getters = {
   findBySlug: (state) => (content_type_id, slug) => {
     // TODO: This would do better to allow a hash of params and inclusively use them in the find function below.
     return Object.values(state.list).find(
-      content_entry => (content_entry.content_type_id === content_type_id) && (content_entry.slug === slug)
+      content_entry => (content_entry.template_id === content_type_id) && (content_entry.slug === slug)
     )
   }
 }
@@ -33,7 +33,7 @@ const getters = {
 const actions = {
   index({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries')
+      .get('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id + '/entities')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -43,7 +43,7 @@ const actions = {
   },
   show({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id)
+      .get('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id + '/entities/' + params.content_entry_id)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -53,7 +53,7 @@ const actions = {
   },
   create({ state, commit }, params) {
     return axios
-      .post('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries', params.data)
+      .post('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id + '/entities', params.data)
       .then((res) => {
         commit('insert', res.data)
         return Promise.resolve(state.list[res.data.slug])
@@ -64,7 +64,7 @@ const actions = {
   },
   update({ state, commit }, params) {
     return axios
-      .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id, params.data)
+      .patch('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id + '/entities/' + params.content_entry_id, params.data)
       .then((res) => {
         commit('modify', { slug: params.content_entry_id, data: res.data })
         return Promise.resolve(state.list[res.data.slug])
@@ -75,7 +75,7 @@ const actions = {
   },
   destroy({ commit }, params) {
     return axios
-      .delete('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id + '/content_entries/' + params.content_entry_id)
+      .delete('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id + '/entities/' + params.content_entry_id)
       .then((res) => {
         commit('remove', params.content_entry_id)
       })

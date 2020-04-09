@@ -10,9 +10,9 @@ FactoryBot.define do
       association :resource, factory: :workspace
     end
 
-    # create(:role, :for_content_entry)
-    trait :for_content_entry do
-      association :resource, factory: :content_entry
+    # create(:role, :for_entity)
+    trait :for_entity do
+      association :resource, factory: :entity
     end
 
     # create(:role_with_users)

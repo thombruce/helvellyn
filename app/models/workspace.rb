@@ -9,7 +9,7 @@ class Workspace < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  has_many :content_types, dependent: :destroy
+  has_many :templates, dependent: :destroy
 
   validates_presence_of :title
 

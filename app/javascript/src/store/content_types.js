@@ -22,7 +22,7 @@ const getters = {
 const actions = {
   index({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspace_id + '/content_types')
+      .get('/workspaces/' + params.workspace_id + '/templates')
       .then((res) => {
         commit('insert', res.data)
       })
@@ -32,7 +32,7 @@ const actions = {
   },
   show({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id)
+      .get('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id)
       .then((res) => {
         commit('insert', res.data)
       })
@@ -42,7 +42,7 @@ const actions = {
   },
   create({ state, commit }, params) {
     return axios
-      .post('/workspaces/' + params.workspace_id + '/content_types', params.data)
+      .post('/workspaces/' + params.workspace_id + '/templates', params.data)
       .then((res) => {
         commit('insert', res.data)
         return Promise.resolve(state.list[res.data.slug])
@@ -53,7 +53,7 @@ const actions = {
   },
   update({ state, commit }, params) {
     return axios
-      .patch('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id, params.data)
+      .patch('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id, params.data)
       .then((res) => {
         commit('modify', { slug: params.content_type_id, data: res.data })
         return Promise.resolve(state.list[res.data.slug])
@@ -64,7 +64,7 @@ const actions = {
   },
   destroy({ commit }, params) {
     return axios
-      .delete('/workspaces/' + params.workspace_id + '/content_types/' + params.content_type_id)
+      .delete('/workspaces/' + params.workspace_id + '/templates/' + params.content_type_id)
       .then((res) => {
         commit('remove', params.content_type_id)
       })

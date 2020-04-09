@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     resources :workspaces, constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i } do
       # /admin/workspaces/:workspace_id/users/*.json
       resources :users
-      # /admin/workspaces/:workspace_id/content_types/*.json
-      resources :content_types do
-        # /admin/workspaces/:workspace_id/content_types/:content_type_id/content_entries/*.json
-        resources :content_entries
+      # /admin/workspaces/:workspace_id/templates/*.json
+      resources :templates do
+        # /admin/workspaces/:workspace_id/templates/:template_id/entities/*.json
+        resources :entities
       end
     end
   end
@@ -38,9 +38,9 @@ Rails.application.routes.draw do
     resources :workspaces, path: '', constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i }, only: [:show] do
       # /api/:worspace_id/users/*.json
       resources :users
-      resources :content_types, path: '', only: [] do
-        # /api/:worspace_id/:content_type_id/*.json
-        resources :content_entries, path: '', only: [:index, :show]
+      resources :templates, path: '', only: [] do
+        # /api/:worspace_id/:template_id/*.json
+        resources :entities, path: '', only: [:index, :show]
       end
     end
   end
