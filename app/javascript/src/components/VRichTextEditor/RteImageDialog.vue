@@ -19,9 +19,9 @@ v-dialog(v-model="dialog" persistent max-width="290")
           label="Hover Text"
           v-model="image.title"
         )
-    v-card-actions
-      v-spacer
-      v-btn(color="green darken-1" text @click="setImageSrc(command, image)") Submit
+      v-card-actions
+        v-spacer
+        v-btn(color="green darken-1" text type="submit") Submit
 </template>
 
 <script>

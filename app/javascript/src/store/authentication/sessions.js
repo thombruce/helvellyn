@@ -17,6 +17,7 @@ const actions = {
           localStorage.setItem('user-token', res.data.jwt)
         }
         commit('insert', res.data)
+        // TODO: We need to return a Promise.resolve here.
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
