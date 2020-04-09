@@ -12,15 +12,15 @@ import UserShow from './views/users/show.vue'
 import UserNew from './views/users/new.vue'
 import UserEdit from './views/users/edit.vue'
 
-import ContentTypeIndex from './views/content_types/index.vue'
-import ContentTypeShow from './views/content_types/show.vue'
-import ContentTypeNew from './views/content_types/new.vue'
-import ContentTypeEdit from './views/content_types/edit.vue'
+import TemplateIndex from './views/templates/index.vue'
+import TemplateShow from './views/templates/show.vue'
+import TemplateNew from './views/templates/new.vue'
+import TemplateEdit from './views/templates/edit.vue'
 
-import ContentEntryIndex from './views/content_entries/index.vue'
-import ContentEntryShow from './views/content_entries/show.vue'
-import ContentEntryNew from './views/content_entries/new.vue'
-import ContentEntryEdit from './views/content_entries/edit.vue'
+import EntityIndex from './views/entities/index.vue'
+import EntityShow from './views/entities/show.vue'
+import EntityNew from './views/entities/new.vue'
+import EntityEdit from './views/entities/edit.vue'
 
 import Login from './views/authentication/login.vue'
 import Signup from './views/authentication/signup.vue'
@@ -38,19 +38,19 @@ const router = new VueRouter({
     { path: '/:workspace_id/edit', component: WorkspaceEdit, name: 'edit_workspace_path' },
     { path: '/:workspace_id', component: WorkspaceShow,
       children: [
-        { path: '', component: ContentTypeIndex, name: 'content_types_path' },
+        { path: '', component: TemplateIndex, name: 'templates_path' },
         { path: 'users', component: UserIndex, name: 'users_path' },
         { path: 'users/new', component: UserNew, name: 'new_user_path' },
         { path: 'users/:user_id/edit', component: UserEdit, name: 'edit_user_path' },
         { path: 'users/:user_id', component: UserShow, name: 'user_path' },
-        { path: 'content_types/new', component: ContentTypeNew, name: 'new_content_type_path' },
-        { path: ':content_type_id/edit', component: ContentTypeEdit, name: 'edit_content_type_path' },
-        { path: ':content_type_id', component: ContentTypeShow,
+        { path: 'templates/new', component: TemplateNew, name: 'new_template_path' },
+        { path: ':template_id/edit', component: TemplateEdit, name: 'edit_template_path' },
+        { path: ':template_id', component: TemplateShow,
           children: [
-            { path: '', component: ContentEntryIndex, name: 'content_entries_path' },
-            { path: 'new', component: ContentEntryNew, name: 'new_content_entry_path' },
-            { path: ':content_entry_id/edit', component: ContentEntryEdit, name: 'edit_content_entry_path' },
-            { path: ':content_entry_id', component: ContentEntryShow, name: 'content_entry_path' }
+            { path: '', component: EntityIndex, name: 'entities_path' },
+            { path: 'new', component: EntityNew, name: 'new_entity_path' },
+            { path: ':entity_id/edit', component: EntityEdit, name: 'edit_entity_path' },
+            { path: ':entity_id', component: EntityShow, name: 'entity_path' }
           ] }
       ] }
   ]

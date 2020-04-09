@@ -8,7 +8,7 @@ v-app(:dark="$vuetify.theme.dark")
   )
     workspace-nav(v-if="currentWorkspace" :workspace="currentWorkspace")
     v-list(v-else-if="workspaces")
-      v-list-item(v-for="workspace in workspaces" link :to="{ name: 'content_types_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
+      v-list-item(v-for="workspace in workspaces" link :to="{ name: 'templates_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
       v-list-item(link :to="{ name: 'new_workspace_path' }")
         v-list-item-content New Workspace
         v-list-item-icon

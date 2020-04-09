@@ -10,34 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_044233) do
+ActiveRecord::Schema.define(version: 2020_04_09_020120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "content_entries", force: :cascade do |t|
-    t.bigint "content_type_id", null: false
+  create_table "entities", force: :cascade do |t|
+    t.bigint "template_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "data"
     t.datetime "published_at"
     t.string "slug"
     t.jsonb "generated_fields"
-    t.index ["content_type_id", "slug"], name: "index_content_entries_on_content_type_id_and_slug", unique: true
-    t.index ["content_type_id"], name: "index_content_entries_on_content_type_id"
-  end
-
-  create_table "content_types", force: :cascade do |t|
-    t.bigint "workspace_id", null: false
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
-    t.jsonb "fields"
-    t.string "plural"
-    t.boolean "publishable", default: true
-    t.index ["workspace_id", "slug"], name: "index_content_types_on_workspace_id_and_slug", unique: true
-    t.index ["workspace_id"], name: "index_content_types_on_workspace_id"
+    t.index ["template_id", "slug"], name: "index_entities_on_template_id_and_slug", unique: true
+    t.index ["template_id"], name: "index_entities_on_template_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -57,6 +44,19 @@ ActiveRecord::Schema.define(version: 2020_04_06_044233) do
     t.string "session_token"
     t.index ["session_token"], name: "index_sessions_on_session_token", unique: true
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.jsonb "fields"
+    t.string "plural"
+    t.boolean "publishable", default: true
+    t.index ["workspace_id", "slug"], name: "index_templates_on_workspace_id_and_slug", unique: true
+    t.index ["workspace_id"], name: "index_templates_on_workspace_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 2020_04_06_044233) do
     t.index ["user_id"], name: "index_workspaces_on_user_id"
   end
 
-  add_foreign_key "content_entries", "content_types"
-  add_foreign_key "content_types", "workspaces"
+  add_foreign_key "entities", "templates"
   add_foreign_key "sessions", "users"
+  add_foreign_key "templates", "workspaces"
   add_foreign_key "workspaces", "users"
 end

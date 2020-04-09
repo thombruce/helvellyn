@@ -30,8 +30,8 @@ const field_types = {
 export default field_types
 
 // TODO: Additional types:
-//       - tags, but how to make these queryable accross content_entries (as additional content_type, maybe?)
-//       - single selects (categories?? again: do we make these queryable across content_entries?)
+//       - tags, but how to make these queryable accross entities (as additional template, maybe?)
+//       - single selects (categories?? again: do we make these queryable across entities?)
 //       - multi-selects (somewhat related to tags, above)
 //       - numbers: integers, decimals <- definitely usable for sorting
 //       - date and time <- will, for sure, be queryable across entries, and sortable - might be a good starter to see how that might work
