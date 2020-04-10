@@ -52,6 +52,20 @@ To exclude system specs from the test run:
 bundle exec rspec --exclude-pattern "spec/system/**/*.rb"
 ```
 
+## Sponsors
+
+Details about how you can sponsor the project to follow.
+
+_Sponsors will be listed here._
+
+## Maintainers
+
+[![thombruce](https://avatars1.githubusercontent.com/u/3887509?s=60&v=4)](https://github.com/thombruce)
+
+## Contributors
+
+_Significant contributors will be listed here._
+
 ## Todo
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
