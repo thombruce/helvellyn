@@ -17,8 +17,11 @@ A Ruby on Rails based content management system that exposes a customisable API 
 
 1. [Getting Started](#getting-started)
 2. [Development](#development)
-2. [Testing](#testing)
-2. [Todo](#todo)
+3. [Testing](#testing)
+4. [Sponsors](#sponsors)
+5. [Maintainers](#maintainers)
+6. [Contributors](#contributors)
+7. [Todo](#todo)
 
 ## Getting Started
 
