@@ -13,6 +13,8 @@ class FieldsValidator < ActiveModel::EachValidator
     value.each do |field|
       record.errors[:base] << 'Fields must have a name.' unless field[:name].present?
       record.errors[:base] << 'Invalid field type.' unless VALID_FIELD_TYPES.include? field[:type]
+      record.errors[:base] << 'Invalid field name.' unless field[:slug].match /\A(?:[a-z0-9]+_?)*[a-z0-9]+\z/
+      record.errors[:base] << 'Field name cannot contain only numbers.' if field[:slug].match /\A\d+\Z/
     end
   end
 

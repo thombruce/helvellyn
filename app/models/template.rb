@@ -23,15 +23,24 @@ class Template < ApplicationRecord
 
   validates :fields, presence: true, fields: { reserved: Entity.new.methods }
 
-  def dynamic_attributes
-    fields&.map { |field| field[:slug] }
-  end
-
   def slug_candidates
     [:plural, :name]
   end
 
   def schema
-    # TODO: fields.each do |field|
+    schema = fields.map { |field| [field[:slug], { name: field[:name], type: field[:type] }] }.flatten
+    HashWithIndifferentAccess[*schema]
   end
+
+  def dynamic_attributes
+    schema.keys
+  end
+
+  # TODO: Creates a Hash schema like:
+  # {
+  #   title: { name: 'Title', type: 'String', required: false },
+  #   content: { name: 'Content', type: 'Rich Text', format: "/some_regex or enumerable/" },
+  #   url: { name: 'URL', type: 'String', length: { min: 3, max: 50 } }
+  # }
+  # Let us ignore complex validations for now. Required is essential.
 end
