@@ -250,6 +250,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'node_modules/vuetify/src/styles/settings/_variables.scss';
+@import 'node_modules/vuetify/src/styles/elements/_blockquote.sass';
+
 .ProseMirror[contenteditable]:focus {
   outline: 0px solid transparent;
 }
@@ -264,6 +267,22 @@ export default {
 
   img {
     max-width: 100%;
+  }
+
+  table {
+    width: 100%;
+    text-align: center;
+    th {
+      // color: #eee;
+      // background-color: #333;
+    }
+    td {
+      // background-color: #eee;
+    }
+  }
+
+  blockquote {
+    @extend .blockquote;
   }
 
   // ul[data-type="todo_list"] {
