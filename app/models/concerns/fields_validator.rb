@@ -1,5 +1,7 @@
 
 class FieldsValidator < ActiveModel::EachValidator
+  # Maybe rename to ContentModelValidator for consistency.
+
   VALID_FIELD_TYPES = ['String', 'Text', 'Rich Text'].freeze
 
   def validate_each(record, attribute, value)

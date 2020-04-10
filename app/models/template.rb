@@ -30,4 +30,8 @@ class Template < ApplicationRecord
   def slug_candidates
     [:plural, :name]
   end
+
+  def schema
+    # TODO: fields.each do |field|
+  end
 end

@@ -16,6 +16,9 @@ class Entity < ApplicationRecord
   friendly_id :dynamic_slug_field, use: [:slugged, :scoped], scope: :template
 
   serialize :data, HashSerializer
+
+  validates :data, presence: true #, content_entry: { schema: template.fields }
+
   serialize :generated_fields, HashSerializer
 
   validates_presence_of :slug
