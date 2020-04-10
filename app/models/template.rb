@@ -21,11 +21,7 @@ class Template < ApplicationRecord
   validates_format_of :slug, with: /\A(?:[a-z0-9][_-]?)*[a-z0-9]\z/i, message: 'must only contain letters, numbers, dashes and underscores (e.g. my_slug-1)'
   validates_format_of :slug, without: /\A\d+\Z/, message: 'cannot contain only numbers'
 
-  validate :fields_do_not_conflict_with_entity_methods
-  validate :sluggable_fields_do_not_exceed_one
-  validate :sluggable_field_must_be_a_string
-
-  # TODO: Validate presence of field name and type
+  validates :fields, presence: true, fields: { reserved: Entity.new.methods }
 
   def dynamic_attributes
     fields&.map { |field| field[:slug] }
@@ -33,25 +29,5 @@ class Template < ApplicationRecord
 
   def slug_candidates
     [:plural, :name]
-  end
-
-  private
-
-  def fields_do_not_conflict_with_entity_methods
-    if (Entity.new.methods & dynamic_attributes).any?
-      errors[:base] << "Field names contain reserved words"
-    end
-  end
-
-  def sluggable_fields_do_not_exceed_one
-    if fields.select { |field| field[:sluggable] }.count > 1
-      errors[:base] << "Only one field may be used as a slug"
-    end
-  end
-
-  def sluggable_field_must_be_a_string
-    if fields.select { |field| field[:sluggable] && field[:type] != 'String' }.any?
-      errors[:base] << "Only a string field may be used as a slug"
-    end
   end
 end
