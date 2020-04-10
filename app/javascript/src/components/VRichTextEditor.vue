@@ -230,15 +230,10 @@ export default {
   }
 }
 
-// TODO: Add link support
-// TODO: Add image support
-//       - from url
-//       - upload
 // TODO: Add table support
+// TODO: Add image upload support
 // TODO: Add formatting to display for better previewing
 //       - blockquote
-//       - image max width
-//       - appropriate margins and padding
 
 // NOTE: Todo list support pending on resolution of [1]
 
