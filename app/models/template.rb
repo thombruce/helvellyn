@@ -23,6 +23,8 @@ class Template < ApplicationRecord
 
   validates :fields, presence: true, fields: { reserved: Entity.new.methods }
 
+  validate :sluggable_field_is_a_string
+
   def slug_candidates
     [:plural, :name]
   end
@@ -43,4 +45,10 @@ class Template < ApplicationRecord
   #   url: { name: 'URL', type: 'String', length: { min: 3, max: 50 } }
   # }
   # Let us ignore complex validations for now. Required is essential.
+
+  private
+
+  def sluggable_field_is_a_string
+    record.errors[:base] << "Only a string field may be used as a slug" if fields.find { |field| field[:slug] == sluggable_field && field[:type] != 'String' }
+  end
 end

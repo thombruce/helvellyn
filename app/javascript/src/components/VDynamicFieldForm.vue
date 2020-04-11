@@ -5,11 +5,9 @@ v-card.mb-5
 
     v-row
       v-col(cols="12" sm="6")
-        v-text-field(label="Name" v-model="inputVal.name")
-      v-col(cols="12" :sm="inputVal.type === 'String' ? '4' : '6'")
+        v-text-field(label="Name" v-model="inputVal.slug" @input="updateName($event)")
+      v-col(cols="12" sm="6")
         v-dynamic-field-type-select(label="Type" v-model="inputVal.type")
-      v-col(cols="12" sm="2")
-        v-switch(v-if="canSlug" v-model="inputVal.sluggable" label="Sluggable" hint="Use this field to create a URL friendly ID")
 </template>
 
 <script>
@@ -35,6 +33,14 @@ export default {
       if (this.inputVal.type === 'String') {
         return true
       }
+    }
+  },
+  methods: {
+    updateName(value) {
+      this.value.slug = value.replace(/\s|-/g, '_').toLowerCase()
+      this.value.name = this.value.slug.split('_').map((word) => {
+        return word.charAt(0).toUpperCase() + word.substring(1)
+      }).join(' ')
     }
   }
 }

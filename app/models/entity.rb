@@ -15,6 +15,10 @@ class Entity < ApplicationRecord
 
   friendly_id :dynamic_slug_field, use: [:slugged, :scoped], scope: :template
 
+  def should_generate_new_friendly_id?
+    slug.blank?
+  end
+
   serialize :data, HashSerializer
 
   validates :data, presence: true #, content_entry: { schema: template.fields }
@@ -66,8 +70,7 @@ class Entity < ApplicationRecord
   private
 
   def dynamic_slug_field
-    if sluggable_field = template.fields.find { |dg| dg[:sluggable] }
-      slug_field = sluggable_field[:slug]
+    if slug_field = template.sluggable_field
       data[slug_field]
     else
       SecureRandom.uuid

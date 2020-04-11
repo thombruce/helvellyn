@@ -5,10 +5,11 @@ class Admin::TemplatePolicy < ApplicationPolicy
       :plural,
       :slug,
       :publishable,
+      :sluggable_field,
       fields: [
         :name,
-        :type,
-        :sluggable
+        :slug,
+        :type
       ]
     ]
   end

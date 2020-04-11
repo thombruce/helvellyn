@@ -18,6 +18,7 @@ export default {
         name: '',
         slug: '',
         publishable: true,
+        sluggable_field: '',
         fields: [],
         errors: []
       }

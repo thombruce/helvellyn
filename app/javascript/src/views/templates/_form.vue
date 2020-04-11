@@ -17,6 +17,8 @@ v-form(ref="form" :model="template")
   div.mb-5
     h3 Custom Fields
 
+    v-select(label="Slug" :items="sluggableCandidates" v-model="template.sluggable_field")
+
     v-dynamic-field-form(v-for="(field, i) in template.fields" v-model="template.fields[i]")
 
     v-dialog(v-model="dialog" persistent max-width="600px")
@@ -67,11 +69,18 @@ export default {
   computed: {
     workspaceUrl() {
       return this.workspace.url.replace(/^http(s)?:\/\//, "").replace(/\.[^/.]+$/, "/")
+    },
+    sluggableCandidates() {
+      return this.template.fields
+        .filter(field => field.type === 'String')
+        .map((field) => {
+          return { text: field.name, value: field.slug }
+        })
     }
   },
   methods: {
     addField (type) {
-      this.template.fields.push({ name: '', type: type })
+      this.template.fields.push({ name: '', slug: '', type: type })
       this.dialog = false
     },
     updatePlural () {
