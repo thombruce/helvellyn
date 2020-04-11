@@ -6,7 +6,6 @@ class FieldsValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     validates_uniqueness_of_slugs(record, attribute, value)
-    validates_sluggable_field_is_a_string(record, attribute, value)
     validates_fields_do_not_conflict_with_reserved_names(record, attribute, value)
 
     value.each do |field|
