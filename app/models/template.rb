@@ -38,8 +38,12 @@ class Template < ApplicationRecord
     schema.keys
   end
 
-  def default_order
-    {(sort || 'created_at') => (desc == false ? :asc : :desc)}
+  def default_api_order
+    {(api_sort || 'created_at') => (api_desc == false ? :asc : :desc)}
+  end
+
+  def default_admin_order
+    {(admin_sort || 'created_at') => (admin_desc == false ? :asc : :desc)}
   end
 
   # TODO: Creates a Hash schema like:

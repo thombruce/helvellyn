@@ -6,8 +6,10 @@ class Admin::TemplatePolicy < ApplicationPolicy
       :slug,
       :publishable,
       :sluggable_field,
-      :sort,
-      :desc,
+      :api_sort,
+      :api_desc,
+      :admin_sort,
+      :admin_desc,
       fields: [
         :name,
         :slug,

@@ -57,8 +57,10 @@ ActiveRecord::Schema.define(version: 2020_04_12_203822) do
     t.boolean "publishable", default: true
     t.string "sluggable_field"
     t.integer "entities_count"
-    t.string "sort", default: "created_at"
-    t.boolean "desc", default: true
+    t.string "api_sort", default: "created_at"
+    t.boolean "api_desc", default: true
+    t.string "admin_sort", default: "created_at"
+    t.boolean "admin_desc", default: true
     t.index ["workspace_id", "slug"], name: "index_templates_on_workspace_id_and_slug", unique: true
     t.index ["workspace_id"], name: "index_templates_on_workspace_id"
   end

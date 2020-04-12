@@ -1,4 +1,4 @@
-json.extract! template, :id, :workspace_id, :name, :plural, :slug, :fields, :publishable, :sluggable_field, :sort, :desc, :created_at, :updated_at
+json.extract! template, :id, :workspace_id, :name, :plural, :slug, :fields, :publishable, :sluggable_field, :api_sort, :api_desc, :admin_sort, :admin_desc, :created_at, :updated_at
 
 json.entities_count template.entities.size
 

@@ -19,8 +19,10 @@ export default {
         slug: '',
         publishable: true,
         sluggable_field: '',
-        sort: 'created_at',
-        desc: true,
+        api_sort: 'created_at',
+        api_desc: true,
+        admin_sort: 'created_at',
+        admin_desc: true,
         fields: [],
         errors: []
       }

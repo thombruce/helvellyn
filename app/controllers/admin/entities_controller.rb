@@ -9,7 +9,7 @@ class Admin::EntitiesController < AdminController
   # GET /:workspace_id/:template_id.json
   def index
     @entities = policy_scope(@template.entities)
-      .order(entities_order)
+      .order(entities_order(@template.default_admin_order))
       .page(params[:page])
       .per(params[:per])
   end
