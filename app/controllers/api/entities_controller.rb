@@ -6,7 +6,7 @@ class Api::EntitiesController < ApiController
   # GET /workspaces/:workspace_id/templates/:template_id/entities.json
   # GET /:workspace_id/:template_id.json
   def index
-    @entities = policy_scope(@template.entities).page(params[:page])
+    @entities = policy_scope(@template.entities).page(params[:page]).per(params[:per])
   end
 
   # GET /workspaces/:workspace_id/templates/:template_id/entities/:id.json
