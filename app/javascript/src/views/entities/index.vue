@@ -32,7 +32,9 @@ export default {
       entities: null,
       options: {
         page: parseInt(this.$route.query.page || 1),
-        itemsPerPage: 25
+        itemsPerPage: 25,
+        sortBy: [this.$route.query.sort] || null,
+        sortDesc: [(this.$route.query.desc == 'true')] || null
       },
       footerOptions: {
         'items-per-page-options': [5,10,15,20,25],
@@ -44,7 +46,7 @@ export default {
   computed: {
     tableHeaders() {
       return [
-        { text: this.template.fields[0].name, value: this.template.fields[0].slug },
+        { text: this.template.fields[0].name, value: this.template.fields[0].slug, sortable: false },
         { text: 'Created', value: 'created_at' },
         { text: 'Updated', value: 'updated_at' },
         { text: 'Published', value: 'published_at' },
@@ -66,12 +68,18 @@ export default {
   },
   methods: {
     fetchData () {
+      let query = {
+        page: this.options.page,
+        per: this.options.itemsPerPage,
+        sort: (this.options.sortBy ? this.options.sortBy[0] : null),
+        desc: (this.options.sortDesc ? this.options.sortDesc[0] : null)
+      }
       this.$store.dispatch(
         'entities/index',
         {
           workspace_id: this.$route.params.workspace_id,
           template_id: this.$route.params.template_id,
-          query: { page: this.options.page, per: this.options.itemsPerPage }
+          query
         }
       ).then((data) => {
         this.entities = data

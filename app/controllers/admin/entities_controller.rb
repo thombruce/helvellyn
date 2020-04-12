@@ -1,4 +1,6 @@
 class Admin::EntitiesController < AdminController
+  include EntitiesSorter
+
   before_action :set_workspace
   before_action :set_template
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
@@ -6,7 +8,10 @@ class Admin::EntitiesController < AdminController
   # GET /workspaces/:workspace_id/templates/:template_id/entities.json
   # GET /:workspace_id/:template_id.json
   def index
-    @entities = policy_scope(@template.entities).page(params[:page]).per(params[:per])
+    @entities = policy_scope(@template.entities)
+      .order(entities_order)
+      .page(params[:page])
+      .per(params[:per])
   end
 
   # GET /workspaces/:workspace_id/templates/:template_id/entities/:id.json
