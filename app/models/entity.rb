@@ -6,7 +6,7 @@ class Entity < ApplicationRecord
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where('published_at < ?', DateTime.now) }
 
-  belongs_to :template
+  belongs_to :template, counter_cache: true
 
   # TODO: Associated to user via :author role. But if user leaves app, :author becomes
   #       empty. Maybe an optional Author type field that stores key info... indefinitely.

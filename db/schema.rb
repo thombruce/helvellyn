@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_010636) do
+ActiveRecord::Schema.define(version: 2020_04_12_174012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_010636) do
     t.string "plural"
     t.boolean "publishable", default: true
     t.string "sluggable_field"
+    t.integer "entities_count"
     t.index ["workspace_id", "slug"], name: "index_templates_on_workspace_id_and_slug", unique: true
     t.index ["workspace_id"], name: "index_templates_on_workspace_id"
   end
