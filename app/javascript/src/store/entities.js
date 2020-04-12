@@ -33,7 +33,7 @@ const getters = {
 const actions = {
   index({ commit }, params) {
     return axios
-      .get('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities')
+      .get('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities', { params: { page: params.page } })
       .then((res) => {
         commit('insert', res.data)
       })
