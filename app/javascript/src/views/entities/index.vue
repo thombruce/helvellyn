@@ -32,7 +32,7 @@ export default {
       entities: null,
       options: {
         page: parseInt(this.$route.query.page || 1),
-        itemsPerPage: 25,
+        itemsPerPage: this.$route.query.per || 25,
         sortBy: [this.$route.query.sort] || null,
         sortDesc: this.$route.query.desc ? [(this.$route.query.desc == 'true')] : null
       },
