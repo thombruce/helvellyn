@@ -33,8 +33,8 @@ export default {
       options: {
         page: parseInt(this.$route.query.page || 1),
         itemsPerPage: this.$route.query.per || 25,
-        sortBy: [this.$route.query.sort] || null,
-        sortDesc: this.$route.query.desc ? [(this.$route.query.desc == 'true')] : null
+        sortBy: [this.$route.query.sort] || [this.template.sort],
+        sortDesc: this.$route.query.desc ? [(this.$route.query.desc == 'true')] : [this.template.desc]
       },
       footerOptions: {
         'items-per-page-options': [5,10,15,20,25],
