@@ -34,10 +34,10 @@ const actions = {
   index({ commit }, params) {
     let workspace_id = params.workspace_id,
       template_id = params.template_id,
-      page = params.page
+      query = params.query
 
     return axios
-      .get('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities', { params: { page: page } })
+      .get('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities', { params: query })
       .then((res) => {
         commit('insert', res.data)
         return res.data
