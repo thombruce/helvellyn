@@ -38,6 +38,10 @@ class Template < ApplicationRecord
     schema.keys
   end
 
+  def default_order
+    {(sort || 'created_at') => (desc == false ? :asc : :desc)}
+  end
+
   # TODO: Creates a Hash schema like:
   # {
   #   title: { name: 'Title', type: 'String', required: false },

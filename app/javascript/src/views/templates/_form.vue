@@ -14,6 +14,10 @@ v-form(ref="form" :model="template")
 
   v-checkbox(v-model="template.publishable" label="Publishable" hint="Whether or not it should be possible to publish the content, making it public.")
 
+  v-select(label="Default Sort" :items="sortCandidates" v-model="template.sort")
+
+  v-checkbox(label="Most recent first" v-model="template.desc")
+
   div.mb-5
     h3 Custom Fields
 
@@ -63,7 +67,12 @@ export default {
   },
   data() {
     return {
-      dialog: false
+      dialog: false,
+      sortCandidates: [
+        { text: 'Created', value: 'created_at' },
+        { text: 'Updated', value: 'updated_at' },
+        { text: 'Published', value: 'published_at' }
+      ]
     }
   },
   computed: {
