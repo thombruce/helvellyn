@@ -32,52 +32,76 @@ const getters = {
 
 const actions = {
   index({ commit }, params) {
+    let workspace_id = params.workspace_id,
+      template_id = params.template_id,
+      query = params.query
+
     return axios
-      .get('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities')
+      .get('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities', { params: query })
       .then((res) => {
         commit('insert', res.data)
+        return res.data
       })
       .catch(function(error) {
         console.log(error)
       })
   },
   show({ commit }, params) {
+    let workspace_id = params.workspace_id,
+      template_id = params.template_id,
+      entity_id = params.entity_id
+
     return axios
-      .get('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities/' + params.entity_id)
+      .get('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities/' + entity_id)
       .then((res) => {
         commit('insert', res.data)
+        return res.data
       })
       .catch(function(error) {
         console.log(error)
       })
   },
   create({ state, commit }, params) {
+    let workspace_id = params.workspace_id,
+      template_id = params.template_id,
+      payload = params.data
+
     return axios
-      .post('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities', params.data)
+      .post('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities', payload)
       .then((res) => {
         commit('insert', res.data)
-        return Promise.resolve(state.list[res.data.slug])
+        return Promise.resolve(state.list[res.data.slug]) // TODO: How should this be altered?
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
   update({ state, commit }, params) {
+    let workspace_id = params.workspace_id,
+      template_id = params.template_id,
+      entity_id = params.entity_id,
+      payload = params.data
+
     return axios
-      .patch('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities/' + params.entity_id, params.data)
+      .patch('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities/' + entity_id, payload)
       .then((res) => {
         commit('modify', { slug: params.entity_id, data: res.data })
-        return Promise.resolve(state.list[res.data.slug])
+        return Promise.resolve(state.list[res.data.slug]) // TODO: How should this be altered?
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
   destroy({ commit }, params) {
+    let workspace_id = params.workspace_id,
+      template_id = params.template_id,
+      entity_id = params.entity_id
+
     return axios
-      .delete('/workspaces/' + params.workspace_id + '/templates/' + params.template_id + '/entities/' + params.entity_id)
+      .delete('/workspaces/' + workspace_id + '/templates/' + template_id + '/entities/' + entity_id)
       .then((res) => {
         commit('remove', params.entity_id)
+        // TODO: What should be returned here?
       })
       .catch(function(error) {
         console.log(error)

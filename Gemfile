@@ -32,6 +32,9 @@ gem 'rolify'
 # Use JSON Web Tokens
 gem 'jwt'
 
+# Querying
+gem 'kaminari'
+
 # Presentation
 gem 'haml-rails'
 gem 'redcarpet'
