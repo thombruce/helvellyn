@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.mb-4
   v-label {{ label }}
   v-card
     editor-menu-bar(:editor="editor" v-slot="{ commands, isActive }")
@@ -142,7 +142,8 @@ import {
   Table,
   TableHeader,
   TableRow,
-  TableCell
+  TableCell,
+  TrailingNode
 } from 'tiptap-extensions'
 
 import RteImageDialog from './VRichTextEditor/RteImageDialog'
@@ -216,7 +217,11 @@ export default {
         new Table(),
         new TableHeader(),
         new TableCell(),
-        new TableRow()
+        new TableRow(),
+        new TrailingNode({
+          node: 'paragraph',
+          notAfter: ['heading', 'paragraph']
+        })
       ],
       onUpdate: ({getHTML}) => {
         const state = getHTML()
