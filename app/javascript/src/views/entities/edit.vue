@@ -2,7 +2,29 @@
 div(v-if="entity")
   h2 Edit {{ template.name }}
   entity-form(:template="template" :entity="entity", :submit="update")
-  a(v-on:click.stop="destroy" href="javascript:;") Delete
+  
+  v-alert.my-4(
+    type="error"
+    colored-border
+    border="left"
+    elevation="2"
+  )
+    h4.title Danger Zone
+    p.body-1 Your {{ template.name }} cannot be restored if deleted. Please be certain this is what you want.
+    v-dialog(v-model="dialog" persistent max-width="600px")
+      template(v-slot:activator="{ on }")
+        v-btn(color="error" v-on="on") Delete {{ template.name }}
+      v-card
+        v-card-title
+          span(class="headline") Delete this {{ template.name }}
+        v-card-text
+          p.body-2 Your {{ template.name }} cannot be restored if deleted.
+          p.body-1 Are you sure you want to delete this {{ template.name }}?
+        v-card-actions
+          v-spacer
+          v-btn(@click="dialog = false") Cancel
+          v-btn(color="error" @click="destroy") Delete {{ template.name }}
+  
   router-link(:to="{ name: 'entity_path', params: { entity_id: $route.params.entity_id } }") Back
 </template>
 
@@ -15,6 +37,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       entity: {
         errors: []
       }
