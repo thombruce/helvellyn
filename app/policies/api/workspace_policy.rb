@@ -1,18 +1,18 @@
 class Api::WorkspacePolicy < ApplicationPolicy
-  def permitted_attributes
-    [:title, :slug]
+  def show?
+    true # TODO: Add public boolean to workspaces
   end
 
-  def show?
-    true
+  def create?
+    false
   end
 
   def update?
-    user&.has_role?(:admin, record)
+    false
   end
 
   def destroy?
-    user&.has_role?(:admin, record)
+    false
   end
 
   class Scope < Scope

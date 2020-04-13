@@ -1,37 +1,18 @@
 class Api::TemplatePolicy < ApplicationPolicy
-  def permitted_attributes
-    [
-      :name,
-      :plural,
-      :slug,
-      :publishable,
-      fields: [
-        :name,
-        :type,
-        :sluggable
-      ]
-    ]
-  end
-
   def show?
     record.publishable
   end
 
   def create?
-    user&.has_role?(:admin, workspace)
+    false
   end
 
   def update?
-    user&.has_role?(:admin, workspace)
+    false
   end
 
   def destroy?
-    user&.has_role?(:admin, workspace)
-  end
-
-  # Helper Methods
-  def workspace
-    record.workspace
+    false
   end
 
   class Scope < Scope
