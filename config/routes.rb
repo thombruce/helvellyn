@@ -39,6 +39,11 @@ Rails.application.routes.draw do
       # /api/:worspace_id/users/*.json
       resources :users
       resources :templates, path: '', only: [] do
+        member do
+          # /api/:worspace_id/:template_id/template.json
+          get 'template', to: 'templates#show'
+        end
+
         # /api/:worspace_id/:template_id/*.json
         resources :entities, path: '', only: [:index, :show]
       end

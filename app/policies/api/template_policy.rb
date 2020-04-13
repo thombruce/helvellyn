@@ -14,7 +14,7 @@ class Api::TemplatePolicy < ApplicationPolicy
   end
 
   def show?
-    user&.has_any_role?({ name: :admin, resource: workspace }, { name: :moderator, resource: workspace }, { name: :member, resource: workspace })
+    record.publishable
   end
 
   def create?
@@ -36,7 +36,7 @@ class Api::TemplatePolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(publishable: true)
     end
   end
 end
