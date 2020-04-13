@@ -4,7 +4,30 @@ div
     v-col
       h1 Edit Workspace
       workspace-form(:workspace="workspace", :submit="update")
-      a(v-on:click.stop="destroy" href="javascript:;") Delete
+
+      v-alert.my-4(
+        type="error"
+        colored-border
+        border="left"
+        elevation="2"
+      )
+        h4.title Danger Zone
+        p.body-1 Your workspace cannot be restored if deleted. Please be certain this is what you want.
+        p.body-2 You will also lose all of the templates and entities associated with this workspace.
+        v-dialog(v-model="dialog" persistent max-width="600px")
+          template(v-slot:activator="{ on }")
+            v-btn(color="error" v-on="on") Delete Workspace
+          v-card
+            v-card-title
+              span(class="headline") Delete this Workspace
+            v-card-text
+              p.body-2 All of your templates and content entries associated with this workspace will be lost.
+              p.body-1 Are you sure you want to delete this workspace?
+            v-card-actions
+              v-spacer
+              v-btn(@click="dialog = false") Cancel
+              v-btn(color="error" @click="destroy") Delete Workspace
+
       router-link(:to="{ name: 'templates_path', params: { workspace_id: $route.params.workspace_id } }") Back
 </template>
 
@@ -16,6 +39,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       workspace: {
         errors: []
       }
