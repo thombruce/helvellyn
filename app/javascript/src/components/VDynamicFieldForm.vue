@@ -1,5 +1,10 @@
 <template lang="pug">
-v-card.mb-5
+v-alert.my-2(
+  type="primary"
+  colored-border
+  border="left"
+  elevation="2"
+)
   v-container
     h4 {{ inputVal.name || 'New Field' }}
 
