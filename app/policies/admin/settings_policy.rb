@@ -7,6 +7,10 @@ class Admin::SettingsPolicy < ApplicationPolicy
     user&.has_role?(:admin)
   end
 
+  def public?
+    true
+  end
+
   def update?
     user&.has_role?(:admin)
   end

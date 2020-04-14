@@ -6,16 +6,10 @@ const workspaces = {
     }
   },
   created () {
-    this.fetchData()
-  },
-  watch: {
-    $route(to, from) {
-      this.fetchData()
-    }
+    this.fetchWorkspaces()
   },
   methods: {
-    fetchData () {
-      this.workspaces = null
+    fetchWorkspaces () {
       this.$store.dispatch('workspaces/index').then(() => {
         this.workspaces = this.$store.state.workspaces.list
         this.currentWorkspace = this.workspaces[this.$route.params.workspace_id]

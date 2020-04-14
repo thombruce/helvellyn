@@ -1,7 +1,10 @@
 class Admin::SettingsController < AdminController
-  before_action :set_settings, only: [:show, :edit, :update]
+  before_action :set_settings
 
   def show
+  end
+
+  def public
   end
 
   def edit

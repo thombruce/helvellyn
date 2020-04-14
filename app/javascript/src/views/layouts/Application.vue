@@ -25,7 +25,7 @@ v-app(:dark="$vuetify.theme.dark")
   v-app-bar(clipped-left fixed app)
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")
     v-btn(:to="{ name: 'root_path' }" text)
-      v-toolbar-title Helvellyn
+      v-toolbar-title {{ settings ? settings.name : '...' }}
     v-spacer
     span.mr-2
       strong Version
