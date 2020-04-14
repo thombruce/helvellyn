@@ -21,12 +21,16 @@ v-app(:dark="$vuetify.theme.dark")
           v-icon mdi-{{ $vuetify.theme.dark ? 'eye' : 'eye-off' }}
         v-list-item-title {{ $vuetify.theme.dark ? 'Light' : 'Dark' }} Mode
       .pa-2
-        v-btn(block :to="{ name: 'account_path' }") Admin
+        v-btn(block :to="{ name: 'admin_path' }") Admin
   v-app-bar(clipped-left fixed app)
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")
     v-btn(:to="{ name: 'root_path' }" text)
       v-toolbar-title Helvellyn
     v-spacer
+    span.mr-2
+      strong Version
+      |
+      | {{ $store.getters.appVersion }}
     v-menu
       template(v-slot:activator="{ on }")
         v-btn(

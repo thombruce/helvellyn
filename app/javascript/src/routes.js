@@ -2,6 +2,8 @@ import Vue from 'vue/dist/vue.esm'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import AdminIndex from './views/admin/index.vue'
+
 import WorkspaceIndex from './views/workspaces/index.vue'
 import WorkspaceShow from './views/workspaces/show.vue'
 import WorkspaceNew from './views/workspaces/new.vue'
@@ -30,6 +32,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: WorkspaceIndex, name: 'root_path' },
+    { path: '/admin', component: AdminIndex, name: 'admin_path' },
     { path: '/login', component: Login, name: 'login_path', meta: { layout: "authentication" } },
     { path: '/signup', component: Signup, name: 'signup_path', meta: { layout: "authentication" } },
     { path: '/account', component: Account, name: 'account_path' },

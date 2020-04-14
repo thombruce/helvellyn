@@ -9,6 +9,16 @@ import users from './users'
 import templates from './templates'
 import entities from './entities'
 
+const state = () => ({
+  packageVersion: process.env.PACKAGE_VERSION || '0'
+})
+
+const getters = {
+  appVersion: (state) => {
+    return state.packageVersion
+  }
+}
+
 const actions = {
   login({ dispatch }, payload) { // A shortcut for...
     return dispatch('authentication/login', payload)
@@ -22,6 +32,8 @@ const actions = {
 }
 
 const store = new Vuex.Store({
+  state,
+  getters,
   actions,
   modules: {
     authentication,
