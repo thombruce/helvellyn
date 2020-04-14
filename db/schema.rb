@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_203822) do
+ActiveRecord::Schema.define(version: 2020_04_14_195649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2020_04_12_203822) do
     t.string "session_token"
     t.index ["session_token"], name: "index_sessions_on_session_token", unique: true
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer "singleton_guard", default: 0
+    t.string "name", default: "Helvellyn"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["singleton_guard"], name: "index_settings_on_singleton_guard", unique: true
   end
 
   create_table "templates", force: :cascade do |t|

@@ -2,6 +2,8 @@ import Vue from 'vue/dist/vue.esm'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import AdminIndex from './views/admin/index.vue'
+
 import WorkspaceIndex from './views/workspaces/index.vue'
 import WorkspaceShow from './views/workspaces/show.vue'
 import WorkspaceNew from './views/workspaces/new.vue'
@@ -30,6 +32,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: WorkspaceIndex, name: 'root_path' },
+    { path: '/admin', component: AdminIndex, name: 'admin_path' },
     { path: '/login', component: Login, name: 'login_path', meta: { layout: "authentication" } },
     { path: '/signup', component: Signup, name: 'signup_path', meta: { layout: "authentication" } },
     { path: '/account', component: Account, name: 'account_path' },
@@ -57,15 +60,25 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const jwtDecode = require('jwt-decode')
+
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ['/login', '/signup']
+
   const authRequired = !publicPages.includes(to.path)
+  const adminRequired = to.path.startsWith('/admin')
+
   const loggedIn = localStorage.getItem('user-token')
 
   if (authRequired && !loggedIn) {
     return next('/login')
   } else if (!authRequired && loggedIn) {
     return next('/')
+  } else if (loggedIn && adminRequired) {
+    const isAdmin = jwtDecode(loggedIn).data.user.admin
+    if (!isAdmin) {
+      return next(from || '/')
+    }
   }
 
   next()

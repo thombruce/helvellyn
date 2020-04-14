@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   rolify
 
+  after_create :make_admin, if: Proc.new { User.count == 1 }
+
   has_many :sessions, dependent: :destroy
 
   has_many :workspaces, dependent: :destroy, inverse_of: 'created_by'
@@ -18,5 +20,15 @@ class User < ApplicationRecord
   def self.authenticate(params)
     user = find_by_login(params[:login])
     user&.authenticate(params[:password])
+  end
+
+  def admin
+    has_role?(:admin)
+  end
+
+  private
+
+  def make_admin
+    add_role(:admin)
   end
 end

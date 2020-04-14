@@ -2,12 +2,24 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import settings from './settings'
+
 import authentication from './authentication'
 
 import workspaces from './workspaces'
 import users from './users'
 import templates from './templates'
 import entities from './entities'
+
+const state = () => ({
+  packageVersion: process.env.PACKAGE_VERSION || '0'
+})
+
+const getters = {
+  appVersion: (state) => {
+    return state.packageVersion
+  }
+}
 
 const actions = {
   login({ dispatch }, payload) { // A shortcut for...
@@ -22,8 +34,11 @@ const actions = {
 }
 
 const store = new Vuex.Store({
+  state,
+  getters,
   actions,
   modules: {
+    settings,
     authentication,
     workspaces,
     users,
