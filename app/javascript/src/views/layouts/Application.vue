@@ -20,7 +20,7 @@ v-app(:dark="$vuetify.theme.dark")
         v-list-item-action
           v-icon mdi-{{ $vuetify.theme.dark ? 'eye' : 'eye-off' }}
         v-list-item-title {{ $vuetify.theme.dark ? 'Light' : 'Dark' }} Mode
-      .pa-2
+      .pa-2(v-if="currentUser.admin")
         v-btn(block :to="{ name: 'admin_path' }") Admin
   v-app-bar(clipped-left fixed app)
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")

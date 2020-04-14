@@ -60,15 +60,25 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const jwtDecode = require('jwt-decode')
+
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ['/login', '/signup']
+
   const authRequired = !publicPages.includes(to.path)
+  const adminRequired = to.path.startsWith('/admin')
+
   const loggedIn = localStorage.getItem('user-token')
 
   if (authRequired && !loggedIn) {
     return next('/login')
   } else if (!authRequired && loggedIn) {
     return next('/')
+  } else if (loggedIn && adminRequired) {
+    const isAdmin = jwtDecode(loggedIn).data.user.admin
+    if (!isAdmin) {
+      return next(from || '/')
+    }
   }
 
   next()

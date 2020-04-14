@@ -19,4 +19,8 @@ class User < ApplicationRecord
     user = find_by_login(params[:login])
     user&.authenticate(params[:password])
   end
+
+  def admin
+    has_role?(:admin)
+  end
 end
