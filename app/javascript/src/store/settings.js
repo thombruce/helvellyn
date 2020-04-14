@@ -19,6 +19,16 @@ const actions = {
         console.log(error)
       })
   },
+  public({ commit }) {
+    return axios
+      .get('/settings/public')
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  },
   update({ state, commit }, params) {
     return axios
       .patch('/settings', params.data)

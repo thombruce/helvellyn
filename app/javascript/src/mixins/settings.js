@@ -1,9 +1,9 @@
-import axios from '../axios'
+import store from '../store'
 
 const settings = {
-  data () {
-    return {
-      settings: null
+  computed: {
+    settings() {
+      return store.state.settings.list
     }
   },
   created () {
@@ -11,13 +11,7 @@ const settings = {
   },
   methods: {
     fetchSettings () {
-      axios.get('/settings/public')
-        .then((res) => {
-          this.settings = res.data
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
+      store.dispatch('settings/public')
     }
   }
 }
