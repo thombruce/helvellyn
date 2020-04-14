@@ -9,21 +9,18 @@ div
         | {{ $store.getters.appVersion }}
     v-card-text
       p Thank you for using Helvellyn CMS.
-  settings-form(:settings="settings")
+
+  v-form(v-if="settings" ref="form" :model="settings" @submit.prevent="update")
+    v-text-field(label="Name" v-model="settings.name" :error-messages="settings.errors.name" hint="The name of your installation that will appear in the top left of every page")
+
+    v-btn(color="primary" type="submit") Save
 </template>
 
 <script>
-import SettingsForm from './_form.vue'
-
 export default {
-  components: {
-    SettingsForm
-  },
   data () {
     return {
-      settings: {
-        errors: []
-      }
+      editable_settings: null
     }
   },
   created () {
@@ -35,7 +32,14 @@ export default {
   methods: {
     fetchData () {
       this.$store.dispatch('settings/show').then(() => {
-        this.settings = this.$store.state.settings.list
+        this.editable_settings = this.$store.state.settings.list
+      })
+    },
+    update: function () {
+      this.$store.dispatch('settings/update', { data: { settings: this.settings } }).then((res) => {
+        this.$router.push({ name: 'root_path' })
+      }).catch((errors) => {
+        this.settings.errors = errors
       })
     }
   }
