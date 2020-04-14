@@ -2,6 +2,8 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import settings from './settings'
+
 import authentication from './authentication'
 
 import workspaces from './workspaces'
@@ -36,6 +38,7 @@ const store = new Vuex.Store({
   getters,
   actions,
   modules: {
+    settings,
     authentication,
     workspaces,
     users,

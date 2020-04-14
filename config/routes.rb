@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # /admin/**/*.json Admin::
   scope '/admin', module: 'admin', format: false, defaults: { format: 'json' } do
+    # /admin/settings.json
+    resource :settings, except: [:new, :create, :destroy]
     # /admin/workspaces/*.json
     resources :workspaces, constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i } do
       # /admin/workspaces/:workspace_id/users/*.json
