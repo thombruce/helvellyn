@@ -8,12 +8,22 @@ const workspaces = {
   created () {
     this.fetchWorkspaces()
   },
+  watch: {
+    '$route': 'setCurrentWorkspace'
+  },
   methods: {
     fetchWorkspaces () {
       this.$store.dispatch('workspaces/index').then(() => {
         this.workspaces = this.$store.state.workspaces.list
-        this.currentWorkspace = this.workspaces[this.$route.params.workspace_id]
+        this.setCurrentWorkspace()
       })
+    },
+    setCurrentWorkspace () {
+      if (this.$route.params.workspace_id) {
+        this.currentWorkspace = this.workspaces[this.$route.params.workspace_id]
+      } else {
+        this.currentWorkspace = null
+      }
     }
   }
 }
