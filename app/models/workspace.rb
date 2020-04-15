@@ -13,7 +13,7 @@ class Workspace < ApplicationRecord
 
   has_many :templates, dependent: :destroy
 
-  before_validation :generate_session, on: :create
+  before_validation :create_session, on: :create
 
   validates_presence_of :session
 
@@ -26,11 +26,5 @@ class Workspace < ApplicationRecord
 
   def token
     session.token
-  end
-
-  private
-
-  def generate_session
-    create_session
   end
 end
