@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   h1 New Session
-  v-form(ref="form" :model="user" @submit="login()")
+  v-form(ref="form" :model="user" @submit.prevent="login()")
     v-text-field(label="Login" v-model="user.login" :error-messages="user.errors.login")
     v-text-field(label="Password" type="password" v-model="user.password" :error-messages="user.errors.password")
     v-btn(color="primary" type="submit") Log in

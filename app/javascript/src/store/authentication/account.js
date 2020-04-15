@@ -3,33 +3,21 @@ import { authAPI as axios } from '../../axios'
 import prototype from '../prototypes/base'
 
 const state = () => ({
-  list: {}
+  info: {}
 })
 
 const getters = {}
 
 const actions = {
-  show({ commit }, id) {
+  show({ state, commit }) {
     return axios
       .get('/account')
       .then((res) => {
         commit('insert', res.data)
+        return state.info
       })
       .catch(function(error) {
         console.log(error)
-      })
-  },
-  create({ commit }, payload) {
-    return axios
-      .post('/signup', payload)
-      .then((res) => {
-        if (res.data.jwt) {
-          localStorage.setItem('user-token', res.data.jwt)
-        }
-        commit('insert', res.data)
-      })
-      .catch((error) => {
-        return Promise.reject(error.response.data)
       })
   },
   update({ commit }, payload) {
@@ -37,17 +25,18 @@ const actions = {
       .patch('/account', payload)
       .then((res) => {
         commit('insert', res.data)
+        return state.info
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
-  destroy({ commit }, id) {
+  destroy({ commit }) {
     return axios
       .delete('/account')
       .then((res) => {
         localStorage.removeItem('user-token')
-        commit('remove', id)
+        commit('remove')
       })
       .catch(function(error) {
         console.log(error)
@@ -57,18 +46,14 @@ const actions = {
 
 const mutations = {
   insert(state, payload) {
-    const isArray = Array.isArray(payload)
-    let users = isArray ? payload : [payload]
-    users.map((user) => {
-      state.list[user.id] = { ...state.list[user.id], ...prototype, ...user }
-    })
+    state.info = { ...state.info, ...prototype, ...payload }
   },
   remove(state, id) {
-    Vue.delete(state.list, id)
+    state.info = {}
   }
 }
 
-const users = {
+const account = {
   namespaced: true,
   state,
   getters,
@@ -76,4 +61,4 @@ const users = {
   mutations
 }
 
-export default users
+export default account
