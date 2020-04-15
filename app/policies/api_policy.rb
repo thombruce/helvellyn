@@ -25,4 +25,8 @@ class ApiPolicy < ApplicationPolicy
   def workspace
     session.workspace
   end
+
+  def current_workspace
+    session.current_workspace
+  end
 end

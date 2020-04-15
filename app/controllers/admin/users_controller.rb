@@ -5,6 +5,7 @@ class Admin::UsersController < AdminController
   # GET /workspaces/:workspace_id/users.json
   def index
     @users = policy_scope(@workspace.users)
+    authorize User
   end
 
   # GET /workspaces/:workspace_id/users/:id.json
@@ -13,10 +14,6 @@ class Admin::UsersController < AdminController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_workspace
-      @workspace = Workspace.friendly.find(params[:workspace_id])
-    end
-
     def set_user
       @user = @workspace.users.find(params[:id])
       authorize @user

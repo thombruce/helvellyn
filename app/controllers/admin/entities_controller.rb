@@ -12,6 +12,7 @@ class Admin::EntitiesController < AdminController
       .order(entities_order(@template.default_admin_order))
       .page(params[:page])
       .per(params[:per])
+    authorize Entity
   end
 
   # GET /workspaces/:workspace_id/templates/:template_id/entities/:id.json
@@ -61,10 +62,6 @@ class Admin::EntitiesController < AdminController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_workspace
-      @workspace = Workspace.friendly.find(params[:workspace_id])
-    end
-
     def set_template
       @template = @workspace.templates.friendly.find(params[:template_id])
     end

@@ -12,6 +12,7 @@ class Api::EntitiesController < ApiController
       .order(entities_order(@template.default_api_order))
       .page(params[:page])
       .per(params[:per])
+    authorize Entity
   end
 
   # GET /workspaces/:workspace_id/templates/:template_id/entities/:id.json
@@ -21,10 +22,6 @@ class Api::EntitiesController < ApiController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_workspace
-      @workspace = Workspace.friendly.find(params[:workspace_id])
-    end
-
     def set_template
       @template = @workspace.templates.friendly.find(params[:template_id])
     end

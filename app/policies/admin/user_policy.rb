@@ -1,4 +1,8 @@
 class Admin::UserPolicy < AdminPolicy
+  def index?
+    user&.has_role?([:admin], current_workspace)
+  end
+
   class Scope < Scope
     def resolve
       scope.all
