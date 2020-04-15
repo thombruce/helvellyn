@@ -3,7 +3,7 @@ Rails.application.config.middleware.use Warden::Manager do |config|
 
   config.default_scope = :session
 
-  config.scope_defaults :session, store: false, strategies: [:jwt, :workspace_token]
+  config.scope_defaults :session, store: false, strategies: [:jwt, :api_token]
 end
 
 Warden::Strategies.add(:jwt) do
@@ -37,7 +37,7 @@ Warden::Strategies.add(:jwt) do
   end
 end
 
-Warden::Strategies.add(:workspace_token) do
+Warden::Strategies.add(:api_token) do
   def valid?
     request.env['HTTP_API_TOKEN']
   end
