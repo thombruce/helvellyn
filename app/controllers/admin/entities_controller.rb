@@ -66,7 +66,7 @@ class Admin::EntitiesController < AdminController
       @workspace = Workspace.friendly.find(params[:workspace_id])
       # Set workspace as an ephemeral property on the current_session for
       # authorisation of resources.
-      current_session.workspace = @workspace
+      current_session.current_workspace = @workspace
     end
 
     def set_template

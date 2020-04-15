@@ -7,6 +7,8 @@ class Session < ApplicationRecord
 
   has_secure_token
 
+  attr_accessor :current_workspace
+
   def self.authenticate(params)
     user = User.authenticate(params)
     new(user: user)

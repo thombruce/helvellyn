@@ -6,7 +6,7 @@ class AdminPolicy < ApplicationPolicy
   #       that would be less database-hungry.
 
   # Helper Methods
-  def workspace
-    session.workspace
+  def current_workspace
+    session.current_workspace
   end
 end

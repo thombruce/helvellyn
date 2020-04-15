@@ -64,7 +64,7 @@ class Admin::WorkspacesController < AdminController
       @workspace = Workspace.friendly.find(params[:id])
       # Set workspace as an ephemeral property on the current_session for
       # authorisation of resources.
-      current_session.workspace = @workspace
+      current_session.current_workspace = @workspace
       authorize @workspace
     end
 end

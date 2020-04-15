@@ -1,9 +1,10 @@
 class Api::EntityPolicy < ApiPolicy
-  # TODO: Lack of authentication on index means that these
-  #       are accessible without an API-Token.
+  def index?
+    super && workspace == current_workspace
+  end
 
   def show?
-    super && record.published?
+    super && workspace == current_workspace && record.published?
   end
 
   class Scope < Scope

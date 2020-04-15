@@ -1,6 +1,10 @@
 class Api::TemplatePolicy < ApiPolicy
+  def index?
+    super && workspace == current_workspace
+  end
+
   def show?
-    super && record.publishable
+    super && workspace == current_workspace && record.publishable
   end
 
   class Scope < Scope

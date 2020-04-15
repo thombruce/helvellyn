@@ -4,7 +4,7 @@ class Admin::WorkspacePolicy < AdminPolicy
   end
 
   def show?
-    true
+    user&.has_role?([:admin], record) # TODO: Expand with additional roles
   end
 
   def update?

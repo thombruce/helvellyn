@@ -1,6 +1,6 @@
 class Api::WorkspacePolicy < ApiPolicy
   def show?
-    super # TODO: Add public boolean to workspaces
+    super && workspace == current_workspace # TODO: Add public boolean to workspaces
   end
 
   class Scope < Scope
