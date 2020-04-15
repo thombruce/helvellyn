@@ -6,12 +6,11 @@ const settings = {
       return store.state.settings.list
     }
   },
-  created () {
-    this.fetchSettings()
-  },
   methods: {
+    // Called from App.vue to ensure it only runs once.
     fetchSettings () {
       store.dispatch('settings/public')
+      console.log('fetching settings')
     }
   }
 }
