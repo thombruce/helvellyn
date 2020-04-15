@@ -13,9 +13,7 @@ class Workspace < ApplicationRecord
 
   has_many :templates, dependent: :destroy
 
-  before_validation :create_session, on: :create
-
-  validates_presence_of :session
+  after_create :create_session
 
   validates_presence_of :title
 
