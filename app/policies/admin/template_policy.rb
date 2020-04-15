@@ -1,4 +1,4 @@
-class Admin::TemplatePolicy < ApplicationPolicy
+class Admin::TemplatePolicy < AdminPolicy
   def permitted_attributes
     [
       :name,

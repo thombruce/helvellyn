@@ -1,4 +1,4 @@
-class Admin::SettingsPolicy < ApplicationPolicy
+class Admin::SettingsPolicy < AdminPolicy
   def permitted_attributes
     [:name]
   end

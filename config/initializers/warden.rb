@@ -3,7 +3,7 @@ Rails.application.config.middleware.use Warden::Manager do |config|
 
   config.default_scope = :session
 
-  config.scope_defaults :session, strategies: [:jwt]
+  config.scope_defaults :session, store: false, strategies: [:jwt, :workspace_token]
 end
 
 Warden::Strategies.add(:jwt) do
@@ -29,6 +29,25 @@ Warden::Strategies.add(:jwt) do
 
     session = Session.find(token[0]['data']['session_id'])
 
+    session ? success!(session) : fail!('Could not authenticate')
+  end
+
+  def store?
+    false
+  end
+end
+
+Warden::Strategies.add(:workspace_token) do
+  def valid?
+    request.env['HTTP_API_TOKEN']
+  end
+
+  def env
+    request.env
+  end
+
+  def authenticate!
+    session = Session.find_by(token: env['HTTP_API_TOKEN'])
     session ? success!(session) : fail!('Could not authenticate')
   end
 

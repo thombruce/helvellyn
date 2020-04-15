@@ -1,4 +1,4 @@
-class Admin::EntityPolicy < ApplicationPolicy
+class Admin::EntityPolicy < AdminPolicy
   def index?
     true
   end

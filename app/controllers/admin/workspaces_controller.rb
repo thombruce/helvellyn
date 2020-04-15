@@ -44,7 +44,7 @@ class Admin::WorkspacesController < AdminController
   end
 
   def token
-    if @workspace.regenerate_token
+    if @workspace.session.regenerate_token
       render :show, status: :ok, location: @workspace
     else
       render json: @workspace.errors, status: :unprocessable_entity
