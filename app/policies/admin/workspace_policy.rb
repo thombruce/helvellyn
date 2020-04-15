@@ -1,4 +1,4 @@
-class Admin::WorkspacePolicy < ApplicationPolicy
+class Admin::WorkspacePolicy < AdminPolicy
   def permitted_attributes
     [:title, :slug]
   end
@@ -8,6 +8,10 @@ class Admin::WorkspacePolicy < ApplicationPolicy
   end
 
   def update?
+    user&.has_role?(:admin, record)
+  end
+
+  def token?
     user&.has_role?(:admin, record)
   end
 

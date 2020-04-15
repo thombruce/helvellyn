@@ -1,18 +1,6 @@
-class Api::EntityPolicy < ApplicationPolicy
+class Api::EntityPolicy < ApiPolicy
   def show?
-    record.published?
-  end
-
-  def create?
-    false
-  end
-
-  def update?
-    false
-  end
-
-  def destroy?
-    false
+    super && record.published?
   end
 
   class Scope < Scope

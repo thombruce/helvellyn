@@ -1,18 +1,6 @@
-class Api::WorkspacePolicy < ApplicationPolicy
+class Api::WorkspacePolicy < ApiPolicy
   def show?
-    true # TODO: Add public boolean to workspaces
-  end
-
-  def create?
-    false
-  end
-
-  def update?
-    false
-  end
-
-  def destroy?
-    false
+    super # TODO: Add public boolean to workspaces
   end
 
   class Scope < Scope

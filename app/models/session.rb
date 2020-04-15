@@ -1,11 +1,11 @@
 class Session < ApplicationRecord
   attr_accessor :login
 
-  before_validation :generate_session_token, on: :create
+  belongs_to :user, optional: true
 
-  belongs_to :user
+  belongs_to :workspace, optional: true
 
-  validates :session_token, presence: true, uniqueness: true
+  has_secure_token
 
   def self.authenticate(params)
     user = User.authenticate(params)
@@ -21,12 +21,6 @@ class Session < ApplicationRecord
   end
 
   private
-
-  def generate_session_token
-    begin
-      self.session_token = SecureRandom.hex
-    end while self.class.exists?(session_token: session_token)
-  end
 
   def jwt_data
     {

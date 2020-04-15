@@ -1,18 +1,6 @@
-class Api::TemplatePolicy < ApplicationPolicy
+class Api::TemplatePolicy < ApiPolicy
   def show?
-    record.publishable
-  end
-
-  def create?
-    false
-  end
-
-  def update?
-    false
-  end
-
-  def destroy?
-    false
+    super && record.publishable
   end
 
   class Scope < Scope

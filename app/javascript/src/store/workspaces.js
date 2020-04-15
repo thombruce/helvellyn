@@ -52,6 +52,17 @@ const actions = {
         return Promise.reject(error.response.data)
       })
   },
+  token({ state, commit }, params) {
+    return axios
+      .patch('/workspaces/' + params.workspace_id + '/token')
+      .then((res) => {
+        commit('modify', { slug: params.workspace_id, data: res.data })
+        return Promise.resolve(state.list[res.data.slug])
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data)
+      })
+  },
   destroy({ commit }, params) {
     return axios
       .delete('/workspaces/' + params.workspace_id)
