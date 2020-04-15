@@ -22,11 +22,6 @@ class Api::EntitiesController < ApiController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_workspace
-      @workspace = Workspace.friendly.find(params[:workspace_id])
-      current_session.current_workspace = @workspace
-    end
-
     def set_template
       @template = @workspace.templates.friendly.find(params[:template_id])
     end
