@@ -12,6 +12,7 @@ class Api::EntitiesController < ApiController
       .order(entities_order(@template.default_api_order))
       .page(params[:page])
       .per(params[:per])
+    authorize Entity
   end
 
   # GET /workspaces/:workspace_id/templates/:template_id/entities/:id.json

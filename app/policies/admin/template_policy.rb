@@ -18,6 +18,10 @@ class Admin::TemplatePolicy < AdminPolicy
     ]
   end
 
+  def index?
+    user&.has_role?([:admin], workspace)
+  end
+
   def show?
     user&.has_any_role?({ name: :admin, resource: workspace }, { name: :moderator, resource: workspace }, { name: :member, resource: workspace })
   end
@@ -32,11 +36,6 @@ class Admin::TemplatePolicy < AdminPolicy
 
   def destroy?
     user&.has_role?(:admin, workspace)
-  end
-
-  # Helper Methods
-  def workspace
-    record.workspace
   end
 
   class Scope < Scope

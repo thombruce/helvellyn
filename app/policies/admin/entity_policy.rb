@@ -1,6 +1,6 @@
 class Admin::EntityPolicy < AdminPolicy
   def index?
-    true
+    user&.has_role?([:admin], workspace)
   end
 
   def show?
@@ -17,11 +17,6 @@ class Admin::EntityPolicy < AdminPolicy
 
   def destroy?
     user&.has_any_role?({ name: :author, resource: record }, { name: :admin, resource: workspace })
-  end
-
-  # Helper Methods
-  def workspace
-    record.template.workspace
   end
 
   class Scope < Scope

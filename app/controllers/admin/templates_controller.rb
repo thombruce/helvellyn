@@ -5,6 +5,7 @@ class Admin::TemplatesController < AdminController
   # GET /workspaces/:workspace_id/templates.json
   def index
     @templates = policy_scope(@workspace.templates)
+    authorize Template
   end
 
   # GET /workspaces/:workspace_id/templates/:id.json
@@ -52,6 +53,9 @@ class Admin::TemplatesController < AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_workspace
       @workspace = Workspace.friendly.find(params[:workspace_id])
+      # Set workspace as an ephemeral property on the current_session for
+      # authorisation of resources.
+      current_session.workspace = @workspace
     end
 
     def set_template

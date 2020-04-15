@@ -4,6 +4,7 @@ class Admin::WorkspacesController < AdminController
   # GET /workspaces.json
   def index
     @workspaces = policy_scope(current_user.workspaces)
+    authorize Workspace
   end
 
   # GET /workspaces/:id.json
@@ -61,6 +62,9 @@ class Admin::WorkspacesController < AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_workspace
       @workspace = Workspace.friendly.find(params[:id])
+      # Set workspace as an ephemeral property on the current_session for
+      # authorisation of resources.
+      current_session.workspace = @workspace
       authorize @workspace
     end
 end

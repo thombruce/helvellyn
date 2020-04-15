@@ -4,4 +4,9 @@ class AdminPolicy < ApplicationPolicy
   #       Consider use of super to extend permissions
   #       or some alternative using Rolify role arrays
   #       that would be less database-hungry.
+
+  # Helper Methods
+  def workspace
+    session.workspace
+  end
 end
