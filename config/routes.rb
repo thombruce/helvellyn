@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     end
     # /admin/workspaces/*.json
     resources :workspaces, constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i } do
+      member do
+        # /admin/workspaces/:workspace_id/token.json
+        patch :token
+      end
       # /admin/workspaces/:workspace_id/users/*.json
       resources :users
       # /admin/workspaces/:workspace_id/templates/*.json

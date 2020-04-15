@@ -3,6 +3,8 @@ class Workspace < ApplicationRecord
 
   resourcify
 
+  has_secure_token
+
   belongs_to :created_by, class_name: 'User', foreign_key: 'user_id'
 
   has_many :users, through: :roles, class_name: 'User', source: :users

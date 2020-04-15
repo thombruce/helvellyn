@@ -11,6 +11,10 @@ class Admin::WorkspacePolicy < ApplicationPolicy
     user&.has_role?(:admin, record)
   end
 
+  def token?
+    user&.has_role?(:admin, record)
+  end
+
   def destroy?
     user&.has_role?(:admin, record)
   end

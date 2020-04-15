@@ -6,6 +6,26 @@ div
       workspace-form(:workspace="workspace", :submit="update")
 
       v-alert.my-4(
+        type="warning"
+        colored-border
+        border="left"
+        elevation="2"
+      )
+        h4.title API token
+        p.body-1 This is your token for accessing the API.
+        p.body-2 Be careful when regenerating this; your old token will stop working immediately, and you will be provided a brand new token for accessing the API.
+        v-text-field(
+          label="Token"
+          v-model="workspace.token"
+          readonly
+          :error-messages="workspace.errors.token"
+          :append-icon="showToken ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="showToken ? 'text' : 'password'"
+          @click:append="showToken = !showToken"
+        )
+        v-btn(color="warning" @click="regenToken") Regenerate Token
+
+      v-alert.my-4(
         type="error"
         colored-border
         border="left"
@@ -40,6 +60,7 @@ export default {
   data() {
     return {
       dialog: false,
+      showToken: false,
       workspace: {
         errors: []
       }
@@ -68,6 +89,11 @@ export default {
     destroy: function () {
       this.$store.dispatch('workspaces/destroy', { workspace_id: this.$route.params.workspace_id }).then(() => {
         this.$router.push('/')
+      })
+    },
+    regenToken: function () {
+      this.$store.dispatch('workspaces/token', { workspace_id: this.$route.params.workspace_id }).then(() => {
+        this.workspace = this.$store.state.workspaces.list[this.$route.params.workspace_id]
       })
     }
   }

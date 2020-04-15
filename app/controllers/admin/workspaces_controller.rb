@@ -1,5 +1,5 @@
 class Admin::WorkspacesController < AdminController
-  before_action :set_workspace, only: [:show, :edit, :update, :destroy]
+  before_action :set_workspace, only: [:show, :edit, :update, :token, :destroy]
 
   # GET /workspaces.json
   def index
@@ -37,6 +37,14 @@ class Admin::WorkspacesController < AdminController
   # PATCH/PUT /workspaces/:id.json
   def update
     if @workspace.update(permitted_attributes(@workspace))
+      render :show, status: :ok, location: @workspace
+    else
+      render json: @workspace.errors, status: :unprocessable_entity
+    end
+  end
+
+  def token
+    if @workspace.regenerate_token
       render :show, status: :ok, location: @workspace
     else
       render json: @workspace.errors, status: :unprocessable_entity
