@@ -61,7 +61,10 @@ class Admin::WorkspacesController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workspace
-      super
+      @workspace = Workspace.friendly.find(params[:id])
+      # Set workspace as an ephemeral property on the current_session for
+      # authorisation of resources.
+      current_session.current_workspace = @workspace
       authorize @workspace
     end
 end
