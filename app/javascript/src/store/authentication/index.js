@@ -1,24 +1,71 @@
-import users from './users'
-import sessions from './sessions'
+import { authAPI as axios } from '../../axios'
+
+import account from './account'
+
+const jwtDecode = require('jwt-decode')
+
+const state = () => ({
+  currentSession: {}
+})
 
 const actions = {
-  login({ dispatch }, payload) { // A shortcut for...
-    return dispatch('sessions/create', payload)
+  login({ state, commit }, payload) {
+    return axios
+      .post('/login', payload)
+      .then((res) => {
+        if (res.data.jwt) {
+          localStorage.setItem('user-token', res.data.jwt)
+        }
+        commit('setSession', res.data.jwt)
+        return state.currentSession
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data)
+      })
   },
-  signup({ dispatch }, payload) { // A shortcut for...
-    return dispatch('users/create', payload)
+  signup({ state, commit }, payload) {
+    return axios
+      .post('/signup', payload)
+      .then((res) => {
+        if (res.data.jwt) {
+          localStorage.setItem('user-token', res.data.jwt)
+        }
+        commit('setSession', res.data.jwt)
+        return state.currentSession
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data)
+      })
   },
-  signout({ dispatch }) { // A shortcut for...
-    return dispatch('sessions/destroy')
+  signout({ commit }) {
+    return axios
+      .delete('/signout')
+      .then((res) => {
+        localStorage.removeItem('user-token')
+        commit('endSession')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+}
+
+const mutations = {
+  setSession(state, payload) {
+    state.currentSession = jwtDecode(payload).data
+  },
+  endSession(state) {
+    state.currentSession = {}
   }
 }
 
 const authentication = {
   namespaced: true,
+  state,
   actions,
+  mutations,
   modules: {
-    users,
-    sessions
+    account
   }
 }
 
