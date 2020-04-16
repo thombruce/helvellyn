@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
 
+  has_many :created_workspaces, class_name: 'Workspace', inverse_of: :created_by
   has_many :workspaces, through: :roles, class_name: 'Workspace', source: :resource, source_type: 'Workspace'
 
   validates :name, presence: true, on: :update # on: :update allows us to invite users by email without having to set their name
