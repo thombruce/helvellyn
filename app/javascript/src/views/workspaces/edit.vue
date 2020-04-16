@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div(v-if="workspace.user_roles.includes('admin')")
   v-row(v-if="workspace")
     v-col
       h1 Edit Workspace
