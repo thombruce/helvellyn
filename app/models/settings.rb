@@ -1,7 +1,7 @@
 class Settings < ApplicationRecord
   validates :name, presence: true
 
-  def self.instance
-    first_or_create!
+  def self.instance(*args)
+    first_or_create!(args)
   end
 end

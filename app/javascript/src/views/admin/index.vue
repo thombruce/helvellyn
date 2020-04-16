@@ -13,6 +13,8 @@ div
   v-form(v-if="settings" ref="form" :model="settings" @submit.prevent="update")
     v-text-field(label="Name" v-model="settings.name" :error-messages="settings.errors.name" hint="The name of your installation that will appear in the top left of every page")
 
+    v-text-field(label="Hostname" v-model="settings.hostname" :error-messages="settings.errors.hostname" hint="E.g. example.com")
+
     v-btn(color="primary" type="submit") Save
 </template>
 
