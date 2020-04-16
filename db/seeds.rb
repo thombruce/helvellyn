@@ -6,4 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Settings.instance
+if app_name = ENV['HEROKU_APP_NAME']
+  Settings.instance(hostname: app_name + '.herokuapp.com')
+else
+  Settings.instance(hostname: 'example.com')
+end

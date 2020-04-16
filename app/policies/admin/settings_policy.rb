@@ -1,6 +1,6 @@
 class Admin::SettingsPolicy < AdminPolicy
   def permitted_attributes
-    [:name]
+    [:name, :hostname, :email]
   end
 
   def show?
