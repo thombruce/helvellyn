@@ -19,11 +19,11 @@ class Admin::TemplatePolicy < AdminPolicy
   end
 
   def index?
-    user&.has_role?([:admin], current_workspace)
+    user&.has_any_role?({ name: :admin, resource: current_workspace }, { name: :moderator, resource: current_workspace }, { name: :author, resource: current_workspace })
   end
 
   def show?
-    user&.has_any_role?({ name: :admin, resource: current_workspace }, { name: :moderator, resource: current_workspace }, { name: :member, resource: current_workspace })
+    user&.has_any_role?({ name: :admin, resource: current_workspace }, { name: :moderator, resource: current_workspace }, { name: :author, resource: current_workspace })
   end
 
   def create?
