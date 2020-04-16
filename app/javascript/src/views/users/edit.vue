@@ -14,6 +14,7 @@ export default {
       user: null,
       roles: [
         { text: 'Admin', value: 'admin' },
+        { text: 'Moderator', value: 'moderator' },
         { text: 'Author', value: 'author' }
       ]
     }
