@@ -15,6 +15,8 @@ div
 
     v-text-field(label="Hostname" v-model="settings.hostname" :error-messages="settings.errors.hostname" hint="E.g. example.com")
 
+    v-text-field(label="Email" v-model="settings.email" :error-messages="settings.errors.email" hint="This is the email address that users will receive their welcome email from")
+
     v-btn(color="primary" type="submit") Save
 </template>
 

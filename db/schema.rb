@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_010258) do
+ActiveRecord::Schema.define(version: 2020_04_16_153113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_010258) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "hostname"
+    t.string "email", default: "from@example.com"
     t.index ["singleton_guard"], name: "index_settings_on_singleton_guard", unique: true
   end
 
