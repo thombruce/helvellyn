@@ -21,7 +21,7 @@ class Authentication::UsersController < AuthenticationController
     authorize @user
 
     if @user.save
-      ConfirmationMailer.with(user: @user).confirmation_email.deliver_later
+      UserMailer.with(user: @user).confirmation_email.deliver_later
       @session = Session.create(user: @user)
       render :show, status: :created, location: @user
     else

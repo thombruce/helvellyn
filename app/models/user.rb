@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  # See: https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
+  # For invitations, we would prefer to allow the password to go blank until confirmed...
+  # For this, perhaps, a confirmation_token serves dual purpose?
+  # We would have to remove the default presence validation, re-add those we do want,
+  # and ensure that our new presence validation allows blank while confirmation_token
+  # is present / the user is unconfirmed.
   has_secure_password
   rolify
 
