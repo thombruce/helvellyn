@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: Settings.instance.email
+  default from: 'from@example.com' # TODO: Settings constant is not working here... maybe rename.
   layout 'mailer'
 end
