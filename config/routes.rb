@@ -14,7 +14,12 @@ Rails.application.routes.draw do
         patch :token
       end
       # /admin/workspaces/:workspace_id/users/*.json
-      resources :users
+      resources :users do
+        collection do
+          # /admin/workspaces/:workspace_id/users/invite.json
+          post :invite
+        end
+      end
       # /admin/workspaces/:workspace_id/templates/*.json
       resources :templates do
         # /admin/workspaces/:workspace_id/templates/:template_id/entities/*.json

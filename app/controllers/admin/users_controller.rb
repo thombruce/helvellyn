@@ -12,6 +12,18 @@ class Admin::UsersController < AdminController
   def show
   end
 
+  # POST /workspaces/:workspace_id/users/invite.json
+  def invite
+    @user = User.find_by(email: permitted_attributes(User)[:email])
+    authorize @user
+
+    if @user.add_role(permitted_attributes(User)[:role], @workspace)
+      render :show, status: :created, location: @workspace
+    else
+      render json: @workspace.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

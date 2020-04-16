@@ -14,7 +14,7 @@ class Admin::WorkspacesController < AdminController
 
   # GET /workspaces/new.json
   def new
-    @workspace = current_user.workspaces.new
+    @workspace = Workspace.new(created_by: current_user)
     authorize @workspace
   end
 
@@ -24,7 +24,7 @@ class Admin::WorkspacesController < AdminController
 
   # POST /workspaces.json
   def create
-    @workspace = current_user.workspaces.build(permitted_attributes(Workspace))
+    @workspace = Workspace.new(permitted_attributes(Workspace).merge(created_by: current_user))
     authorize @workspace
 
     if @workspace.save
