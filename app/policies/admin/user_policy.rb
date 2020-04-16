@@ -1,6 +1,10 @@
 class Admin::UserPolicy < AdminPolicy
-  def permitted_attributes # TODO: Different per invite and update actions
+  def permitted_attributes_for_invite
     [:email, :role]
+  end
+
+  def permitted_attributes_for_update
+    [:role]
   end
 
   def index?
@@ -8,6 +12,10 @@ class Admin::UserPolicy < AdminPolicy
   end
 
   def invite?
+    user&.has_role?([:admin], current_workspace)
+  end
+
+  def update?
     user&.has_role?([:admin], current_workspace)
   end
 

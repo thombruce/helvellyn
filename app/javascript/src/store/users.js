@@ -44,6 +44,16 @@ const actions = {
         console.log(error)
       })
   },
+  update({ state, commit }, params) {
+    return axios
+      .patch('/workspaces/' + params.workspace_id + '/users/' + params.user_id, params.data)
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
 }
 
 const mutations = {
