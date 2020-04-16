@@ -1,5 +1,6 @@
 {
   "name": "helvellyn",
+  "version": "0.2.1",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
@@ -28,7 +29,6 @@
     "vuetify": "^2.2.15",
     "vuex": "^3.1.2"
   },
-  "version": "0.2.1",
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
   }
