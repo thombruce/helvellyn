@@ -68,10 +68,10 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => (ENV['SENDGRID_USERNAME'] ? 'smtp.sendgrid.net' : nil) || ENV['MAILGUN_SMTP_SERVER'],
-    :port                 => ENV['MAILGUN_SMTP_PORT'] || 587,
-    :user_name            => ENV['SENDGRID_USERNAME'] || ENV['MAILGUN_SMTP_LOGIN'],
-    :password             => ENV['SENDGRID_PASSWORD'] || ENV['MAILGUN_SMTP_PASSWORD'],
+    :address              => (ENV['SENDGRID_USERNAME'] ? 'smtp.sendgrid.net' : nil) || ENV['MAILGUN_SMTP_SERVER'] || ENV['SMTP_SERVER'],
+    :port                 => ENV['MAILGUN_SMTP_PORT'] || ENV['SMTP_PORT'] || 587,
+    :user_name            => ENV['SENDGRID_USERNAME'] || ENV['MAILGUN_SMTP_LOGIN'] || ENV['SMTP_USERNAME'],
+    :password             => ENV['SENDGRID_PASSWORD'] || ENV['MAILGUN_SMTP_PASSWORD'] || ENV['SMTP_PASSWORD'],
     :authentication       => :plain,
     :enable_starttls_auto => true
   }

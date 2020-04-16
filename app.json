@@ -2,10 +2,5 @@
   "name": "Helvellyn",
   "description": "A CMS with a customisable JSON API",
   "repository": "https://github.com/thombruce/helvellyn",
-  "keywords": ["rails", "vue", "cms", "json"],
-  "addons": [
-    {
-      "plan": "sendgrid:starter"
-    }
-  ]
+  "keywords": ["rails", "vue", "cms", "json"]
 }
