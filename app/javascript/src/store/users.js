@@ -33,7 +33,27 @@ const actions = {
       .catch(function(error) {
         console.log(error)
       })
-  }
+  },
+  invite({ state, commit }, params) {
+    return axios
+      .post('/workspaces/' + params.workspace_id + '/users/invite', params.data)
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
+  update({ state, commit }, params) {
+    return axios
+      .patch('/workspaces/' + params.workspace_id + '/users/' + params.user_id, params.data)
+      .then((res) => {
+        commit('insert', res.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
 }
 
 const mutations = {

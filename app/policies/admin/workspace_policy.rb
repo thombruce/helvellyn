@@ -4,7 +4,7 @@ class Admin::WorkspacePolicy < AdminPolicy
   end
 
   def show?
-    user&.has_role?([:admin], record) # TODO: Expand with additional roles
+    user&.has_any_role?({ name: :admin, resource: record }, { name: :moderator, resource: record }, { name: :author, resource: record })
   end
 
   def update?
