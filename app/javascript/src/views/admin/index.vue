@@ -17,6 +17,22 @@ div
 
     v-text-field(label="Email" v-model="settings.email" :error-messages="settings.errors.email" hint="This is the email address that users will receive their welcome email from")
 
+    v-alert(
+      v-if="!settings.mailer_configured" 
+      type="warning"
+      colored-border
+      border="left"
+      elevation="2"
+    )
+      h4.title Oops!
+      p.body-1 You don't appear to have a mailer configured.
+      p.body-2
+        | You'll need to add the necessary variables to your app environment to send mail. For information on how to do this, see:
+        |
+        a(href="https://github.com/thombruce/helvellyn/wiki/Configure-Emails" target="_blank") Configure Emails
+        | .
+
+
     v-btn(color="primary" type="submit") Save
 </template>
 
