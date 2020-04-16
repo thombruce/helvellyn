@@ -1,6 +1,4 @@
 class ConfirmationMailer < ApplicationMailer
-  default from: 'notifications@example.com'
- 
   def confirmation_email
     @user = params[:user]
     @url  = root_url
