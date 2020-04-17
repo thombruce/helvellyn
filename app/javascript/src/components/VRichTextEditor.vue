@@ -116,7 +116,7 @@ div.mb-4
           v-btn(icon :input-value="isActive.code_block()" @click="commands.code_block")
             v-icon mdi-code-brackets
 
-      editor-content.rte-content(:editor="editor" v-model="inputVal.json")
+      editor-content.rte-content(:editor="editor" v-model="inputVal.html")
 </template>
 
 <script>
@@ -229,7 +229,7 @@ export default {
         const newValue = { json, html }
         this.$emit('input', newValue)
       },
-      content: this.inputVal.json
+      content: this.inputVal.html
     })
   },
   beforeDestroy() {
