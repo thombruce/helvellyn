@@ -4,7 +4,7 @@ div(v-if="entity")
   p(v-for="field in template.fields")
     strong {{ field.name }}
     | &nbsp;
-    span {{ entity[field.slug] }}
+    span {{ entity.data[field.slug] }}
   router-link(:to="{ name: 'edit_entity_path', params: { entity_id: entity.slug } }") Edit
   router-view
 </template>
@@ -14,7 +14,9 @@ export default {
   props: ['workspace', 'template'],
   data () {
     return {
-      entity: null
+      entity: {
+        data: {}
+      }
     }
   },
   created () {
