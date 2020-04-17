@@ -53,6 +53,7 @@ class Entity < ApplicationRecord
   end
   alias_method :published=, :publish=
 
+  # NOTE: This is no longer used in API attribute setting.
   def method_missing(method_name, *arguments, &block)
     if key = find_getter(method_name)
       self.data[key]

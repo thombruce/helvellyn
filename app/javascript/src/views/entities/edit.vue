@@ -39,6 +39,7 @@ export default {
     return {
       dialog: false,
       entity: {
+        data: {},
         errors: []
       }
     }
