@@ -3,7 +3,8 @@ class UserMailer < ApplicationMailer
     @settings = Settings.instance
     @user = params[:user]
     @url  = root_url(host: @settings.hostname)
-    mail(from: @settings.email, to: @user.email, subject: "Welcome to #{@settings.name}")
+    @confirmation_url = @url + 'confirm/' + @user.confirmation_token
+    mail(from: @settings.email, to: @user.email, subject: "Welcome to #{@settings.name} | Please confirm your account")
   end
 
   def invitation_email

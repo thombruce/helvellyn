@@ -5,7 +5,11 @@ class Settings < ApplicationRecord
     first_or_create!(args)
   end
 
-  def mailer_configured
+  def self.mailer_configured?
     !Rails.env.production? || Rails.application.config.action_mailer.smtp_settings[:user_name].present?
+  end
+
+  def mailer_configured
+    self.class.mailer_configured?
   end
 end

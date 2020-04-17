@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
     # /auth/signup.json
     post 'signup', to: 'users#create'
+    # /auth/confirm.json
+    get 'confirm/:confirmation_token', to: 'users#confirm'
     # /auth/signout.json
     delete 'signout', to: 'sessions#destroy'
 

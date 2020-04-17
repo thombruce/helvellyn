@@ -3,6 +3,10 @@ class Authentication::UserPolicy < AuthenticationPolicy
     [:name, :email, :password]
   end
 
+  def confirm?
+    true
+  end
+
   def update?
     user && user == record
   end

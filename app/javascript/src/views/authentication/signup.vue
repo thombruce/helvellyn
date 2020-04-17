@@ -26,6 +26,13 @@ export default {
       }
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (vm.currentUser) {
+        return next(from || '/')
+      }
+    })
+  },
   methods: {
     signUp: function () {
       this.$store.dispatch('signup', { user: this.user }).then(() => {

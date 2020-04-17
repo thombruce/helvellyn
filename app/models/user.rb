@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_secure_password
   rolify
 
+  has_secure_token :confirmation_token
+
+  before_validation :confirm, if: Proc.new { !Settings.mailer_configured? }
+
   after_create :make_admin, if: Proc.new { User.count == 1 }
 
   has_many :sessions, dependent: :destroy
@@ -33,6 +37,15 @@ class User < ApplicationRecord
 
   def admin
     has_role?(:admin)
+  end
+
+  def confirm
+    self.confirmation_token = nil
+    self.confirmed_at = Time.now.utc
+  end
+
+  def confirmed?
+    confirmed_at.present?
   end
 
   private

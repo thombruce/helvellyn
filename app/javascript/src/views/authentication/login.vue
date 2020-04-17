@@ -24,6 +24,13 @@ export default {
       }
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (vm.currentUser) {
+        return next(from || '/')
+      }
+    })
+  },
   methods: {
     login() {
       this.$store.dispatch('login', { session: this.user }).then(() => {

@@ -1,7 +1,7 @@
 class Authentication::UsersController < AuthenticationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  skip_before_action :authenticate!, only: [:new, :create]
+  skip_before_action :authenticate!, only: [:new, :create, :confirm]
 
   # GET /users/1
   # GET /users/1.json
@@ -21,8 +21,24 @@ class Authentication::UsersController < AuthenticationController
     authorize @user
 
     if @user.save
-      UserMailer.with(user: @user).confirmation_email.deliver_later
+      UserMailer.with(user: @user).confirmation_email.deliver_later if Settings.mailer_configured?
       @session = Session.create(user: @user)
+      render :show, status: :created, location: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
+  # GET /users/confirm/:confirmation_token
+  # GET /users/confirm/:confirmation_token.json
+  def confirm
+    @user = User.find_by(confirmation_token: params[:confirmation_token])
+    authorize @user
+
+    @user.confirm
+
+    if @user.save
+      @session = current_user ? current_session : Session.create(user: @user)
       render :show, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
