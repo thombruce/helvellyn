@@ -35,6 +35,12 @@ rake db:setup
 rails s
 ```
 
+### Quick Deploy to Heroku
+
+Alternatively, you can launch the app immediately with just the click of a button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Development
 
 ![GitHub Flow](https://i.imgur.com/zE06Jon.png)
