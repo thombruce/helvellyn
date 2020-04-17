@@ -37,6 +37,20 @@ const actions = {
         return Promise.reject(error.response.data)
       })
   },
+  confirm({ state, commit }, params) {
+    return axios
+      .get('/confirm/' + params.confirmation_token)
+      .then((res) => {
+        if (res.data.jwt) {
+          localStorage.setItem('user-token', res.data.jwt)
+        }
+        commit('setSession', res.data.jwt)
+        return state.currentSession
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data)
+      })
+  },
   signout({ commit }) {
     return axios
       .delete('/signout')

@@ -26,6 +26,7 @@ import EntityEdit from './views/entities/edit.vue'
 
 import Login from './views/authentication/login.vue'
 import Signup from './views/authentication/signup.vue'
+import Confirm from './views/authentication/confirm.vue'
 import Account from './views/authentication/account.vue'
 
 const router = new VueRouter({
@@ -35,6 +36,7 @@ const router = new VueRouter({
     { path: '/admin', component: AdminIndex, name: 'admin_path' },
     { path: '/login', component: Login, name: 'login_path', meta: { layout: "authentication" } },
     { path: '/signup', component: Signup, name: 'signup_path', meta: { layout: "authentication" } },
+    { path: '/confirm/:confirmation_token', component: Confirm, name: 'confirm_path', meta: { layout: "authentication" } },
     { path: '/account', component: Account, name: 'account_path' },
     { path: '/workspaces', component: WorkspaceIndex, name: 'workspaces_path' },
     { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
@@ -61,14 +63,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login', '/signup']
-  const authRequired = !publicPages.includes(to.path)
+  const publicPages = ['login_path', 'signup_path', 'confirm_path']
+  const authRequired = !publicPages.includes(to.name)
   const loggedIn = localStorage.getItem('user-token')
 
   if (authRequired && !loggedIn) {
     return next('/login')
-  } else if (!authRequired && loggedIn) {
-    return next('/')
   }
 
   next()
