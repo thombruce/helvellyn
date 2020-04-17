@@ -116,7 +116,7 @@ div.mb-4
           v-btn(icon :input-value="isActive.code_block()" @click="commands.code_block")
             v-icon mdi-code-brackets
 
-      editor-content.rte-content(:editor="editor" v-model="inputVal")
+      editor-content.rte-content(:editor="editor" v-model="inputVal.json")
 </template>
 
 <script>
@@ -170,10 +170,10 @@ export default {
   computed: {
     inputVal: {
       get() {
-        return this.value;
+        return this.value || {}
       },
       set(val) {
-        this.$emit('input', val);
+        this.$emit('input', val)
       }
     }
   },
@@ -223,11 +223,13 @@ export default {
           notAfter: ['heading', 'paragraph']
         })
       ],
-      onUpdate: ({getHTML}) => {
-        const state = getHTML()
-        this.$emit('input', state)
+      onUpdate: ({getJSON, getHTML}) => {
+        const json = getJSON()
+        const html = getHTML()
+        const newValue = { json, html }
+        this.$emit('input', newValue)
       },
-      content: this.value
+      content: this.inputVal.json
     })
   },
   beforeDestroy() {
