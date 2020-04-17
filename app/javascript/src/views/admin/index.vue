@@ -43,6 +43,13 @@ export default {
       editable_settings: null
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (!vm.currentUser.admin) {
+        return next(from || '/')
+      }
+    })
+  },
   created () {
     this.fetchData()
   },

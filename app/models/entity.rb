@@ -1,7 +1,7 @@
 class Entity < ApplicationRecord
   extend FriendlyId
 
-  resourcify
+  belongs_to :created_by, class_name: 'User', foreign_key: 'user_id', inverse_of: :entities
 
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where('published_at < ?', DateTime.now) }

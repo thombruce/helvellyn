@@ -1,5 +1,5 @@
 <template lang="pug">
-div(v-if="workspace.user_roles.includes('admin')")
+div
   v-row(v-if="workspace")
     v-col
       h1 Edit Workspace
@@ -77,6 +77,9 @@ export default {
       this.workspace = null
       this.$store.dispatch('workspaces/show', { workspace_id: this.$route.params.workspace_id }).then(() => {
         this.workspace = this.$store.state.workspaces.list[this.$route.params.workspace_id]
+        if (!this.workspace.permissions.update_workspace) {
+          this.$router.replace({ name: 'templates_path', params: { workspace_id: this.workspace.slug } })
+        }
       })
     },
     update: function () {

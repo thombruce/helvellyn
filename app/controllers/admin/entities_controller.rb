@@ -22,7 +22,7 @@ class Admin::EntitiesController < AdminController
 
   # GET /workspaces/:workspace_id/templates/:template_id/entities/new.json
   def new
-    @entity = @template.entities.build
+    @entity = @template.entities.build(created_by: current_user)
     authorize @entity
   end
 
@@ -33,11 +33,10 @@ class Admin::EntitiesController < AdminController
   # POST /workspaces/:workspace_id/templates/:template_id/entities.json
   def create
     @entity = @template.entities.build
-    @entity.assign_attributes(entity_params)
+    @entity.assign_attributes(entity_params.merge(created_by: current_user))
     authorize @entity
 
     if @entity.save
-      current_user.add_role :author, @entity
       render :show, status: :created, location: [@workspace, @template, @entity]
     else
       render json: @entity.errors, status: :unprocessable_entity
