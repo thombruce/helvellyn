@@ -2,9 +2,9 @@ json.extract! entity, :id, :template_id, :slug, :data, :created_at, :updated_at,
 
 json.published entity.published
 
-# entity.data.each do |key, value|
-#   json.set! key, value
-# end
+entity.data.each do |key, value|
+  json.set! key, value
+end
 
 json.permissions entity_permissions(entity)
 
