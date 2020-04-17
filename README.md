@@ -1,9 +1,8 @@
 # Helvellyn
 
-[![GitHub package.json version](https://img.shields.io/github/package-json/v/thombruce/helvellyn)](https://github.com/thombruce/helvellyn/releases)
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/thombruce/helvellyn)](https://github.com/thombruce/helvellyn/releases)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/helvellyn/CI?logo=github)](https://github.com/thombruce/helvellyn/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/thombruce/helvellyn?logo=codecov)](https://codecov.io/gh/thombruce/helvellyn)
 [![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
