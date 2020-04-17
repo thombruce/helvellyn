@@ -74,6 +74,7 @@ class Admin::EntitiesController < AdminController
     def entity_params
       template = @template.slug.to_sym
       fields = @template.dynamic_attributes
-      params.require(template).permit(*fields, :slug, :published, :publish)
+      # params.require(template).permit(*fields, :slug, :published, :publish)
+      params.require(template).permit(:slug, :published, :publish, data: {})
     end
 end
