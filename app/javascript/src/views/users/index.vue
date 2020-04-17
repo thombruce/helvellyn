@@ -42,6 +42,9 @@ export default {
       this.$store.dispatch('users/index', { workspace_id: this.$route.params.workspace_id }).then(() => {
         // this.users = this.$store.state.users.list
         this.users = this.$store.getters['users/forWorkspace'](this.workspace.slug)
+        if (!this.workspace.permissions.list_users) {
+          this.$router.replace({ name: 'templates_path', params: { workspace_id: this.workspace.slug } })
+        }
       })
     }
   }

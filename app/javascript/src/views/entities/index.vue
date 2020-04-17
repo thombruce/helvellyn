@@ -68,6 +68,9 @@ export default {
   },
   methods: {
     fetchData () {
+      if (!this.workspace.permissions.list_entities) {
+        this.$router.replace({ name: 'templates_path', params: { workspace_id: this.workspace.slug } })
+      }
       let query = {
         page: this.options.page,
         per: this.options.itemsPerPage,

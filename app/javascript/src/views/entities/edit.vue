@@ -55,6 +55,9 @@ export default {
       this.$store.dispatch('entities/show', { workspace_id: this.$route.params.workspace_id, template_id: this.$route.params.template_id, entity_id: this.$route.params.entity_id }).then(() => {
         // this.entity = this.$store.state.entities.list[this.$route.params.entity_id]
         this.entity = this.$store.getters['entities/findBySlug'](this.template.id, this.$route.params.entity_id)
+        if (!this.entity.permissions.update_entity) {
+          this.$router.replace({ name: 'entities_path' })
+        }
       })
     },
     update: function () {

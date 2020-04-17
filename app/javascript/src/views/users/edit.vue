@@ -32,6 +32,9 @@ export default {
       this.$store.dispatch('users/show', { workspace_id: this.$route.params.workspace_id, user_id: this.$route.params.user_id }).then(() => {
         this.user = this.$store.state.users.list[this.$route.params.user_id]
         // this.user = this.$store.getters['users/findBySlug'](this.workspace.id, this.$route.params.user_id)
+        if (!this.user.permissions.update_user) {
+          this.$router.replace({ name: 'users_path', params: { workspace_id: this.workspace.slug } })
+        }
       })
     },
     submit() {

@@ -5,4 +5,6 @@ json.desc template.admin_desc
 
 json.entities_count template.entities.size
 
+json.permissions template_permissions(template)
+
 json.url workspace_template_url(template.workspace, template, format: :json)

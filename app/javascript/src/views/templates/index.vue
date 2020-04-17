@@ -40,6 +40,9 @@ export default {
       this.$store.dispatch('templates/index', { workspace_id: this.$route.params.workspace_id }).then(() => {
         // this.templates = this.$store.state.templates.list
         this.templates = this.$store.getters['templates/forWorkspace'](this.workspace.id)
+        if (!this.workspace.permissions.list_templates) {
+          this.$router.replace({ name: 'root_path' })
+        }
       })
     }
   }
