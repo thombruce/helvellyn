@@ -1,4 +1,6 @@
-# Helvellyn ![GitHub package.json version](https://img.shields.io/github/package-json/v/thombruce/helvellyn)
+# Helvellyn
+
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/thombruce/helvellyn)](https://github.com/thombruce/helvellyn/releases)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
