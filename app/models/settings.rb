@@ -6,7 +6,7 @@ class Settings < ApplicationRecord
   end
 
   def self.mailer_configured?
-    !Rails.env.production? || Rails.application.config.action_mailer.smtp_settings[:user_name].present?
+    !Rails.env.production? || Rails.application.config.action_mailer.smtp_settings.try(:[], :user_name).present?
   end
 
   def mailer_configured
