@@ -9,6 +9,7 @@ div
 
 <script>
 export default {
+  props: ['workspace'],
   data() {
     return {
       user: {
@@ -22,6 +23,13 @@ export default {
         { text: 'Author', value: 'author' }
       ]
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (!vm.workspace.permissions.invite_users) {
+        return next(from || '/')
+      }
+    })
   },
   methods: {
     submit() {

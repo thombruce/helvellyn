@@ -12,6 +12,13 @@ export default {
   components: {
     TemplateForm
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (!vm.workspace.permissions.create_templates) {
+        return next(from || '/')
+      }
+    })
+  },
   data() {
     return {
       template: {

@@ -12,6 +12,13 @@ export default {
   components: {
     EntityForm
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (!vm.workspace.permissions.create_entities) {
+        return next(from || '/')
+      }
+    })
+  },
   data() {
     return {
       entity: {
