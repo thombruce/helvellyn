@@ -60,6 +60,8 @@ bundle exec rspec --exclude-pattern "spec/system/**/*.rb"
 
 ## Sponsors
 
+[![Become a Patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/thombruce)
+
 Details about how you can sponsor the project to follow.
 
 _Sponsors will be listed here._
