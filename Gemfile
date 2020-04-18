@@ -27,7 +27,6 @@ gem 'rack-cors'
 
 # Auth
 gem 'credible'
-gem 'warden' # TODO: Should be removed when credible working
 gem 'pundit'
 gem 'rolify'
 # Use JSON Web Tokens
