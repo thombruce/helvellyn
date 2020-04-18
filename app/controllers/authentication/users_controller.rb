@@ -45,6 +45,22 @@ class Authentication::UsersController < AuthenticationController
     end
   end
 
+  # POST /users/reset_password
+  # POST /users/reset_password.json
+  def reset_password
+    @user = User.find_by(email: permitted_attributes(User)[:email])
+    authorize @user
+
+    @user.reset_password
+
+    if @user.save
+      UserMailer.with(user: @user).confirmation_email.deliver_later # Settings.mailer_configured? is checked in Pundit authorization
+      render :show, status: :ok, location: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
   # GET /users/1/edit
   def edit
   end

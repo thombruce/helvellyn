@@ -19,7 +19,7 @@ export default {
     fetchData () {
       this.user = null
       this.$store.dispatch('authentication/confirm', { confirmation_token: this.$route.params.confirmation_token }).then(() => {
-        this.$router.push({ name: 'root_path' })
+        this.$router.push({ name: 'account_path' })
       })
     }
   }

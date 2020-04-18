@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   scope '/auth', module: 'authentication', format: false, defaults: { format: 'json' } do
     # /auth/login.json
     post 'login', to: 'sessions#create'
+    # /auth/reset_password.json
+    post 'reset_password', to: 'users#reset_password'
     # /auth/signup.json
     post 'signup', to: 'users#create'
     # /auth/confirm.json

@@ -7,6 +7,10 @@ class Authentication::UserPolicy < AuthenticationPolicy
     true
   end
 
+  def reset_password?
+    Settings.mailer_configured?
+  end
+
   def update?
     user && user == record
   end
