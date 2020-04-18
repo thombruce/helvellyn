@@ -1,3 +1,11 @@
+PATH
+  remote: credible
+  specs:
+    credible (0.1.0)
+      pundit (~> 2.1.0)
+      rails (~> 6.0.2, >= 6.0.2.2)
+      warden (~> 1.2.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -302,6 +310,7 @@ DEPENDENCIES
   byebug
   capybara
   codecov
+  credible!
   factory_bot_rails
   faker
   friendly_id (= 5.2.3)

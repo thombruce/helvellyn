@@ -1,0 +1,3 @@
+[submodule "credible"]
+	path = credible
+	url = https://github.com/thombruce/credible.git

@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 
 # Auth
-gem 'warden'
+gem 'warden' # TODO: Should be removed when credible working
 gem 'pundit'
 gem 'rolify'
 # Use JSON Web Tokens
@@ -77,3 +77,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'credible', path: 'credible'
