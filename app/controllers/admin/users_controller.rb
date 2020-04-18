@@ -14,10 +14,20 @@ class Admin::UsersController < AdminController
 
   # POST /workspaces/:workspace_id/users/invite.json
   def invite
-    @user = User.find_by(email: permitted_attributes(User)[:email])
+    if Settings.mailer_configured?
+      @user = User.find_or_initialize_by(email: permitted_attributes(User)[:email])
+      if @user.new_record?
+        @user.regenerate_confirmation_token
+        @user.save
+      end
+    else
+      @user = User.find_by(email: permitted_attributes(User)[:email])
+    end
+
     authorize @user
 
     if @user.add_role(permitted_attributes(User)[:role], @workspace)
+      UserMailer.with(user: @user).confirmation_email.deliver_later if Settings.mailer_configured? && @user.password_digest.blank?
       render :show, status: :created, location: @workspace
     else
       render json: @workspace.errors, status: :unprocessable_entity
