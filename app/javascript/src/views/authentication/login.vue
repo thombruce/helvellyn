@@ -11,7 +11,7 @@ div
     router-link(:to="{ name: 'signup_path' }") Sign up
     |
     | instead.
-  p
+  p(v-if="settings.mailer_configured")
     | Forgotten your password?
     |
     router-link(:to="{ name: 'reset_password_path' }") Reset password.

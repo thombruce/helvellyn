@@ -10,7 +10,6 @@ const settings = {
     // Called from App.vue to ensure it only runs once.
     fetchSettings () {
       store.dispatch('settings/public')
-      console.log('fetching settings')
     }
   }
 }
