@@ -21,7 +21,8 @@ class User < ApplicationRecord
 
   has_many :entities, class_name: 'Entity', inverse_of: :created_by
 
-  validates :name, presence: true, on: :update # on: :update allows us to invite users by email without having to set their name
+  # validates :name, presence: true, on: :update # on: :update allows us to invite users by email without having to set their name
+  # TODO: No, it doesn't. Add a conditional to this validation based on confirmation.
 
   validates :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
