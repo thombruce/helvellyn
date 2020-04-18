@@ -51,6 +51,16 @@ const actions = {
         return Promise.reject(error.response.data)
       })
   },
+  resetPassword({ state, commit }, payload) {
+    return axios
+      .post('/reset_password', payload)
+      .then((res) => {
+        return true
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data)
+      })
+  },
   signout({ commit }) {
     return axios
       .delete('/signout')
