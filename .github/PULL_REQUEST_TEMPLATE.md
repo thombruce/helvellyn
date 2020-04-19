@@ -1,17 +1,12 @@
 ## Linked Issue(s)
 
-- ...
-
-```
-E.g. closes #123
-```
+- _E.g. `closes #123`_
 
 ## Description
 
-- [ ] Bugfix
-- [ ] Feature
+### _[Feature/Bugfix]_
 
-Describe the changes made by this Pull Request.
+_Describe the changes made by this Pull Request._
 
 ## Checklist
 
