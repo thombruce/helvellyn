@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 
 # Auth
-gem 'credible'
+gem 'credible', github: 'thombruce/credible', branch: 'master'
 gem 'warden' # TODO: Investigate. Currently fails without explicit inclusion.
 gem 'pundit'
 gem 'rolify'
