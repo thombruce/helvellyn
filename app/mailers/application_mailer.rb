@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com' # TODO: Settings constant is not working here... maybe rename.
+  default from: 'helvellyn@thombruce.com'
   layout 'mailer'
 end
