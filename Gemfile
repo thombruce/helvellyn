@@ -27,7 +27,7 @@ gem 'rack-cors'
 
 # Auth
 gem 'credible'
-gem 'warden'
+gem 'warden' # TODO: Investigate. Currently fails without explicit inclusion.
 gem 'pundit'
 gem 'rolify'
 # Use JSON Web Tokens
