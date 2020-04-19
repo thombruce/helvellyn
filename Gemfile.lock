@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/thombruce/credible.git
+  revision: bf80a99fc99bc1754bdd03cd316ce1f71341a044
+  branch: master
+  specs:
+    credible (0.2.1)
+      pundit (~> 2.1.0)
+      rails (~> 6.0.2, >= 6.0.2.2)
+      warden (~> 1.2.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,9 +73,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
-    brakeman (4.8.0)
+    brakeman (4.8.1)
     builder (3.2.4)
-    byebug (11.1.1)
+    byebug (11.1.2)
     capybara (3.32.1)
       addressable
       mini_mime (>= 0.1.3)
@@ -81,10 +91,6 @@ GEM
       url
     concurrent-ruby (1.1.6)
     crass (1.0.6)
-    credible (0.2.0)
-      pundit (~> 2.1.0)
-      rails (~> 6.0.2, >= 6.0.2.2)
-      warden (~> 1.2.8)
     diff-lcs (1.3)
     docile (1.3.2)
     erubi (1.9.0)
@@ -159,7 +165,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
-    parser (2.7.1.0)
+    parser (2.7.1.1)
       ast (~> 2.4.0)
     pg (1.2.3)
     public_suffix (4.0.4)
@@ -306,7 +312,7 @@ DEPENDENCIES
   byebug
   capybara
   codecov
-  credible
+  credible!
   factory_bot_rails
   faker
   friendly_id (= 5.2.3)
