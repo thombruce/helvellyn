@@ -39,7 +39,7 @@ const actions = {
   },
   confirm({ state, commit }, params) {
     return axios
-      .get('/confirm/' + params.confirmation_token)
+      .get('/confirm/' + params.confirmation_token, { params: { email: params.email } })
       .then((res) => {
         if (res.data.jwt) {
           localStorage.setItem('user-token', res.data.jwt)
