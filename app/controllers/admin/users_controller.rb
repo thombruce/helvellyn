@@ -27,7 +27,7 @@ class Admin::UsersController < AdminController
     authorize @user
 
     if @user.add_role(permitted_attributes(User)[:role], @workspace)
-      UserMailer.with(user: @user).confirmation_email.deliver_later if Settings.mailer_configured? && @user.password_digest.blank?
+      Credible::InvitationMailer.with(user: @user).invitation_email.deliver_later if Settings.mailer_configured? && @user.password_digest.blank?
       render :show, status: :created, location: @workspace
     else
       render json: @workspace.errors, status: :unprocessable_entity
