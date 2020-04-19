@@ -1,41 +1,7 @@
 class Session < ApplicationRecord
-  attr_accessor :login
-
-  belongs_to :user, optional: true
+  include Credible::Session
 
   belongs_to :workspace, optional: true
 
-  has_secure_token
-
   attr_accessor :current_workspace
-
-  def self.authenticate(params)
-    user = User.authenticate(params)
-    new(user: user)
-  end
-
-  def jwt
-    payload = {
-      data: jwt_data,
-      iss: 'Helvellyn'
-    }
-    JWT.encode payload, Rails.application.secrets.secret_key_base, 'HS256' # [1]
-  end
-
-  private
-
-  def jwt_data
-    {
-      session_id: id,
-      user_id: user.id,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        admin: user.admin
-      }
-    }
-  end
 end
-
-# [1] Use of `secrets` instead of `credentials` makes for a container-ready deploy on Heroku (easier setup for open source)
