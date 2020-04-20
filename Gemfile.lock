@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/thombruce/credible.git
-  revision: 07482526879fbd1476e89d4c082394613f5170af
+  revision: aa8f4d141b4c0e17c98967369cbac30aaf60c4cd
   branch: master
   specs:
-    credible (0.5.0)
+    credible (0.6.0)
       pundit (~> 2.1.0)
       rails (~> 6.0.2, >= 6.0.2.2)
       warden (~> 1.2.8)
