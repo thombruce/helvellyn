@@ -23,6 +23,7 @@ class Workspace < ApplicationRecord
   validates_format_of :slug, without: /\A\d+\Z/, message: 'cannot contain only numbers'
 
   def token
-    session.token
+    # TODO: Workspaces don't always need a Session. Allow for Private workspaces
+    (session || create_session).token
   end
 end
