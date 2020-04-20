@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/thombruce/credible.git
-  revision: 5d058bf9a89cd772479efb0af3fddf835a87df45
+  revision: 07482526879fbd1476e89d4c082394613f5170af
   branch: master
   specs:
     credible (0.5.0)
