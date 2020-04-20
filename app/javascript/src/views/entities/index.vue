@@ -46,7 +46,7 @@ export default {
   computed: {
     tableHeaders() {
       return [
-        { text: this.template.fields[0].name, value: this.template.fields[0].slug, sortable: false },
+        { text: this.template.fields[0].name, value: this.template.fields[0].slug },
         { text: 'Created', value: 'created_at' },
         { text: 'Updated', value: 'updated_at' },
         { text: 'Published', value: 'published_at' },
