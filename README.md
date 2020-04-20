@@ -92,5 +92,5 @@ _Significant contributors will be listed here._
 - [ ] Separation into engines/packages:
     - Helvellyn::Admin - Admin API for Helvellyn CMS
     - Helvellyn::Api - Public API for Helvellyn CMS
-    - Helvellyn::Auth - Authentication API for Helvellyn CMS (I may have different plans for this)
+    - ~~Helvellyn::Auth~~ - See: [Credible](https://github.com/thombruce/credible)
     - HelvellynJS - Frontend JavaScript
