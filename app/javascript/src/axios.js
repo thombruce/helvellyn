@@ -5,18 +5,23 @@ axios.defaults.baseURL = '/admin'
 axios.defaults.headers.common['Accept'] = 'application/json'
 
 // Interceptor Functions
-const interceptor = (config) => {
+const requestInterceptor = (request) => {
   let token = localStorage.getItem('user-token')
 
   if (token) {
-    config.headers['Authorization'] = `Bearer ${ token }`
+    request.headers['Authorization'] = `Bearer ${ token }`
   }
 
-  return config
+  return request
 }
 
-const interceptorError = (error) => {
-  return Promise.reject(error)
+const responseErrorInterceptor = (error) => {
+  if (error.response.status === 401) {
+    localStorage.removeItem('user-token')
+    window.location = '/login'
+  } else {
+    return Promise.reject(error)
+  }
 }
 
 // Axios Instances
@@ -26,13 +31,23 @@ const authAPI = axios.create({
 })
 
 adminAPI.interceptors.request.use(
-  interceptor, 
-  interceptorError
+  requestInterceptor,
+  (error) => { return Promise.reject(error) }
 )
 
 authAPI.interceptors.request.use(
-  interceptor, 
-  interceptorError
+  requestInterceptor,
+  (error) => { return Promise.reject(error) }
+)
+
+adminAPI.interceptors.response.use(
+  (response) => { return response },
+  responseErrorInterceptor
+)
+
+authAPI.interceptors.response.use(
+  (response) => { return response },
+  responseErrorInterceptor
 )
 
 export default adminAPI
