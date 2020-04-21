@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
-  include Credible::ApplicationController
+  include Credible::ControllerConcern
   include Pundit
-  after_action :verify_authorized
-  after_action :verify_policy_scoped, only: :index
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from Pundit::NotDefinedError, with: :user_not_authorized
