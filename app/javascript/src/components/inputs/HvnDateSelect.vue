@@ -12,7 +12,12 @@ v-dialog(
       readonly
       v-on="on"
     )
-  v-date-picker(v-model="inputVal" @input="dialog = false")
+  v-date-picker(
+    v-model="inputVal"
+    min="1583-01-01"
+    max="9999-12-31"
+    @input="dialog = false"
+  )
 </template>
 
 <script>
