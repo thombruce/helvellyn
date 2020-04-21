@@ -17,6 +17,11 @@ const field_types = {
           value: 'Rich Text',
           icon: 'mdi-format-pilcrow'
         },
+        {
+          text: 'Date',
+          value: 'Date',
+          icon: 'mdi-calendar'
+        },
         // {
         //   text: 'Markdown',
         //   value: 'Markdown',

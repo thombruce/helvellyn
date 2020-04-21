@@ -5,6 +5,7 @@ component(:is="fieldComponent" :label="label" v-model="inputVal")
 <script>
 import VRichTextEditor from './VRichTextEditor.vue'
 import VMarkdownEditor from './VMarkdownEditor.vue'
+import HvnDateSelect from './inputs/HvnDateSelect.vue'
 
 export default {
   props: [
@@ -14,7 +15,8 @@ export default {
   ],
   components: {
     VRichTextEditor,
-    VMarkdownEditor
+    VMarkdownEditor,
+    HvnDateSelect
   },
   computed: {
     inputVal: {
@@ -33,6 +35,8 @@ export default {
           return 'v-textarea'
         case 'Rich Text':
           return 'v-rich-text-editor'
+        case 'Date':
+          return 'hvn-date-select'
         case 'Markdown':
           return 'v-markdown-editor'
         default:

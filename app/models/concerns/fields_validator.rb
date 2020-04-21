@@ -2,7 +2,12 @@
 class FieldsValidator < ActiveModel::EachValidator
   # Maybe rename to ContentModelValidator for consistency.
 
-  VALID_FIELD_TYPES = ['String', 'Text', 'Rich Text'].freeze
+  VALID_FIELD_TYPES = [
+    'String',
+    'Text',
+    'Rich Text',
+    'Date'
+  ].freeze
 
   def validate_each(record, attribute, value)
     validates_uniqueness_of_slugs(record, attribute, value)
