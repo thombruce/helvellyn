@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
+  before_action { params[:app_name] = Settings.instance.name }
+
   default from: Settings.instance.email || 'helvellyn@thombruce.com'
   layout 'mailer'
 
