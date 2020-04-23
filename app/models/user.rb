@@ -9,7 +9,7 @@ class User < ApplicationRecord
   # is present / the user is unconfirmed.
   rolify
 
-  before_create :confirm, if: Proc.new { !Settings.mailer_configured? }
+  before_create :confirm_without_email, if: Proc.new { !Settings.mailer_configured? }
 
   after_create :make_admin, if: Proc.new { User.count == 1 }
 
@@ -29,5 +29,9 @@ class User < ApplicationRecord
 
   def make_admin
     add_role(:admin)
+  end
+
+  def confirm_without_email
+    confirm(confirmation_token)
   end
 end
