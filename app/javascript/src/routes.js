@@ -2,62 +2,36 @@ import Vue from 'vue/dist/vue.esm'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import AdminIndex from './views/admin/index.vue'
-
 import WorkspaceIndex from './views/workspaces/index.vue'
-import WorkspaceShow from './views/workspaces/show.vue'
-import WorkspaceNew from './views/workspaces/new.vue'
-import WorkspaceEdit from './views/workspaces/edit.vue'
-
-import UserIndex from './views/users/index.vue'
-import UserShow from './views/users/show.vue'
-import UserNew from './views/users/new.vue'
-import UserEdit from './views/users/edit.vue'
-
-import TemplateIndex from './views/templates/index.vue'
-import TemplateShow from './views/templates/show.vue'
-import TemplateNew from './views/templates/new.vue'
-import TemplateEdit from './views/templates/edit.vue'
-
-import EntityIndex from './views/entities/index.vue'
-import EntityShow from './views/entities/show.vue'
-import EntityNew from './views/entities/new.vue'
-import EntityEdit from './views/entities/edit.vue'
-
-import Login from './views/authentication/login.vue'
-import ResetPassword from './views/authentication/resetPassword.vue'
-import Signup from './views/authentication/signup.vue'
-import Confirm from './views/authentication/confirm.vue'
-import Account from './views/authentication/account.vue'
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: WorkspaceIndex, name: 'root_path' },
-    { path: '/admin', component: AdminIndex, name: 'admin_path' },
-    { path: '/login', component: Login, name: 'login_path', meta: { layout: "authentication" } },
-    { path: '/reset_password', component: ResetPassword, name: 'reset_password_path', meta: { layout: "authentication" } },
-    { path: '/signup', component: Signup, name: 'signup_path', meta: { layout: "authentication" } },
-    { path: '/confirm/:confirmation_token', component: Confirm, name: 'confirm_path', meta: { layout: "authentication" } },
-    { path: '/account', component: Account, name: 'account_path' },
-    { path: '/workspaces', component: WorkspaceIndex, name: 'workspaces_path' },
-    { path: '/workspaces/new', component: WorkspaceNew, name: 'new_workspace_path' },
-    { path: '/:workspace_id/edit', component: WorkspaceEdit, name: 'edit_workspace_path' },
-    { path: '/:workspace_id', component: WorkspaceShow,
+    { path: '/admin', name: 'admin_path', component: () => import('./views/admin/index.vue') },
+    { path: '/login', name: 'login_path', component: () => import('./views/authentication/login.vue'), meta: { layout: "authentication" } },
+    { path: '/reset_password', name: 'reset_password_path', component: () => import('./views/authentication/resetPassword.vue'), meta: { layout: "authentication" } },
+    { path: '/signup', name: 'signup_path', component: () => import('./views/authentication/signup.vue'), meta: { layout: "authentication" } },
+    { path: '/confirm/:confirmation_token', name: 'confirm_path', component: () => import('./views/authentication/confirm.vue'), meta: { layout: "authentication" } },
+    { path: '/account', name: 'account_path', component: () => import('./views/authentication/account.vue') },
+    { path: '/workspaces', name: 'workspaces_path', component: WorkspaceIndex },
+    { path: '/workspaces/new', name: 'new_workspace_path', component: () => import('./views/workspaces/new.vue') },
+    { path: '/:workspace_id/edit', name: 'edit_workspace_path', component: () => import('./views/workspaces/edit.vue') },
+    { path: '/:workspace_id', component: () => import('./views/workspaces/show.vue'),
       children: [
-        { path: '', component: TemplateIndex, name: 'templates_path' },
-        { path: 'users', component: UserIndex, name: 'users_path' },
-        { path: 'users/new', component: UserNew, name: 'new_user_path' },
-        { path: 'users/:user_id/edit', component: UserEdit, name: 'edit_user_path' },
-        { path: 'users/:user_id', component: UserShow, name: 'user_path' },
-        { path: 'templates/new', component: TemplateNew, name: 'new_template_path' },
-        { path: ':template_id/edit', component: TemplateEdit, name: 'edit_template_path' },
-        { path: ':template_id', component: TemplateShow,
+        { path: '', name: 'templates_path', component: () => import('./views/templates/index.vue') },
+        { path: 'users', name: 'users_path', component: () => import('./views/users/index.vue') },
+        { path: 'users/new', name: 'new_user_path', component: () => import('./views/users/new.vue') },
+        { path: 'users/:user_id/edit', name: 'edit_user_path', component: () => import('./views/users/edit.vue') },
+        { path: 'users/:user_id', name: 'user_path', component: () => import('./views/users/show.vue') },
+        { path: 'templates/new', name: 'new_template_path', component: () => import('./views/templates/new.vue') },
+        { path: ':template_id/edit', name: 'edit_template_path', component: () => import('./views/templates/edit.vue') },
+        { path: ':template_id', component: () => import('./views/templates/show.vue'),
           children: [
-            { path: '', component: EntityIndex, name: 'entities_path' },
-            { path: 'new', component: EntityNew, name: 'new_entity_path' },
-            { path: ':entity_id/edit', component: EntityEdit, name: 'edit_entity_path' },
-            { path: ':entity_id', component: EntityShow, name: 'entity_path' }
+            { path: '', name: 'entities_path', component: () => import('./views/entities/index.vue') },
+            { path: 'new', name: 'new_entity_path', component: () => import('./views/entities/new.vue') },
+            { path: ':entity_id/edit', name: 'edit_entity_path', component: () => import('./views/entities/edit.vue') },
+            { path: ':entity_id', name: 'entity_path', component: () => import('./views/entities/show.vue') }
           ] }
       ] }
   ]
