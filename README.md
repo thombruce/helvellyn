@@ -1,5 +1,7 @@
 # Helvellyn
 
+**Helvellyn** | [Helvellyn.js](https://github.com/thombruce/helvellyn.js) | [Credible](https://github.com/thombruce/credible)
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 [![Become a Patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/thombruce)
