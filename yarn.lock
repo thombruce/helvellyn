@@ -2150,6 +2150,11 @@ core-js@^3.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
   integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
 
+core-js@^3.6.4:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
+  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -3506,6 +3511,26 @@ he@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
+"helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
+  version "0.1.0"
+  resolved "https://github.com/thombruce/helvellyn.js.git#246cac8e1e8c356651122c47bca07895bb8107fd"
+  dependencies:
+    axios "^0.19.2"
+    core-js "^3.6.4"
+    deepmerge "^4.2.2"
+    dompurify "^2.0.8"
+    fibers "^4.0.2"
+    jwt-decode "^2.2.0"
+    marked "^0.8.2"
+    parameterize "^1.0.0"
+    pluralize "^8.0.0"
+    tiptap "^1.26.8"
+    tiptap-extensions "^1.28.8"
+    vue "^2.6.11"
+    vue-router "^3.1.6"
+    vuetify "^2.2.15"
+    vuex "^3.1.3"
 
 hex-color-regex@^1.1.0:
   version "1.1.0"
@@ -7908,7 +7933,7 @@ vue-loader@^15.8.3:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-router@^3.1.5:
+vue-router@^3.1.5, vue-router@^3.1.6:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.1.6.tgz#45f5a3a3843e31702c061dd829393554e4328f89"
   integrity sha512-GYhn2ynaZlysZMkFE5oCHRUTqE8BWs/a9YbKpNLi0i7xD6KG1EzDqpHQmv1F5gXjr8kL5iIVS8EOtRaVUEXTqA==
@@ -7948,6 +7973,11 @@ vuex@^3.1.2:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.3.tgz#f2ad73e3fb73691698b38c93f66e58e267947180"
   integrity sha512-k8vZqNMSNMgKelVZAPYw5MNb2xWSmVgCKtYKAptvm9YtZiOXnRXFWu//Y9zQNORTrm3dNj1n/WaZZI26tIX6Mw==
+
+vuex@^3.1.3:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.2.0.tgz#86da7f26c3e131ff374870580109145a640ee5a8"
+  integrity sha512-qBZGJJ1gUNWZbfZlH7ylIPwENg3R0Ckpq+qPexF065kOMOt1Ixt8WDJmtssVv7OhepWD0+Qie7pOS8f0oQy1JA==
 
 w3c-keyname@^2.2.0:
   version "2.2.4"

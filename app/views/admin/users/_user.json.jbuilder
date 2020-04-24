@@ -6,4 +6,4 @@ json.role user.roles.find_by(resource_type: 'Workspace', resource_id: @workspace
 
 json.permissions user_permissions(user)
 
-json.url user_url(user, format: :json)
+json.url workspace_user_url(@workspace, user, format: :json)
