@@ -93,4 +93,4 @@ _Significant contributors will be listed here._
     - Helvellyn::Admin - Admin API for Helvellyn CMS
     - Helvellyn::Api - Public API for Helvellyn CMS
     - ~~Helvellyn::Auth~~ - See: [Credible](https://github.com/thombruce/credible)
-    - HelvellynJS - Frontend JavaScript
+    - ~~HelvellynJS~~ - See: [Helvellyn.js](https://github.com/thombruce/helvellyn.js)
