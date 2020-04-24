@@ -90,7 +90,6 @@ _Significant contributors will be listed here._
 - [x] Heroku Review Apps
 - [x] Coverage Reporting
 - [ ] Achieve min. coverage of 80%
-- [ ] Consider use of GitHub projects for multi-part tasks
 - [ ] Separation into engines/packages:
     - Helvellyn::Admin - Admin API for Helvellyn CMS
     - Helvellyn::Api - Public API for Helvellyn CMS
