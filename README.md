@@ -1,22 +1,23 @@
-# Helvellyn
+<h1 id="helvellyn" align="center">Helvellyn</h1>
 
-**Helvellyn** | [Helvellyn.js](https://github.com/thombruce/helvellyn.js) | [Credible](https://github.com/thombruce/credible)
+<p align="center"><strong>Helvellyn</strong> | <a href="https://github.com/thombruce/helvellyn.js">Helvellyn.js</a> | <a href="https://github.com/thombruce/credible">Credible</a></p>
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+<p align="center"><a href="https://heroku.com/deploy"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a></p>
 
-[![Become a Patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/thombruce)
+<p align="center"><a href="https://www.patreon.com/thombruce"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Become a Patron"></a></p>
 
-[![GitHub package.json version](https://img.shields.io/github/package-json/v/thombruce/helvellyn)](https://github.com/thombruce/helvellyn/releases)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thombruce/helvellyn/CI?logo=github)](https://github.com/thombruce/helvellyn/actions)
-[![Codecov](https://img.shields.io/codecov/c/github/thombruce/helvellyn?logo=codecov)](https://codecov.io/gh/thombruce/helvellyn)
-[![GitHub issues](https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github)](https://github.com/thombruce/helvellyn/issues)
+<p align="center"><a href="https://github.com/thombruce/helvellyn/releases"><img src="https://img.shields.io/github/package-json/v/thombruce/helvellyn" alt="GitHub package.json version"></a>
+<a href="https://github.com/thombruce/helvellyn/actions"><img src="https://img.shields.io/github/workflow/status/thombruce/helvellyn/CI?logo=github" alt="GitHub Workflow Status"></a>
+<a href="https://codecov.io/gh/thombruce/helvellyn"><img src="https://img.shields.io/codecov/c/github/thombruce/helvellyn?logo=codecov" alt="Codecov"></a>
+<a href="https://github.com/thombruce/helvellyn/issues"><img src="https://img.shields.io/github/issues-raw/thombruce/helvellyn?logo=github" alt="GitHub issues"></a></p>
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
-[![Contributing](https://img.shields.io/badge/contributions-welcome-blue.svg)](CONTRIBUTING.md)
-[![Discord](https://img.shields.io/discord/697123984231366716?color=7289da&label=chat&logo=discord)](https://discord.gg/JDSh5dQ)
+<p align="center"><a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+<a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg" alt="Contributor Covenant"></a>
+<a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-blue.svg" alt="Contributing"></a>
+<a href="https://discord.gg/JDSh5dQ"><img src="https://img.shields.io/discord/697123984231366716?color=7289da&amp;label=chat&amp;logo=discord" alt="Discord"></a></p>
 
-A Ruby on Rails based content management system that exposes a customisable API for publishing content.
+<p align="center">A Ruby on Rails based content management system that exposes a customisable API for publishing content.</p>
+
 
 ## Table of Contents
 
