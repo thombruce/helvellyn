@@ -14,7 +14,7 @@
 <p align="center"><a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg" alt="Contributor Covenant"></a>
 <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-blue.svg" alt="Contributing"></a>
-<a href="https://discord.gg/JDSh5dQ"><img src="https://img.shields.io/discord/697123984231366716?color=7289da&amp;label=chat&amp;logo=discord" alt="Discord"></a></p>
+<a href="https://discord.gg/JDSh5dQ"><img src="https://img.shields.io/discord/697123984231366716?color=7289da&label=chat&logo=discord" alt="Discord"></a></p>
 
 <p align="center">A Ruby on Rails based content management system that exposes a customisable API for publishing content.</p>
 
