@@ -7,7 +7,7 @@ class Session < ApplicationRecord
 
   private	
 
-  def jwt_data	
+  def access_token_data	
     {	
       session_id: id,	
       user_id: user.id,	
