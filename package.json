@@ -11,7 +11,7 @@
     "deepmerge": "^4.2.2",
     "dompurify": "^2.0.8",
     "fibers": "^4.0.2",
-    "helvellyn.js": "https://github.com/thombruce/helvellyn.js.git",
+    "helvellyn.js": "https://github.com/thombruce/helvellyn.js.git#await-session-before-settings",
     "jwt-decode": "^2.2.0",
     "marked": "^0.8.2",
     "parameterize": "^1.0.0",
