@@ -3514,7 +3514,7 @@ he@^1.1.0:
 
 "helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
   version "0.5.1"
-  resolved "https://github.com/thombruce/helvellyn.js.git#8f8cf1cddb55984274e2f53b46f218b8c088123c"
+  resolved "https://github.com/thombruce/helvellyn.js.git#876640c481c9c6009135108a0020e9f231f69a63"
   dependencies:
     axios "^0.19.2"
     core-js "^3.6.4"
