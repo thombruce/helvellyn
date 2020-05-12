@@ -8,6 +8,8 @@ class Entity < ApplicationRecord
 
   belongs_to :template, counter_cache: true
 
+  has_many :uploads
+
   # TODO: Associated to user via :author role. But if user leaves app, :author becomes
   #       empty. Maybe an optional Author type field that stores key info... indefinitely.
   #       Perhaps. Something to maybe be added to template models: Author field_type
