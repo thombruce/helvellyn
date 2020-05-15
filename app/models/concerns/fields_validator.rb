@@ -6,7 +6,8 @@ class FieldsValidator < ActiveModel::EachValidator
     'String',
     'Text',
     'Rich Text',
-    'Date'
+    'Date',
+    'Upload'
   ].freeze
 
   def validate_each(record, attribute, value)

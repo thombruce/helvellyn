@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   scope format: false, defaults: { format: 'html' } do
     # Catch all requests and render Vue app.
     root to: 'application#render_application'
-    get '*path', to: 'application#render_application'
+    get '*path', to: 'application#render_application', constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
   end
 end
 

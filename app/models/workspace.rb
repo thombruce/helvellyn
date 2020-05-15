@@ -15,6 +15,8 @@ class Workspace < ApplicationRecord
 
   after_create :create_session
 
+  has_many :uploads
+
   validates_presence_of :title
 
   validates_presence_of :slug

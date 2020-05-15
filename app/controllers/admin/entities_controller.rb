@@ -33,8 +33,9 @@ class Admin::EntitiesController < AdminController
   # POST /workspaces/:workspace_id/templates/:template_id/entities.json
   def create
     @entity = @template.entities.build
-    @entity.assign_attributes(entity_params.merge(created_by: current_user))
     authorize @entity
+
+    @entity.assign_attributes(entity_params.merge(created_by: current_user))
 
     if @entity.save
       render :show, status: :created, location: [@workspace, @template, @entity]
@@ -45,8 +46,9 @@ class Admin::EntitiesController < AdminController
 
   # PATCH/PUT /workspaces/:workspace_id/templates/:template_id/entities/:id.json
   def update
+    @entity.assign_attributes(entity_params)
 
-    if @entity.update(entity_params)
+    if @entity.save
       render :show, status: :ok, location: [@workspace, @template, @entity]
     else
       render json: @entity.errors, status: :unprocessable_entity
@@ -71,10 +73,20 @@ class Admin::EntitiesController < AdminController
     end
 
     # Only allow a list of trusted parameters through.
-    def entity_params
+    def permitted_entity_params
       template = @template.slug.to_sym
       fields = @template.dynamic_attributes
       # params.require(template).permit(*fields, :slug, :published, :publish)
       params.require(template).permit(:slug, :published, :publish, data: {})
+    end
+
+    def entity_params
+      params = permitted_entity_params
+      params[:data].each do |key, value|
+        if value.is_a?(ActionDispatch::Http::UploadedFile)
+          upload = Upload.create(workspace: @workspace, file: value)
+          params[:data][key] = url_for(upload.file)
+        end
+      end
     end
 end
