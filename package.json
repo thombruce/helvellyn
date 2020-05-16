@@ -1,6 +1,6 @@
 {
   "name": "helvellyn",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
@@ -11,7 +11,7 @@
     "deepmerge": "^4.2.2",
     "dompurify": "^2.0.8",
     "fibers": "^4.0.2",
-    "helvellyn.js": "https://github.com/thombruce/helvellyn.js.git#image-upload",
+    "helvellyn.js": "https://github.com/thombruce/helvellyn.js.git",
     "jwt-decode": "^2.2.0",
     "marked": "^0.8.2",
     "parameterize": "^1.0.0",
