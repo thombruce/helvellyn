@@ -3530,9 +3530,9 @@ he@^1.1.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-"helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
+"helvellyn.js@https://github.com/thombruce/helvellyn.js.git#image-upload":
   version "0.5.1"
-  resolved "https://github.com/thombruce/helvellyn.js.git#876640c481c9c6009135108a0020e9f231f69a63"
+  resolved "https://github.com/thombruce/helvellyn.js.git#5d11dc4133f8ce24f51542df6a6174aa6e2dcff7"
   dependencies:
     axios "^0.19.2"
     core-js "^3.6.4"
@@ -3541,6 +3541,7 @@ he@^1.1.0:
     fibers "^4.0.2"
     jwt-decode "^2.2.0"
     marked "^0.8.2"
+    object-to-formdata "^3.0.9"
     parameterize "^1.0.0"
     pluralize "^8.0.0"
     tiptap "^1.26.8"
@@ -5038,6 +5039,11 @@ object-keys@^1.0.11, object-keys@^1.0.12, object-keys@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
   integrity sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
+
+object-to-formdata@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/object-to-formdata/-/object-to-formdata-3.0.9.tgz#40e3314522345789259738811c0222b7d6e556e9"
+  integrity sha512-1JDHRFSpk6wzhPBAAqdVncdvbjZ+bjB0tioruNdKn8UyudBBXiBxRa7PJyvYqp4ioEKX98dEOX9Fw1RxA+vLzg==
 
 object-visit@^1.0.0:
   version "1.0.1"
