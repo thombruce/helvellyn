@@ -5,6 +5,9 @@
   "keywords": ["rails", "vue", "cms", "json"],
   "addons": [
     {
+      "plan": "sendgrid:starter"
+    },
+    {
       "plan": "cloudinary:starter"
     }
   ]
