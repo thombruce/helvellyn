@@ -3530,9 +3530,9 @@ he@^1.1.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-"helvellyn.js@https://github.com/thombruce/helvellyn.js.git#image-upload":
-  version "0.5.1"
-  resolved "https://github.com/thombruce/helvellyn.js.git#5d11dc4133f8ce24f51542df6a6174aa6e2dcff7"
+"helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
+  version "0.6.1"
+  resolved "https://github.com/thombruce/helvellyn.js.git#12001c2dead89cb1441c8e8255703e94bb16eb16"
   dependencies:
     axios "^0.19.2"
     core-js "^3.6.4"

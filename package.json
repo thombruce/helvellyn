@@ -1,6 +1,6 @@
 {
   "name": "helvellyn",
-  "version": "0.21.2",
+  "version": "0.21.3",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
