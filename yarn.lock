@@ -3531,8 +3531,8 @@ he@^1.1.0:
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 "helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
-  version "0.8.0"
-  resolved "https://github.com/thombruce/helvellyn.js.git#b73995cab49d1e5efd5c1a6024a60e7472310950"
+  version "0.8.1"
+  resolved "https://github.com/thombruce/helvellyn.js.git#db3320cddb6967a69598199ac01bcd4e38d24a1a"
   dependencies:
     axios "^0.19.2"
     core-js "^3.6.4"
