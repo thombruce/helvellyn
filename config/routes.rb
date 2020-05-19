@@ -20,6 +20,8 @@ Rails.application.routes.draw do
           post :invite
         end
       end
+      # /admin/workspaces/:workspace_id/uploads/*.json
+      resources :uploads
       # /admin/workspaces/:workspace_id/templates/*.json
       resources :templates do
         # /admin/workspaces/:workspace_id/templates/:template_id/entities/*.json
@@ -36,6 +38,9 @@ Rails.application.routes.draw do
   scope '/api', module: 'api', as: 'pretty', format: false, defaults: { format: 'json' } do
     # /api/:worspace_id/*.json
     resources :workspaces, path: '', constraints: { id: /(?:[a-z0-9][._-]?)*[a-z0-9]/i }, only: [:show] do
+      # # /api/:worspace_id/uploads/*.json
+      # # resources :uploads
+
       resources :templates, path: '', only: [] do
         member do
           # /api/:worspace_id/:template_id/template.json

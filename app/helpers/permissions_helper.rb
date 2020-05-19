@@ -2,6 +2,7 @@ module PermissionsHelper
   def workspace_permissions(workspace)
     workspace_policy = Pundit.policy(current_session, [:admin, workspace])
     user_policy = Pundit.policy(current_session, [:admin, User])
+    upload_policy = Pundit.policy(current_session, [:admin, Upload])
     template_policy = Pundit.policy(current_session, [:admin, Template])
     entity_policy = Pundit.policy(current_session, [:admin, Entity])
 
@@ -11,6 +12,8 @@ module PermissionsHelper
       destroy_workspace: workspace_policy.destroy?,
       list_users: user_policy.index?,
       invite_users: user_policy.invite?,
+      list_uploads: upload_policy.index?,
+      create_uploads: upload_policy.create?,
       list_templates: template_policy.index?,
       create_templates: template_policy.create?,
       list_entities: entity_policy.index?,
@@ -25,6 +28,16 @@ module PermissionsHelper
       view_user: user_policy.show?,
       update_user: user_policy.update?,
       destroy_user: user_policy.destroy?
+    }
+  end
+
+  def upload_permissions(upload)
+    upload_policy = Pundit.policy(current_session, [:admin, upload])
+
+    return {
+      view_upload: upload_policy.show?,
+      update_upload: upload_policy.update?,
+      destroy_upload: upload_policy.destroy?
     }
   end
 
