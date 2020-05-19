@@ -3531,8 +3531,8 @@ he@^1.1.0:
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 "helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
-  version "0.7.0"
-  resolved "https://github.com/thombruce/helvellyn.js.git#8321ca430ed51d0c6d9b1f57482ac84c02cfc6a1"
+  version "0.8.0"
+  resolved "https://github.com/thombruce/helvellyn.js.git#b73995cab49d1e5efd5c1a6024a60e7472310950"
   dependencies:
     axios "^0.19.2"
     core-js "^3.6.4"
@@ -8011,10 +8011,15 @@ vue-loader@^15.8.3:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-router@^3.1.5, vue-router@^3.1.6:
+vue-router@^3.1.5:
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.1.6.tgz#45f5a3a3843e31702c061dd829393554e4328f89"
   integrity sha512-GYhn2ynaZlysZMkFE5oCHRUTqE8BWs/a9YbKpNLi0i7xD6KG1EzDqpHQmv1F5gXjr8kL5iIVS8EOtRaVUEXTqA==
+
+vue-router@^3.1.6:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.2.0.tgz#da35195ffe37fdf0bec9f5f8f72781d2a7718815"
+  integrity sha512-khkrcUIzMcI1rDcNtqkvLwfRFzB97GmJEsPAQdj7t/VvpGhmXLOkUfhc+Ah8CvpSXGXwuWuQO+x8Sy/xDhXZIA==
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
