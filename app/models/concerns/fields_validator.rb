@@ -7,6 +7,7 @@ class FieldsValidator < ActiveModel::EachValidator
     'Text',
     'Rich Text',
     'Date',
+    'Tags',
     'Upload'
   ].freeze
 
