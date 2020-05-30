@@ -15,6 +15,9 @@ class User < ApplicationRecord
 
   def should_generate_new_friendly_id?
     username.blank?
+    # TODO: We should not generate this on signUp or account edit.
+    #       The user should be forced to set a username.
+    #       This is used for invite.
   end
 
   before_create :confirm_without_email, if: Proc.new { !Settings.mailer_configured? }
