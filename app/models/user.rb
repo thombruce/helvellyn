@@ -41,7 +41,10 @@ class User < ApplicationRecord
   private
 
   def generate_username
-    SecureRandom.hex(4)
+    # SecureRandom.hex(4) # 8 characters, 4.3 billion variations
+    SecureRandom.hex(5) # 10 characters, 1 trillion variations
+
+    # TODO: Maybe add a loop to check against DB and ensure uniqueness.
   end
 
   def make_admin
