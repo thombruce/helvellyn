@@ -88,5 +88,6 @@ class Admin::EntitiesController < AdminController
           params[:data][key] = url_for(upload.file)
         end
       end
+      params
     end
 end
