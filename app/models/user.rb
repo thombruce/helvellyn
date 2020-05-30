@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Credible::User
 
+  extend FriendlyId
+
   # See: https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
   # For invitations, we would prefer to allow the password to go blank until confirmed...
   # For this, perhaps, a confirmation_token serves dual purpose?
@@ -8,6 +10,12 @@ class User < ApplicationRecord
   # and ensure that our new presence validation allows blank while confirmation_token
   # is present / the user is unconfirmed.
   rolify
+
+  friendly_id :generate_username, use: :slugged, slug_column: :username
+
+  def should_generate_new_friendly_id?
+    username.blank?
+  end
 
   before_create :confirm_without_email, if: Proc.new { !Settings.mailer_configured? }
 
@@ -31,6 +39,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def generate_username
+    SecureRandom.hex(4)
+  end
 
   def make_admin
     add_role(:admin)
