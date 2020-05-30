@@ -18,6 +18,11 @@ class User < ApplicationRecord
 
   has_many :entities, class_name: 'Entity', inverse_of: :created_by
 
+  validates_presence_of :username
+  validates_uniqueness_of :username, message: 'is already taken'
+  validates_format_of :username, with: /\A(?:[a-z0-9][_]?)*[a-z0-9]\z/i, message: 'must only contain letters, numbers and underscores (e.g. my_username)'
+  validates_format_of :username, without: /\A\d+\Z/, message: 'cannot contain only numbers'
+
   # validates :name, presence: true, on: :update # on: :update allows us to invite users by email without having to set their name
   # TODO: No, it doesn't. Add a conditional to this validation based on confirmation.
 
