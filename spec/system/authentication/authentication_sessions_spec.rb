@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Authentication::Sessions", type: :system do
-  before do
-    driven_by(:selenium_chrome_headless)
-    create(:user, name: 'John Smith', email: 'john.smith@example.com', password: 'Passw0rd123!')
-  end
-
   it "renders a title" do
     visit "/login"
 
@@ -13,12 +8,7 @@ RSpec.describe "Authentication::Sessions", type: :system do
   end
 
   it "allows login with valid user" do
-    visit "/login"
-
-    fill_in "Login", :with => "john.smith@example.com"
-    fill_in "Password", :with => "Passw0rd123!"
-    click_button "Log in"
-
+    login # spec/support/system_spec_helper.rb
     expect(page).to have_text("Workspaces")
   end
 end
