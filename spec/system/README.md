@@ -27,5 +27,3 @@ To run these specs on GitHub Actions, the following shell command was added to `
 ```
 
 *Without this, no manifest file is created and Rspec cannot load the JavaScript packs.*
-
-**NOTE: JavaScript code coverage cannot be determined by any Ruby code coverage tool that I know of (Helvellyn uses SimpleCov). Recommend moving JS pack to independent package distributed by NPM, so that JavaScript can be tested in isolation.**
