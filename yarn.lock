@@ -1627,6 +1627,21 @@ browserslist@^4.0.0, browserslist@^4.11.1, browserslist@^4.6.4, browserslist@^4.
     node-releases "^1.1.53"
     pkg-up "^2.0.0"
 
+"brucify@https://github.com/thombruce/brucify.git":
+  version "0.1.1"
+  resolved "https://github.com/thombruce/brucify.git#878a0c29befd4d1979cece9e1fd1ffba797ab1a2"
+  dependencies:
+    core-js "^3.6.4"
+    dompurify "^2.0.11"
+    marked "^0.8.2"
+    parameterize "^1.0.0"
+    pluralize "^8.0.0"
+    tiptap "^1.26.8"
+    tiptap-extensions "^1.28.8"
+    vue "^2.6.11"
+    vuedraggable "^2.23.2"
+    vuetify "^2.2.30"
+
 buffer-from@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
@@ -2663,7 +2678,7 @@ domelementtype@^2.0.1:
   resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-2.0.1.tgz#1f8bdfe91f5a78063274e803b4bdcedf6e94f94d"
   integrity sha512-5HOHUDsYZWV8FGWN0Njbr/Rn7f/eWSQi1v7+HsUVwXgn8nWWlL64zKDkS0n8ZmQ3mlWOMuXOnR+7Nx/5tMO5AQ==
 
-dompurify@^2.0.8:
+dompurify@^2.0.11, dompurify@^2.0.8:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.0.11.tgz#cd47935774230c5e478b183a572e726300b3891d"
   integrity sha512-qVoGPjIW9IqxRij7klDQQ2j6nSe4UNWANBhZNLnsS7ScTtLb+3YdxkRY8brNTpkUiTtcXsCJO+jS0UCDfenLuA==
@@ -3032,6 +3047,13 @@ fibers@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/fibers/-/fibers-4.0.3.tgz#dda5918280a48507f5d8a96dd9a525e8f4a532e2"
   integrity sha512-MW5VrDtTOLpKK7lzw4qD7Z9tXaAhdOmOED5RHzg3+HjUk+ibkjVW0Py2ERtdqgTXaerLkVkBy2AEmJiT6RMyzg==
+  dependencies:
+    detect-libc "^1.0.3"
+
+fibers@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/fibers/-/fibers-5.0.0.tgz#3a60e0695b3ee5f6db94e62726716fa7a59acc41"
+  integrity sha512-UpGv/YAZp7mhKHxDvC1tColrroGRX90sSvh8RMZV9leo+e5+EkRVgCEZPlmXeo3BUNQTZxUaVdLskq1Q2FyCPg==
   dependencies:
     detect-libc "^1.0.3"
 
@@ -3531,16 +3553,15 @@ he@^1.1.0:
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 "helvellyn.js@https://github.com/thombruce/helvellyn.js.git":
-  version "0.10.1"
-  resolved "https://github.com/thombruce/helvellyn.js.git#252d0e71120bcb7edfdd0c7ed1f00f21fe1516b1"
+  version "0.11.0"
+  resolved "https://github.com/thombruce/helvellyn.js.git#48d2868d773aa12d89b1f849c1f034bb325a76f1"
   dependencies:
     axios "^0.19.2"
+    brucify "https://github.com/thombruce/brucify.git"
     core-js "^3.6.4"
     deepmerge "^4.2.2"
-    dompurify "^2.0.8"
-    fibers "^4.0.2"
+    fibers "^5.0.0"
     jwt-decode "^2.2.0"
-    marked "^0.8.2"
     object-to-formdata "^3.0.9"
     parameterize "^1.0.0"
     pluralize "^8.0.0"
@@ -8058,6 +8079,11 @@ vuetify@^2.2.15:
   version "2.2.28"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.28.tgz#9cea948758e96c349f107a0f853e4226a96cdf4d"
   integrity sha512-zKnPYaXcNTOpnQHK6Ys+WETzrSsplhwGmC8EudcosWA19kU1c+CAqg4SuPk8nDz/KUVPc2nI9AIRN6UQYUcHtA==
+
+vuetify@^2.2.30:
+  version "2.2.31"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.31.tgz#4bfae969738e0a12a1138f014010a97cdbcd7674"
+  integrity sha512-Ad9NgJr6S7iOd9oMtzOfswEQG4dmVOWaAMSk+3T5oSveVBiSWVLG5F0jVHL9Pe8VblcT4L4EXsTldGT9P3BzLA==
 
 vuex@^3.1.2, vuex@^3.1.3:
   version "3.4.0"
