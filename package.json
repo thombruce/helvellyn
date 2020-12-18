@@ -9,7 +9,7 @@
     "@rails/webpacker": "^4.2.2",
     "axios": "^0.19.2",
     "deepmerge": "^4.2.2",
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.0.17",
     "fibers": "^4.0.2",
     "helvellyn.js": "https://github.com/thombruce/helvellyn.js.git",
     "jwt-decode": "^2.2.0",
