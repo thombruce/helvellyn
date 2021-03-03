@@ -16,7 +16,7 @@
     "marked": "^0.8.2",
     "parameterize": "^1.0.0",
     "pluralize": "^8.0.0",
-    "pug": "2.0.3",
+    "pug": "3.0.1",
     "pug-plain-loader": "^1.0.0",
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
