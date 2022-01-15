@@ -13,7 +13,7 @@
     "fibers": "^4.0.2",
     "helvellyn.js": "https://github.com/thombruce/helvellyn.js.git",
     "jwt-decode": "^2.2.0",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "parameterize": "^1.0.0",
     "pluralize": "^8.0.0",
     "pug": "2.0.3",
